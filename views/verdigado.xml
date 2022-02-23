@@ -28,7 +28,7 @@
 	    </div>
 		    <div id="informations" class="row mt32 mb32">
                         <div class="col-auto col-3 mw-100 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                            <strong>Customer Code:</strong>
+                            <strong>Kd. Nr.:</strong>
                             <p class="m-0" t-field="o.partner_id.ref"/>
 		    </div>
 	    </div>
