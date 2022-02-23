@@ -1,89 +1,78 @@
 <odoo>
 	<data>
 
-
 		<template id="report_invoice_document_verdigado" inherit_id="account.report_invoice_document">
-
 			<xpath expr="//div[@id='informations']" position="replace">
-
 				<t t-set="informations">
-
-                    <div id="informations" class="row mt32 mb32">
-                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
-                            <strong>Rechnungsdatum:</strong>
-                            <p class="m-0" t-field="o.invoice_date"/>
-		    </div>
-	    </div>
-		    <div id="informations" class="row mt32 mb32">
-                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'" name="due_date">
-                            <strong>Fälligkeitsdatum:</strong>
-                            <p class="m-0" t-field="o.invoice_date_due"/>
-		    </div>
-	    </div>
-		    <div id="informations" class="row mt32 mb32">
-                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_origin" name="origin">
-                            <strong>Quelle:</strong>
-                            <p class="m-0" t-field="o.invoice_origin"/>
-		    </div>
-	    </div>
-		    <div id="informations" class="row mt32 mb32">
-                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                            <strong>Kd. Nr.:</strong>
-                            <p class="m-0" t-field="o.partner_id.ref"/>
-		    </div>
-	    </div>
-		    <div id="informations" class="row mt32 mb32">
-                        <div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
-                            <strong>Referenz:</strong>
-                            <p class="m-0" t-field="o.ref"/>
-                        </div>
-                    </div>
-
+					<div id="informations" class="row mt32 mb32">
+						<div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
+							<strong>Rechnungsdatum:</strong>
+							<p class="m-0" t-field="o.invoice_date"/>
+						</div>
+					</div>
+					<div id="informations" class="row mt32 mb32">
+						<div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'" name="due_date">
+							<strong>Fälligkeitsdatum:</strong>
+							<p class="m-0" t-field="o.invoice_date_due"/>
+						</div>
+					</div>
+					<div id="informations" class="row mt32 mb32">
+						<div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_origin" name="origin">
+							<strong>Quelle:</strong>
+							<p class="m-0" t-field="o.invoice_origin"/>
+						</div>
+					</div>
+					<div id="informations" class="row mt32 mb32">
+						<div class="col-auto col-3 mw-100 mb-2" t-if="o.partner_id.ref" name="customer_code">
+							<strong>Kd. Nr.:</strong>
+							<p class="m-0" t-field="o.partner_id.ref"/>
+						</div>
+					</div>
+					<div id="informations" class="row mt32 mb32">
+						<div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
+							<strong>Referenz:</strong>
+							<p class="m-0" t-field="o.ref"/>
+						</div>
+					</div>
 				</t>
-
 			</xpath>
-
 		</template>
 
 		<template id="report_saleorder_document_verdigado" inherit_id="sale.report_saleorder_document">
-
 			<xpath expr="//div[@id='informations']" position="replace">
-
 				<t t-set="informations">
-            <div class="row mt32 mb32" id="informations">
-                <div t-if="doc.client_order_ref" class="col-auto col-3 mw-100 mb-2">
-                    <strong>Referenz:</strong>
-		    <p class="m-0" t-field="doc.client_order_ref"/>
-	    </div>
-    </div>
-	    <div class="row mt32 mb32" id="informations">
-                <div t-if="doc.date_order and doc.state not in ['draft','sent']" class="col-auto col-3 mw-100 mb-2">
-                    <strong>Auftragsdatum:</strong>
-                    <p class="m-0" t-field="doc.date_order" t-options='{"format": "dd.MM.yyyy"}'/>
-	    </div>
-</div>
-	<div class="row mt32 mb32" id="informations">
-                <div t-if="doc.date_order and doc.state in ['draft','sent']" class="col-auto col-3 mw-100 mb-2">
-                    <strong>Angebotsdatum:</strong>
-                    <p class="m-0" t-field="doc.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
-	    </div>
-    </div>
-	    <div class="row mt32 mb32" id="informations">
-                <div t-if="doc.validity_date and doc.state in ['draft', 'sent']" class="col-auto col-3 mw-100 mb-2" name="expiration_date">
-                    <strong>Gültigkeit:</strong>
-                    <p class="m-0" t-field="doc.validity_date"/>
-	    </div>
-    </div>
-	    <div class="row mt32 mb32" id="informations">
-                <div t-if="doc.user_id.name" class="col-auto col-3 mw-100 mb-2">
-                    <strong>Ansprechpartner*in:</strong>
-                    <p class="m-0" t-field="doc.user_id"/>
-                </div>
-            </div>
+					<div class="row mt32 mb32" id="informations">
+						<div t-if="doc.client_order_ref" class="col-auto col-3 mw-100 mb-2">
+							<strong>Referenz:</strong>
+							<p class="m-0" t-field="doc.client_order_ref"/>
+						</div>
+					</div>
+					<div class="row mt32 mb32" id="informations">
+						<div t-if="doc.date_order and doc.state not in ['draft','sent']" class="col-auto col-3 mw-100 mb-2">
+							<strong>Auftragsdatum:</strong>
+							<p class="m-0" t-field="doc.date_order" t-options='{"format": "dd.MM.yyyy"}'/>
+						</div>
+					</div>
+					<div class="row mt32 mb32" id="informations">
+						<div t-if="doc.date_order and doc.state in ['draft','sent']" class="col-auto col-3 mw-100 mb-2">
+							<strong>Angebotsdatum:</strong>
+							<p class="m-0" t-field="doc.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
+						</div>
+					</div>
+					<div class="row mt32 mb32" id="informations">
+						<div t-if="doc.validity_date and doc.state in ['draft', 'sent']" class="col-auto col-3 mw-100 mb-2" name="expiration_date">
+							<strong>Gültigkeit:</strong>
+							<p class="m-0" t-field="doc.validity_date"/>
+						</div>
+					</div>
+					<div class="row mt32 mb32" id="informations">
+						<div t-if="doc.user_id.name" class="col-auto col-3 mw-100 mb-2">
+							<strong>Ansprechpartner*in:</strong>
+							<p class="m-0" t-field="doc.user_id"/>
+						</div>
+					</div>
 				</t>
 			</xpath>
-
-
 		</template>
 
 		<template id="address_layout_verdigado" inherit_id="web.address_layout">
@@ -92,65 +81,78 @@
 			<xpath expr="//div[@name='address']" position="replace">
 				<div name="address" class="col mt-5 mb-5">
 					<t t-raw="address"/>
-                </div>
+				</div>
 			</xpath>
 		</template>
 
+		<template id="report_external_layout_standard_verdigado" inherit_id="web.external_layout_standard">
+			<xpath expr="//div[@t-attf-class='header o_company_#{company.id}_layout']" position="replace">
+				<div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+					<div class="row mt-3 pt-3">
+						<div class="col-3 pt-4 mb4">
+							<img t-att-src="'/verdigado_template_default/static/img/head1.jpg'" style="max-height: 150px"/>
+						</div>
+						<div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
+					</div>
+				</div>
+			</xpath>
 
-	  <template id="report_external_layout_standard_verdigado" inherit_id="web.external_layout_standard">
-		  <xpath expr="//div[@t-attf-class='header o_company_#{company.id}_layout']" position="replace">
-			  <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
-	 		           <div class="row mt-3 pt-3">
-					  <div class="col-3 pt-4 mb4">
-						  <img t-att-src="'/verdigado_template_default/static/img/head1.jpg'" style="max-height: 150px"/>
-					  </div>
-                			  <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
-				  </div>
-			  </div>
+			<xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="replace">
+				<div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')" style="font-size: 12px !important;margin-top:50px;">
+					<div class="container">
 
-		  </xpath>
-
-		  <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="replace">
-			  <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')" style="font-size: 12px !important;margin-top:50px;">
-				  <div class="container">
-
-		<div class="row justify-content-start">
-                <!-- This div ensures that the address is not cropped by the header. -->
-			<div class="col-6"><t t-call="web.address_layout"/></div>
-			<div class="col-3"></div>
-			<div class="col-3"><t t-raw="informations" /></div>
-		</div>
-	</div>
-		<t t-raw="0"/>
-
-	</div>
-		  </xpath>
+						<div class="row justify-content-start">
+							<!-- This div ensures that the address is not cropped by the header. -->
+							<div class="col-6">
+								<t t-call="web.address_layout"/>
+							</div>
+							<div class="col-3"></div>
+							<div class="col-3">
+								<t t-raw="informations" />
+							</div>
+						</div>
+					</div>
+					<t t-raw="0"/>
+				</div>
+			</xpath>
 
 
-      <xpath expr="//div[@t-attf-class='footer o_standard_footer o_company_#{company.id}_layout']" position="replace">
-	      <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
-		      <div class="row" style="font-size: xx-small">
-			      <div class="col-4">
-				      <span class="o_force_ltr" t-field="company.name"/><br />
-					      <span class="o_force_ltr" t-field="company.street"/><br />
-					      <span class="o_force_ltr" t-field="company.zip"/> <span class="o_force_ltr" t-field="company.city"/><br />
-					<span>www.verdigado.com</span>
-			      </div>
-			      <div class="col-4">
-					      <span>Sitz der Genossenschaft: Nürnberg</span><br />
-					<span>Registergericht: Amtsgericht Nürnberg</span><br />
-					<span>Registernummer: GnR 344</span><br />
-					<span>Vorstand: Dominik Ach, Katharina Zierer</span><br />
-			      </div>
-			      <div class="col-4">
-					      <span>Bankverbindung</span><br />
-					      <span>IBAN: DE19 4306 0967 1041 8961 00</span><br />
-					      <span>Umsatzsteuer-ID: <span t-field="company.vat" /></span><br />
-					     <span>Vorsitzender Aufsichtsrat: Dr. Tobias Specht</span>
-			      </div>
-</div>
-      </div>
-      </xpath>
-    </template>
-  </data>
+			<xpath expr="//div[@t-attf-class='footer o_standard_footer o_company_#{company.id}_layout']" position="replace">
+				<div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+					<div class="row" style="font-size: xx-small">
+						<div class="col-4">
+							<span class="o_force_ltr" t-field="company.name"/>
+							<br />
+							<span class="o_force_ltr" t-field="company.street"/>
+							<br />
+							<span class="o_force_ltr" t-field="company.zip"/>
+							<span class="o_force_ltr" t-field="company.city"/>
+							<br />
+							<span>www.verdigado.com</span>
+						</div>
+						<div class="col-4">
+							<span>Sitz der Genossenschaft: Nürnberg</span>
+							<br />
+							<span>Registergericht: Amtsgericht Nürnberg</span>
+							<br />
+							<span>Registernummer: GnR 344</span>
+							<br />
+							<span>Vorstand: Dominik Ach, Katharina Zierer</span>
+							<br />
+						</div>
+						<div class="col-4">
+							<span>Bankverbindung</span>
+							<br />
+							<span>IBAN: DE19 4306 0967 1041 8961 00</span>
+							<br />
+							<span>Umsatzsteuer-ID: <span t-field="company.vat" />
+							</span>
+							<br />
+							<span>Vorsitzender Aufsichtsrat: Dr. Tobias Specht</span>
+						</div>
+					</div>
+				</div>
+			</xpath>
+		</template>
+	</data>
 </odoo>
