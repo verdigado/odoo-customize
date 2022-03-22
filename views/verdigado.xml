@@ -27,6 +27,11 @@
 							<strong>Kd. Nr.:</strong>
 							<p class="m-0" t-field="o.partner_id.ref"/>
 						</div>
+						<!-- Show customer_code of parent if own ref field is empty. -->
+						<div class="col-auto col-3 mw-100 mb-2" t-elif="o.commercial_partner_id.ref" name="customer_code">
+							<strong>Kd. Nr.:</strong>
+							<p class="m-0" t-field="o.commercial_partner_id.ref"/>
+						</div>
 					</div>
 					<div id="informations" class="row mt32 mb32">
 						<div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
