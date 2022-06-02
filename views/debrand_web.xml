@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        // Overwrite branding in website footer
+        <template id="own_brand_promotion" inherit_id="web.brand_promotion_message">
+            <xpath expr="//t[@t-set='odoo_logo']" position="replace">
+                // Set your Company logo here if you want.
+                <t t-set="odoo_logo">
+                </t>
+            </xpath>
+            <xpath expr="//t[@t-set='final_message']" position="replace">
+                // Set your Message Here. Before Logo Text ("final_message"). And After Logo text ("_message").
+                <t t-set="final_message">Support: support@verdigado.com, +49 30 629-3390-80 (Mo-Fr 09:00 - 17:00) %s%s</t>
+                <t t-set="_message"></t>
+            </xpath>
+        </template>
+    </data>
+
+</odoo>

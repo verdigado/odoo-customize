@@ -1,0 +1,22 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* verdigado_template_default
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20220110\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-31 20:53+0000\n"
+"PO-Revision-Date: 2022-05-31 20:53+0000\n"
+"Last-Translator: Alexander Bigga, 2022\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: verdigado_template_default
+#: model_terms:ir.ui.view,arch_db:verdigado_template_default.own_mail_notification_paynow
+msgid "View"
+msgstr "Ansicht"

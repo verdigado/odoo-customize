@@ -21,7 +21,8 @@
     # always loaded
     'data': [
      #   'security/ir.model.access.csv',
-        'views/promotion_web.xml',
+        'views/debrand_web.xml',
+        'views/debrand_mail.xml',
         'views/verdigado.xml',
     ],
     'images': [
