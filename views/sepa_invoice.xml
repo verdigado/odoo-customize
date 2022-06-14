@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="verdigado_sepa_report_invoice_document" inherit_id="account.report_invoice_document">
+            <xpath expr="//p[@name='payment_communication']" position="replace">
+                <!-- in case of SEPA, we skip the payment_communication -->
+                <t t-if="o.sdd_mandate_id" />
+                <t t-else="">
+                    <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication">
+                        Bitte benutzen Sie den folgenden Verwendungszweck für Ihre Zahlung: <b><span t-field="o.payment_reference"/></b>
+                    </p>
+                </t>
+            </xpath>
+            <xpath expr="//p[@t-if='o.invoice_payment_term_id']" position="replace">
+                <!-- in case of SEPA, we skip the payment_term -->
+                <t t-if="o.sdd_mandate_id" />
+                <t t-else="">
+                    <p t-if="o.invoice_payment_term_id" name="payment_term">
+                        <span t-field="o.invoice_payment_term_id.note"/>
+                    </p>
+                </t>
+            </xpath>
+            <!-- we replace the whole template id sdd_report_invoice_document... -->
+            <xpath expr="//p[@t-if='o.sdd_mandate_id']" position="replace">
+                <p t-if="o.sdd_mandate_id">
+                    <span>
+                        <p>Wir buchen den Betrag in Kürze per SEPA-Basislastschrift von Ihrem Konto ab:
+                        <table>
+                            <tr>
+                                <td>IBAN</td>
+                                <td>
+                                    <strong>
+                                        <t t-if="not o.sdd_mandate_id.partner_bank_id.acc_number">......................................</t><t t-else="" t-esc="o.sdd_mandate_id.partner_bank_id.acc_number"/>
+                                    </strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Verwendungszweck</td>
+                                <td>
+                                    <strong>
+                                        <t t-if="not o.payment_reference">......................................</t><t t-else="" t-esc="o.payment_reference"/>
+                                    </strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mandats-Referenz</td>
+                                <td>
+                                    <strong>
+                                        <t t-esc="o.sdd_mandate_id.name"/>
+                                    </strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-right: 10px;">Gläubiger-Identifikation</td>
+                                <td>
+                                    <strong>
+                                        <t t-esc="o.company_id.sdd_creditor_identifier"/>
+                                    </strong>
+                                </td>
+                            </tr>
+                        </table>
+                        </p>
+                    </span>
+                </p>
+            </xpath>
+        </template>
+    </data>
+</odoo>

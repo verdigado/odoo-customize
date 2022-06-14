@@ -2,7 +2,7 @@
 <odoo>
 	<data>
 
-		<template id="report_invoice_document_verdigado" inherit_id="account.report_invoice_document">
+		<template id="verdigado_report_invoice_document" inherit_id="account.report_invoice_document">
 			<xpath expr="//div[@id='informations']" position="replace">
 				<t t-set="informations">
 					<div id="informations" class="row mt32 mb32">

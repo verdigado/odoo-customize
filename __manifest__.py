@@ -23,6 +23,7 @@
      #   'security/ir.model.access.csv',
         'views/debrand_web.xml',
         'views/debrand_mail.xml',
+        'views/sepa_invoice.xml',
         'views/verdigado.xml',
     ],
     'images': [

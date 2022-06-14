@@ -17,6 +17,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: verdigado_template_default
-#: model_terms:ir.ui.view,arch_db:verdigado_template_default.own_mail_notification_paynow
+#: model_terms:ir.ui.view,arch_db:verdigado_template_default.verdigado_mail_notification_paynow
 msgid "View"
 msgstr "Ansicht"
