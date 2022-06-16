@@ -153,7 +153,7 @@
 							<span>Umsatzsteuer-ID: <span t-field="company.vat" />
 							</span>
 							<br />
-							<span>Vorsitzender Aufsichtsrat: Dr. Tobias Specht</span>
+							<span>Vorsitzender Aufsichtsrat: derzeit nicht besetzt</span>
 						</div>
 					</div>
 				</div>
