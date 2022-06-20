@@ -24,13 +24,26 @@
             <xpath expr="//p[@t-if='o.sdd_mandate_id']" position="replace">
                 <p t-if="o.sdd_mandate_id">
                     <span>
-                        <p>Wir buchen den Betrag in Kürze per SEPA-Basislastschrift von Ihrem Konto ab:
-                        <table>
+                        <p>Wir buchen den Betrag in Kürze per SEPA-Basislastschrift vom unten aufgeführten Konto ab:
+                        <table style="width: 80%;">
                             <tr>
                                 <td>IBAN</td>
                                 <td>
                                     <strong>
                                         <t t-if="not o.sdd_mandate_id.partner_bank_id.acc_number">......................................</t><t t-else="" t-esc="o.sdd_mandate_id.partner_bank_id.acc_number"/>
+                                    </strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Kontoinhaber</td>
+                                <td t-if="o.sdd_mandate_id.partner_bank_id.acc_holder_name">
+                                    <strong>
+                                        <t t-esc="o.sdd_mandate_id.partner_bank_id.acc_holder_name"/>
+                                    </strong>
+                                </td>
+                                <td t-else="">
+                                    <strong>
+                                        <t t-esc="o.sdd_mandate_id.partner_id.name"/>
                                     </strong>
                                 </td>
                             </tr>
