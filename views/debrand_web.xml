@@ -4,7 +4,7 @@
     <data>
 
         // Overwrite branding in website footer
-        <template id="own_brand_promotion" inherit_id="web.brand_promotion_message">
+        <template id="verdigado_brand_promotion" inherit_id="web.brand_promotion_message">
             <xpath expr="//t[@t-set='odoo_logo']" position="replace">
                 // Set your Company logo here if you want.
                 <t t-set="odoo_logo">

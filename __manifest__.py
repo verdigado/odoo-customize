@@ -16,13 +16,14 @@
     'version': '0.2',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'account', 'l10n_de'],
+    'depends': ['base', 'account', 'l10n_de', 'account_sepa_direct_debit'],
 
     # always loaded
     'data': [
      #   'security/ir.model.access.csv',
         'views/debrand_web.xml',
         'views/debrand_mail.xml',
+        'views/sepa_invoice.xml',
         'views/verdigado.xml',
     ],
     'images': [

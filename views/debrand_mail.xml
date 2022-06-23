@@ -3,7 +3,7 @@
 
     <data>
         <!-- original template is in addons/mail/data/mail_data.xml -->
-        <template id="own_mail_notification_paynow" inherit_id="mail.mail_notification_paynow">
+        <template id="verdigado_mail_notification_paynow" inherit_id="mail.mail_notification_paynow">
             <!-- we replace the whole template... -->
             <xpath expr="." position="replace">
                 <table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
