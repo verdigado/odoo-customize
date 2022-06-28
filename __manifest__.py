@@ -25,6 +25,7 @@
         'views/debrand_mail.xml',
         'views/sepa_invoice.xml',
         'views/verdigado.xml',
+        'views/account_invoices_order.xml'
     ],
     'images': [
         'static/src/img/head1.jpg',
