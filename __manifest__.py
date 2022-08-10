@@ -21,6 +21,7 @@
     # always loaded
     'data': [
      #   'security/ir.model.access.csv',
+        'views/assets.xml',
         'views/debrand_web.xml',
         'views/debrand_mail.xml',
         'views/sepa_invoice.xml',
