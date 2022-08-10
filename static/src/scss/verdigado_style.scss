@@ -2,4 +2,13 @@
 body {
     background-color: #00354e;
     color: white;
+
+    .clearfix {
+        .btn-primary {
+            background-color: $o-enterprise-color;
+        }
+        a {
+            color: white;
+        }
+    }
 }
