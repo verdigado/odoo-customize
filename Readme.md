@@ -9,6 +9,7 @@
   * Ausgabe der SEPA-Informationen und Überschreiben der Texte aus dem account_sepa_direct_debit Modul
 - mail.mail_notification_paynow: Mail template wird überschrieben um Branding im Footer zu entfernen
 - web.brand_promotion_message: Branding auf der Webseite im Footer wird entfernt
+- Änderung der Eindeutigkeit von Bank-Konten. Eindeutig nur noch pro Kunde und nicht global.
 
 
 ### Noch nicht implementiert

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <template id="verdigado_web_frontend_layout" inherit_id="web.frontend_layout">
-            <xpath expr="//span[@class='o_footer_copyright_name mr-2']" position="replace">
-                <a href="https://www.verdigado.com">
-                    <img t-att-src="'/verdigado_template_default/static/img/verdigado_Logo.png'" t-att-style="'max-width:250px;'" t-att-alt="'Logo von verdigado eG mit Claim IT_with_attitude'" />
-                </a>
+        <template id="verdigado_web_frontend_layout" inherit_id="website.layout">
+            <xpath expr="//footer//span[hasclass('o_footer_copyright_name')]" position="replace">
+                <span class="o_footer_copyright_name mr-2">
+                    <a href="https://www.verdigado.com">
+                        <img t-att-src="'/verdigado_template_default/static/img/verdigado_Logo.png'" t-att-style="'max-width:250px;'" t-att-alt="'Logo von verdigado eG mit Claim IT_with_attitude'" />
+                    </a>
+                </span>
             </xpath>
         </template>
 
