@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <template id="verdigado_report_invoice_with_payments" inherit_id="account.report_invoice_with_payments">
+            <xpath expr="//t[@t-set='print_with_payments']" position="replace">
+                <!-- We do not want to see the payments especially in case of SEPA direct debit -->
+                <t t-set="print_with_payments" t-value="False"/>
+            </xpath>
+        </template>
+
         <template id="verdigado_sepa_report_invoice_document" inherit_id="account.report_invoice_document">
             <xpath expr="//p[@name='payment_communication']" position="replace">
                 <!-- in case of SEPA, we skip the payment_communication -->
