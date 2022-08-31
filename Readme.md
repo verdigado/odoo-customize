@@ -10,7 +10,7 @@
 - mail.mail_notification_paynow: Mail template wird überschrieben um Branding im Footer zu entfernen
 - web.brand_promotion_message: Branding auf der Webseite im Footer wird entfernt
 - Änderung der Eindeutigkeit von Bank-Konten. Eindeutig nur noch pro Kunde und nicht global.
-
+- Zeilennummer: Überschreiben des Textes "Sequenz" durch "Pos", hinzufügen der CSS-Klassen für rechtene Einzug.
 
 ### Noch nicht implementiert
 

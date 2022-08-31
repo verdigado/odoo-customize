@@ -16,7 +16,7 @@
     'version': '0.2',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'account', 'l10n_de', 'account_sepa_direct_debit', 'website' ],
+    'depends': ['base', 'account', 'l10n_de', 'account_sepa_direct_debit', 'website', 'sale_order_line_sequence' ],
 
     # always loaded
     'data': [
@@ -25,8 +25,9 @@
         'views/debrand_web.xml',
         'views/debrand_mail.xml',
         'views/sepa_invoice.xml',
+        'views/order_line_number.xml',
         'views/verdigado.xml',
-        'views/account_invoices_order.xml'
+        'views/account_invoices_order.xml',
     ],
     'images': [
         'static/src/img/head1.jpg',

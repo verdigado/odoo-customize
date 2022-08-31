@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="verdigado_report_saleorder_document_sequence"
+        inherit_id="sale_order_line_sequence.report_saleorder_document_sequence"
+    >
+        <xpath
+            expr="//table[hasclass('table', 'table-sm')]/thead/tr/th[1]"
+            position="replace"
+        >
+            <th class="text-right">Pos</th>
+        </xpath>
+        <xpath
+            expr="//table[hasclass('table', 'table-sm')]/tbody/t/tr[1]/t[1]/td[1]"
+            position="replace"
+        >
+            <td class="text-right">
+                <span t-field="line.sequence2" />
+            </td>
+        </xpath>
+    </template>
+</odoo>
