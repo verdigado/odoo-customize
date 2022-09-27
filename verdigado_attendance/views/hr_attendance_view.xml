@@ -30,7 +30,7 @@
     </record>
 
     <record id="hr_attendance.hr_attendance_action_overview" model="ir.actions.act_window">
-        <field name="name">Attendances (overview)</field>
+        <field name="name">Attendances</field>
         <field name="res_model">hr.attendance</field>
         <field name="view_mode">tree,kanban,form</field>
         <field name="context">{"search_default_today":1}</field>
