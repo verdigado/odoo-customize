@@ -15,13 +15,14 @@
     'category': 'Customizations',
     'version': '0.2',
 
+    "license": "proprietary",
     # any module necessary for this one to work correctly
     'depends': ['base', 'account', 'l10n_de', 'account_sepa_direct_debit', 'website', 'sale_order_line_sequence' ],
 
     # always loaded
     'data': [
      #   'security/ir.model.access.csv',
-        'views/assets.xml',
+        # 'views/assets.xml',
         'views/debrand_web.xml',
         'views/debrand_mail.xml',
         'views/sepa_invoice.xml',
