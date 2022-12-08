@@ -92,21 +92,24 @@
         </template>
 
         <template id="verdigado_mail_bounce_catchall" inherit_id="mail.mail_bounce_catchall">
-            <div>
-                <p>Hallo<t t-esc="message['email_from']"/>,</p>
-                <p>Du schreibst uns an <t t-esc="message['to']"/>, was nur eine technische Hilfs-Adresse ist.</p>
-                <p>Deine Mail haben wir trotzdem an unser Ticket-System weitergeleitet und antworten Dir bald.</p>
-                <p>Bitte nutz für zukünftige Anfragen an die <t t-esc="res_company.name"/> die Adresse
-                    <a t-att-href="'mailto:%s' % res_company.email">
-                        <t t-esc="res_company.email"/>
-                    </a>.
-                </p>
-                <p>Viele Grüße</p>
-                <p>Der <t t-esc="res_company.name"/> Support</p>
-            </div>
-            <blockquote>
-                <t t-esc="message['body']"/>
-            </blockquote>
+            <!-- we replace the whole template... -->
+            <xpath expr="." position="replace">
+                <div>
+                    <p>Hallo<t t-esc="message['email_from']"/>,</p>
+                    <p>Du schreibst uns an <t t-esc="message['to']"/>, was nur eine technische Hilfs-Adresse ist.</p>
+                    <p>Deine Mail haben wir trotzdem an unser Ticket-System weitergeleitet und antworten Dir bald.</p>
+                    <p>Bitte nutz für zukünftige Anfragen an die <t t-esc="res_company.name"/> die Adresse
+                        <a t-att-href="'mailto:%s' % res_company.email">
+                            <t t-esc="res_company.email"/>
+                        </a>.
+                    </p>
+                    <p>Viele Grüße</p>
+                    <p>Der <t t-esc="res_company.name"/> Support</p>
+                </div>
+                <blockquote>
+                    <t t-esc="message['body']"/>
+                </blockquote>
+            </xpath>
         </template>
 
     </data>
