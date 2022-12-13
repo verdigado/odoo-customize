@@ -1,7 +1,10 @@
 
 body {
-    background-color: #00354e;
-    color: white;
+    // main section on login screen
+    div#wrapwrap main {
+        background-color: $o-community-color !important;
+        color: white;
+    }
 
     .clearfix {
         .btn-primary {

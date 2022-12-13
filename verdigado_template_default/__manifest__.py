@@ -13,7 +13,7 @@
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Customizations',
-    'version': '0.2',
+    'version': '0.3',
 
     "license": "LGPL-3",
     # any module necessary for this one to work correctly
@@ -22,14 +22,25 @@
     # always loaded
     'data': [
      #   'security/ir.model.access.csv',
-        # 'views/assets.xml',
-        'views/debrand_web.xml',
-        'views/debrand_mail.xml',
+        #'views/debrand_web.xml',
+        #'views/debrand_mail.xml',
         'views/sepa_invoice.xml',
         'views/order_line_number.xml',
         'views/verdigado.xml',
         'views/account_invoices_order.xml',
     ],
+    "assets":
+    {
+        'web._assets_primary_variables': [
+            'verdigado_template_default/static/src/scss/primary_variables.scss',
+        ],
+        'web.assets_frontend': [
+           'verdigado_template_default/static/src/scss/verdigado_style.scss',
+        ],
+        'web.assets_backend': [
+            'verdigado_template_default/static/src/scss/ui.scss',
+        ],
+    },
     'images': [
         'static/src/img/head1.jpg',
     ],

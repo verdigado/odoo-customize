@@ -85,8 +85,8 @@
 			<xpath expr="//div[@name='information_block']" position="replace">
 			</xpath>
 			<xpath expr="//div[@name='address']" position="replace">
-				<div name="address" class="col mt-5 mb-5">
-					<t t-raw="address"/>
+				<div name="address" class="colclass">
+					<t t-out="address"/>
 				</div>
 			</xpath>
 		</template>

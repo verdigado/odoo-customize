@@ -47,7 +47,7 @@
                                     <!-- CONTENT -->
                                     <tr>
                                         <td style="padding: 0">
-                                            <t t-raw="message.body"/>
+                                            <t t-out="message.body"/>
                                             <div t-if="is_online and not record._context.get('proforma')" style="margin: 32px 0px 32px 0px; text-align: center;">
                                                 <a t-att-href="access_url" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
                                                     <t t-esc="access_name"/>
@@ -55,10 +55,10 @@
                                             </div>
                                             <!-- FIXME: Odoo writes <p><br/><p> in empty fields. Is there a better way to check for an empty HTML field? -->
                                             <div t-if="record.env.user.signature and record.env.user.signature != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;'" style="font-size: 13px;">
-                                                <div t-raw="record.env.user.signature" />
+                                                <div t-out="record.env.user.signature" />
                                             </div>
                                             <div t-elif="record.user_id.sudo().signature" style="font-size: 13px;">
-                                                <div t-raw="record.user_id.sudo().signature"/>
+                                                <div t-out="record.user_id.sudo().signature"/>
                                             </div>
                                         </td>
                                     </tr>
