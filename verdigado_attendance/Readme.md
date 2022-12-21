@@ -5,6 +5,7 @@
 
 * Employees can see and edit their attendances.
 * Remove column "Employee" from own attendances view.
+* Add "Working Times" configuration menu to employees -> configuration
 
 
 ## Access Rights
