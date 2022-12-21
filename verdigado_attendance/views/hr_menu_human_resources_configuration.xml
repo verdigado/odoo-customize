@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="menu_configuration_workingtimes_verdigado"
+        name="Working Times"
+        action="resource.action_resource_calendar_form"
+        parent="hr.menu_human_resources_configuration"
+        sequence="1" />
+
+</odoo>
