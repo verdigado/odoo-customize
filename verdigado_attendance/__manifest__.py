@@ -14,6 +14,7 @@
         "security/ir.model.access.csv",
         "views/hr_attendance_view.xml",
         "views/hr_menu_human_resources_configuration.xml",
+        "views/hr_attendance_theoretical_time_report.xml",
     ],
     "assets":
     {
