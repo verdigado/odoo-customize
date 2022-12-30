@@ -6,6 +6,7 @@
 * Employees can see and edit their attendances.
 * Remove column "Employee" from own attendances view.
 * Add "Working Times" configuration menu to employees -> configuration
+* Disable default filter for own attendances in report "All Employes"
 
 
 ## Access Rights
