@@ -40,6 +40,9 @@
         'web.assets_backend': [
             'verdigado_template_default/static/src/scss/ui.scss',
         ],
+        'web.report_assets_common': [
+            'verdigado_template_default/static/src/scss/report_assets.scss',
+        ]
     },
     'images': [
         'static/src/img/head1.jpg',

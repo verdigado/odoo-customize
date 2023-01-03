@@ -5,36 +5,23 @@
 		<template id="verdigado_report_invoice_document" inherit_id="account.report_invoice_document">
 			<xpath expr="//div[@id='informations']" position="replace">
 				<t t-set="informations">
-					<div id="informations" class="row mt32 mb32">
+					<div id="informations" class="mt-4 mb-4">
 						<div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
 							<strong>Rechnungsdatum:</strong>
 							<p class="m-0" t-field="o.invoice_date"/>
 						</div>
-					</div>
-					<div id="informations" class="row mt32 mb32">
 						<div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'" name="due_date">
 							<strong>Fälligkeitsdatum:</strong>
 							<p class="m-0" t-field="o.invoice_date_due"/>
 						</div>
-					</div>
-					<div id="informations" class="row mt32 mb32">
 						<div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_origin" name="origin">
 							<strong>Quelle:</strong>
 							<p class="m-0" t-field="o.invoice_origin"/>
 						</div>
-					</div>
-					<div id="informations" class="row mt32 mb32">
 						<div class="col-auto col-3 mw-100 mb-2" t-if="o.partner_id.ref" name="customer_code">
 							<strong>Kd. Nr.:</strong>
 							<p class="m-0" t-field="o.partner_id.ref"/>
 						</div>
-						<!-- Show customer_code of parent if own ref field is empty. -->
-						<div class="col-auto col-3 mw-100 mb-2" t-elif="o.commercial_partner_id.ref" name="customer_code">
-							<strong>Kd. Nr.:</strong>
-							<p class="m-0" t-field="o.commercial_partner_id.ref"/>
-						</div>
-					</div>
-					<div id="informations" class="row mt32 mb32">
 						<div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
 							<strong>Referenz:</strong>
 							<p class="m-0" t-field="o.ref"/>
@@ -85,7 +72,7 @@
 			<xpath expr="//div[@name='information_block']" position="replace">
 			</xpath>
 			<xpath expr="//div[@name='address']" position="replace">
-				<div name="address" class="colclass">
+				<div name="address" class="col mt-5 mb-5">
 					<t t-out="address"/>
 				</div>
 			</xpath>
@@ -103,9 +90,28 @@
 				</div>
 			</xpath>
 
+			<xpath expr="//div[contains(@t-attf-class, 'o_report_layout_standard')]" position="replace">
+		        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+					<div class="container">
+						<div class="row justify-content-start">
+							<!-- This div ensures that the address is not cropped by the header. -->
+							<div class="col-6">
+								<t t-call="web.address_layout"/>
+							</div>
+							<div class="col-2"></div>
+							<div class="col-4">
+								<!-- Content of template verdigado_report_invoice_document (see above)-->
+								<t t-out="informations" />
+							</div>
+						</div>
+					</div>
+					<t t-out="0"/>
+				</div>
+			</xpath>
+
 			<xpath expr="//div[@t-attf-class='footer o_standard_footer o_company_#{company.id}_layout']" position="replace">
 				<div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout" style="padding-top: 15px;">
-					<div class="row" style="font-size: xx-small">
+					<div class="row">
 						<div class="col-4">
 							<span class="o_force_ltr" t-field="company.name"/>
 							<br />
