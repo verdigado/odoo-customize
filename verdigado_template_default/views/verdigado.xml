@@ -2,6 +2,21 @@
 <odoo>
 	<data>
 
+        <!-- verdigado specific paper format based on European A4 for DIN5008 Type B -->
+		<record id="verdigado_paperformat_euro_din" model="report.paperformat">
+			<field name="name">verdigado (European A4 for DIN5008 Type B)</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">50</field>
+            <field name="margin_bottom">30</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="dpi">70</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">50</field>
+        </record>
+
 		<template id="verdigado_report_invoice_document" inherit_id="account.report_invoice_document">
 			<xpath expr="//div[@id='informations']" position="replace">
 				<t t-set="informations">
