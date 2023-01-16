@@ -95,16 +95,16 @@
             <!-- we replace the whole template... -->
             <xpath expr="." position="replace">
                 <div>
-                    <p>Hallo<t t-esc="message['email_from']"/>,</p>
+                    <p>Hallo <t t-esc="message['email_from']"/>,</p>
                     <p>Du schreibst uns an <t t-esc="message['to']"/>, was nur eine technische Hilfs-Adresse ist.</p>
                     <p>Deine Mail haben wir trotzdem an unser Ticket-System weitergeleitet und antworten Dir bald.</p>
-                    <p>Bitte nutz für zukünftige Anfragen an die <t t-esc="res_company.name"/> die Adresse
+                    <p>Bitte nutze für zukünftige Anfragen an die <t t-esc="res_company.name"/> die Adresse
                         <a t-att-href="'mailto:%s' % res_company.email">
                             <t t-esc="res_company.email"/>
                         </a>.
                     </p>
                     <p>Viele Grüße</p>
-                    <p>Der <t t-esc="res_company.name"/> Support</p>
+                    <p>das Team der <t t-esc="res_company.name"/></p>
                 </div>
                 <blockquote>
                     <t t-esc="message['body']"/>
