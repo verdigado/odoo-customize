@@ -13,7 +13,7 @@
 
 In file `ir.model.access.csv` the following access rules are defined and
 
-1. Allow users to access own reports (attendance statitics)
+1. Allow users to access own reports (attendance statistics)
 
 ```
 access_hr_attendance_report_verdigado,hr.attendance.report.verdigado,hr_attendance.model_hr_attendance_report,hr_attendance.group_hr_attendance,1,0,0,0
