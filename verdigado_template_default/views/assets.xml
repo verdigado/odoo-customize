@@ -12,6 +12,12 @@
         </xpath>
     </template>
 
+    <template id="assets_backend" name="web_enterprise assets backend" inherit_id="web_enterprise.assets_backend">
+        <xpath expr="link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/verdigado_template_default/static/src/scss/web_backend.scss"/>
+        </xpath>
+    </template>
+
     <template id="assets_frontend" name="verdigado style" inherit_id="website.assets_frontend">
         <xpath expr="link[last()]" position="after">
             <link rel="stylesheet" type="text/scss" href="/verdigado_template_default/static/src/scss/verdigado_style.scss"/>
