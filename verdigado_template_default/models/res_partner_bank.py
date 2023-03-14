@@ -16,6 +16,7 @@ class ResPartnerBank(models.Model):
     ]
 
 # 1. change method for bank reconciliation
+# inspired by l10n_ch/models/account_bank_statement.py
 class AccountBankStatementLine(models.Model):
 
     _inherit = "account.bank.statement.line"

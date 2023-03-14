@@ -24,6 +24,7 @@
      #   'security/ir.model.access.csv',
         'views/debrand_web.xml',
         'views/debrand_mail.xml',
+        'views/res_partner.xml',
         'views/sepa_invoice.xml',
         'views/order_line_number.xml',
         'views/verdigado.xml',
