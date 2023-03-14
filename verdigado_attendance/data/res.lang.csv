@@ -1,0 +1,3 @@
+"id","name","code","iso_code","direction","grouping","decimal_point","thousands_sep","date_format","time_format","week_start"
+"base.lang_en","English (US) (verdigado)","en_US","en","Left-to-Right","[3,0]",".",",","%m/%d/%Y","%H:%M","7"
+"base.lang_de","German / Deutsch (verdigado)","de_DE","de","Left-to-Right","[3,0]",",",".","%d.%m.%Y","%H:%M","1"

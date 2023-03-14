@@ -11,6 +11,7 @@
     "installable": True,
     "depends": ["hr_attendance", "hr_attendance_report_theoretical_time"],
     "data": [
+        'data/res.lang.csv',
         "security/ir.model.access.csv",
         "views/hr_attendance_view.xml",
         "views/hr_menu_human_resources_configuration.xml",

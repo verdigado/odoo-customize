@@ -7,7 +7,7 @@
 * ~~Remove column "Employee" from own attendances view.~~ --> Removed again as did not work in all situations.
 * Add "Working Times" configuration menu to employees -> configuration
 * Disable default filter for own attendances in report "All Employes"
-
+* Overwrite German language format of time_format to get rid of seconds in all forms.
 
 ## Access Rights
 
