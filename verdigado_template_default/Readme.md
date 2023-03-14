@@ -11,6 +11,7 @@
 - web.brand_promotion_message: Branding auf der Webseite im Footer wird entfernt
 - Änderung der Eindeutigkeit von Bank-Konten. Eindeutig nur noch pro Kunde und nicht global.
 - Zeilennummer: Überschreiben des Textes "Sequenz" durch "Pos", hinzufügen der CSS-Klassen für rechtene Einzug.
+- Felder `x_kunde_hosting`, `x_hauptdomain`, `x_gliederungsid` werden im Formular ergänzt. Die Model-Erweiterung ist bisher nicht im Modul enthalten.
 
 ### Noch nicht implementiert
 
