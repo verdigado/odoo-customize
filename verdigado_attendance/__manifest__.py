@@ -9,7 +9,7 @@
     "author": "verdigado eG",
     "license": "LGPL-3",
     "installable": True,
-    "depends": ["hr_attendance"],
+    "depends": ["hr_attendance", "hr_attendance_report_theoretical_time"],
     "data": [
         "security/ir.model.access.csv",
         "views/hr_attendance_view.xml",
