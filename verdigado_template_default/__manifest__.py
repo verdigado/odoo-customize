@@ -42,7 +42,7 @@
             'verdigado_template_default/static/src/scss/web_backend.scss',
         ],
         'web._assets_common_styles': [
-            ('replace', 'web_enterprise/static/src/legacy/scss/ui.scss', 'verdigado_template_default/static/src/scss/ui.scss'),
+            'verdigado_template_default/static/src/scss/ui.scss'
         ],
         'web.report_assets_common': [
             'verdigado_template_default/static/src/scss/report_assets.scss',
