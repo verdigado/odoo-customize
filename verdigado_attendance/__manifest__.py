@@ -14,13 +14,13 @@
         'data/res.lang.csv',
         "security/ir.model.access.csv",
         "views/hr_attendance_view.xml",
-        "views/hr_menu_human_resources_configuration.xml",
         "views/hr_attendance_theoretical_time_report.xml",
+        "views/hr_menu_human_resources_configuration.xml",
     ],
     "assets":
     {
         'web.assets_backend': [
-            'verdigado_attendance/assets/messaging_menu.scss',
+            'verdigado_attendance/static/src/scss/backend.scss',
         ],
     }
 }

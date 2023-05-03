@@ -8,6 +8,7 @@
 * Add "Working Times" configuration menu to employees -> configuration
 * Disable default filter for own attendances in report "All Employes"
 * Overwrite German language format of time_format to get rid of seconds in all forms.
+* Remove "New Allocation" button in time off module.
 
 ## Access Rights
 
