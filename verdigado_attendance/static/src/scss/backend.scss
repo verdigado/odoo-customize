@@ -1,0 +1,9 @@
+/* hide the discuss icon on the top */
+.o_MessagingMenu {
+    display: none !important;
+}
+
+/* hide "New Allocation" on time off module */
+div.o_cp_buttons button.btn.btn-secondary.btn-allocation {
+    display: none;
+}
