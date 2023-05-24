@@ -36,3 +36,7 @@ access_resource_calendar_officer_verdigado,resource.calendar.system,resource.mod
 ```
 access_resource_calendar_attendance_officer_verdigado,resource.calendar.attendance.system,resource.model_resource_calendar_attendance,hr.group_hr_manager,1,1,1,1
 ```
+
+4. Allow Manager read employee's attendance
+
+Module `hr_attendance_sheet` removes read access of attendance records for managers. We revert this change.

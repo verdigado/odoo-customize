@@ -13,6 +13,7 @@
     "data": [
         'data/res.lang.csv',
         "security/ir.model.access.csv",
+        "security/hr_attendance_rule_attendance_manager.xml",
         "views/hr_attendance_view.xml",
         "views/hr_attendance_theoretical_time_report.xml",
         "views/hr_menu_human_resources_configuration.xml",
