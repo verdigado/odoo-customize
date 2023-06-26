@@ -15,7 +15,7 @@
     'category': 'Customizations',
     'version': '0.3',
 
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     # any module necessary for this one to work correctly
     'depends': ['base', 'account', 'l10n_de', 'account_sepa_direct_debit', 'website', 'sale_order_line_sequence' ],
 

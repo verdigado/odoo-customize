@@ -1,5 +1,5 @@
 # Copyright 2022 verdigado eG
-# License LGPL-3 - See http://www.gnu.org/licenses/lgpl-3.0.html
+# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
     "name": "Verdigado HR Attendance Reason",
@@ -7,7 +7,7 @@
     "category": "Human Resources",
     "website": "https://git.verdigado.com/verdigado/odoo-customize/verdigado_attendance",
     "author": "verdigado eG",
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     "installable": True,
     "depends": ["hr_attendance", "hr_attendance_report_theoretical_time"],
     "data": [
