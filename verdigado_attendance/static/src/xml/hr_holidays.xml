@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf8" ?>
+<templates>
+    <t t-inherit="hr_holidays.dashboard_calendar_header">
+        <!--
+            with hr_attendance_holidays, we end up with a conditional like
+            <t t-if="">
+                <span t-esc="timeoff[1]['virtual_remaining_leaves']" />
+            </t>
+            <t t-elif="">
+                <span t-esc="timeoff[1]['virtual_remaining_leaves']" />
+            </t>
+            <t t-else="">
+                <span t-esc="timeoff[1]['virtual_leaves_taken']" />
+            </t>
+            and we replace all of them with the formatted version
+        /-->
+        <xpath
+            expr="//span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves']&quot;]"
+            position="attributes"
+        >
+            <!-- prettier-ignore-start -->
+            <attribute name="t-esc">timeoff[1]['virtual_remaining_leaves_formatted']</attribute>
+            <!-- prettier-ignore-end -->
+        </xpath>
+        <xpath
+            expr="//span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves']&quot;]"
+            position="attributes"
+        >
+            <!-- prettier-ignore-start -->
+            <attribute name="t-esc">timeoff[1]['virtual_remaining_leaves_formatted']</attribute>
+            <!-- prettier-ignore-end -->
+        </xpath>
+        <xpath
+            expr="//span[@t-esc=&quot;timeoff[1]['virtual_leaves_taken']&quot;]"
+            position="attributes"
+        >
+            <!-- prettier-ignore-start -->
+            <attribute name="t-esc">timeoff[1]['virtual_leaves_taken_formatted']</attribute>
+            <!-- prettier-ignore-end -->
+        </xpath>
+        <!--
+            create an a node and move the span for the time into it,
+            also three times for every branch of the above conditional
+        /-->
+        <xpath
+            expr="//t/span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves_formatted']&quot;]"
+            position="before"
+        >
+            <a
+                t-att-type="timeoff[1]['dashboard_action_id'] and 'action' or None"
+                t-att-name="timeoff[1]['dashboard_action_id'] or None"
+            />
+        </xpath>
+        <xpath expr="//a[count(*) = 0]" position="inside">
+            <xpath
+                expr="//t/span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves_formatted']&quot;]"
+                position="move"
+            />
+        </xpath>
+        <xpath
+            expr="//t/span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves_formatted']&quot;]"
+            position="before"
+        >
+            <a
+                t-att-type="timeoff[1]['dashboard_action_id'] and 'action' or None"
+                t-att-name="timeoff[1]['dashboard_action_id'] or None"
+            />
+        </xpath>
+        <xpath expr="//a[count(*) = 0]" position="inside">
+            <xpath
+                expr="//t/span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves_formatted']&quot;]"
+                position="move"
+            />
+        </xpath>
+        <xpath
+            expr="//t/span[@t-esc=&quot;timeoff[1]['virtual_leaves_taken_formatted']&quot;]"
+            position="before"
+        >
+            <a
+                t-att-type="timeoff[1]['dashboard_action_id'] and 'action' or None"
+                t-att-name="timeoff[1]['dashboard_action_id'] or None"
+            />
+        </xpath>
+        <xpath expr="//a[count(*) = 0]" position="inside">
+            <xpath
+                expr="//t/span[@t-esc=&quot;timeoff[1]['virtual_leaves_taken_formatted']&quot;]"
+                position="move"
+            />
+        </xpath>
+    </t>
+</templates>
