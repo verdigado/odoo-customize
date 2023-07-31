@@ -47,6 +47,7 @@ jobs:
           POSTGRES_USER: odoo
           POSTGRES_PASSWORD: odoo
           POSTGRES_DB: odoo
+          EXCLUDE: verdigado_template_default
         ports:
           - 5432:5432
     steps:
@@ -84,7 +85,7 @@ jobs:
           git config --global --add safe.directory $(pwd)
           LANG=de_DE
           ADDONS=$(manifestoo --select-addons-dir ${ADDONS_DIR} list --separator=,)
-          for module in $(echo $ADDONS | tr ',' ' '); do
+          for module in $(echo $ADDONS | tr ',' ' ' | grep --invert-match $EXCLUDE); do
             mkdir -p $module/i18n
             /opt/odoo-venv/bin/odoo -d ${PGDATABASE} --i18n-export=/tmp/$module.pot --modules=$module --logfile=/dev/null
             if [ -f $module/i18n/$LANG.po ]; then
