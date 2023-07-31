@@ -1,25 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <data>
-        <template id="verdigado_web_frontend_layout" inherit_id="website.layout">
-            <xpath expr="//footer//span[hasclass('o_footer_copyright_name')]" position="replace">
-                <span class="o_footer_copyright_name mr-2">
-                    <a href="https://www.verdigado.com">
-                        <img t-att-src="'/verdigado_template_default/static/img/verdigado_Logo.png'" t-att-style="'max-width:250px;'" t-att-alt="'Logo von verdigado eG mit Claim IT_with_attitude'" />
-                    </a>
-                </span>
-            </xpath>
-        </template>
+    <template
+        id="verdigado_web_frontend_layout"
+        inherit_id="website.layout"
+        priority="100"
+    >
+        <xpath
+            expr="//footer//span[hasclass('o_footer_copyright_name')]"
+            position="replace"
+        >
+            <span class="o_footer_copyright_name mr-2">
+                <a href="https://www.verdigado.com">
+                    <img
+                        t-att-src="'/verdigado_template_default/static/img/verdigado_Logo.png'"
+                        t-att-style="'max-width:250px;'"
+                        t-att-alt="'Logo von verdigado eG mit Claim IT_with_attitude'"
+                    />
+                </a>
+            </span>
+        </xpath>
+    </template>
 
-        <template id="verdigado_brand_promotion" inherit_id="web.brand_promotion_message">
-            <xpath expr="//t[@t-set='odoo_logo']" position="replace">
-                <t t-set="odoo_logo">
-                </t>
-            </xpath>
-            <xpath expr="//t[@t-set='final_message']" position="replace">
-                <t t-set="final_message">Support: support@verdigado.com, +49 30 629-3390-80 (Mo-Fr 09:00 - 17:00) %s%s</t>
-                <t t-set="_message"></t>
-            </xpath>
-        </template>
-    </data>
+    <template
+        id="verdigado_brand_promotion"
+        inherit_id="web.brand_promotion_message"
+        priority="100"
+    >
+        <xpath expr="//t[@t-set='odoo_logo']" position="replace">
+            <t t-set="odoo_logo" />
+        </xpath>
+        <xpath expr="//t[@t-set='final_message']" position="replace">
+            <t t-set="final_message">
+                Support: support@verdigado.com, +49 30 629-3390-80 (Mo-Fr 09:00 - 17:00)
+                %s%s
+            </t>
+            <t t-set="_message" />
+        </xpath>
+    </template>
 </odoo>

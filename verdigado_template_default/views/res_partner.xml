@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="verdigado_view_partner_form_inherit" model="ir.ui.view">
         <field name="name">verdigado.partner.form.inherit</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
             <xpath expr="//group/group/field[@name='vat']" position="after">
                 <field name="x_gliederungsid" />
@@ -13,5 +12,4 @@
             </xpath>
         </field>
     </record>
-
 </odoo>
