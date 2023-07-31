@@ -1,0 +1,49 @@
+hr-attendance:
+    defaults:
+        depth: 1
+    remotes:
+        oca: https://github.com/OCA/hr-attendance.git
+    merges:
+        - oca 15.0
+hr-holidays:
+    defaults:
+        depth: 1
+    remotes:
+        oca: https://github.com/OCA/hr-holidays.git
+    merges:
+        - oca 15.0
+server-backend:
+    defaults:
+        depth: 1
+    remotes:
+        oca: https://github.com/OCA/server-backend.git
+    merges:
+        - oca 15.0
+server-brand:
+    defaults:
+        depth: 1
+    remotes:
+        oca: https://github.com/OCA/server-brand.git
+    merges:
+        - oca 15.0
+server-tools:
+    defaults:
+        depth: 1
+    remotes:
+        oca: https://github.com/OCA/server-tools.git
+    merges:
+        - oca 15.0
+server-ux:
+    defaults:
+        depth: 1
+    remotes:
+        oca: https://github.com/OCA/server-ux.git
+    merges:
+        - oca 15.0
+web:
+    defaults:
+        depth: 1
+    remotes:
+        oca: https://github.com/OCA/web.git
+    merges:
+        - oca 15.0
