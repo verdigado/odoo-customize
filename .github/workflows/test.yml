@@ -1,0 +1,110 @@
+name: tests
+
+on:
+  pull_request:
+    branches:
+      - "15.0*"
+  push:
+    branches:
+      - "15.0"
+      - "15.0-ocabot-*"
+
+jobs:
+  unreleased-deps:
+    runs-on: ubuntu-latest
+    name: Detect unreleased dependencies
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          for reqfile in requirements.txt test-requirements.txt ; do
+              if [ -f ${reqfile} ] ; then
+                  result=0
+                  # reject non-comment lines that contain a / (i.e. URLs, relative paths)
+                  grep "^[^#].*/" ${reqfile} || result=$?
+                  if [ $result -eq 0 ] ; then
+                      echo "Unreleased dependencies found in ${reqfile}."
+                      exit 1
+                  fi
+              fi
+          done
+  test:
+    runs-on: ubuntu-22.04
+    container: ${{ matrix.container }}
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - container: ghcr.io/oca/oca-ci/py3.9-ocb15.0:latest
+            name: test with Odoo
+          - container: ghcr.io/oca/oca-ci/py3.9-ocb15.0:latest
+            makepo: "true"
+            name: test with OCB
+    services:
+      postgres:
+        image: postgres:12.0
+        env:
+          POSTGRES_USER: odoo
+          POSTGRES_PASSWORD: odoo
+          POSTGRES_DB: odoo
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install addons and dependencies
+        run: |
+          git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global user.name "$GITHUB_ACTOR"
+          pip install -r requirements.txt
+          pip install git-aggregator
+          cd /tmp
+            gitaggregate -c $GITHUB_WORKSPACE/repos.yml
+            find . -maxdepth 3 -mindepth 3 -name __manifest__.py -exec sh -c "ln -rs \$(dirname '{}') $ADDONS_PATH/" \;
+          cd $GITHUB_WORKSPACE
+          echo "addons_path=${ADDONS_PATH},${ADDONS_DIR}" >> ${ODOO_RC}
+          cat $ODOO_RC
+      - name: Check licenses
+        run: manifestoo -d . check-licenses
+        continue-on-error: true
+      - name: Check development status
+        run: manifestoo -d . check-dev-status --default-dev-status=Beta
+        continue-on-error: true
+      - name: Initialize test db
+        run: oca_init_test_database
+      - name: Run tests
+        run: oca_run_tests
+      - name: Generate coverage.xml
+        run: coverage xml --include '*.py'
+#      - uses: codecov/codecov-action@v3
+#        with:
+#          files: coverage.xml
+      - name: Update .po files
+        run: |
+          apt install gettext
+          git config --global --add safe.directory $(pwd)
+          LANG=de_DE
+          ADDONS=$(manifestoo --select-addons-dir ${ADDONS_DIR} list --separator=,)
+          for module in $(echo $ADDONS | tr ',' ' '); do
+            mkdir -p $module/i18n
+            /opt/odoo-venv/bin/odoo -d ${PGDATABASE} --i18n-export=/tmp/$module.pot --modules=$module --logfile=/dev/null
+            if [ -f $module/i18n/$LANG.po ]; then
+              TMPFILE=$(mktemp)
+              msgmerge --lang=$LANG --no-fuzzy-matching $module/i18n/$LANG.po /tmp/$module.pot --output-file=$TMPFILE
+              msgattrib --no-obsolete $TMPFILE > $module/i18n/$LANG.po
+            else
+              msginit --input /tmp/$module.pot --locale $LANG --no-translator -o $module/i18n/$LANG.po
+            fi
+            sed -i '/^"POT-Creation-Date:/d' $module/i18n/$LANG.po
+            git add $module/i18n/$LANG.po
+          done
+          if git commit -m '[UPD] translations' --dry-run; then
+            git fetch origin $GITHUB_HEAD_REF
+            git checkout $GITHUB_HEAD_REF
+            git commit -m '[UPD] translations'
+            git push origin $GITHUB_HEAD_REF
+          else
+            echo No changes, doing nothing
+          fi
+          - container: ghcr.io/oca/oca-ci/py3.9-ocb15.0:latest
+            name: test with Odoo
+        if: ${{ matrix.makepo == 'true' }}
