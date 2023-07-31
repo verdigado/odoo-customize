@@ -1,3 +1,10 @@
+bank-payment:
+    defaults:
+        depth: 1
+    remotes:
+        oca: https://github.com/OCA/bank-payment.git
+    merges:
+        - oca 15.0
 hr-attendance:
     defaults:
         depth: 1

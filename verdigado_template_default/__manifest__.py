@@ -14,7 +14,7 @@
         "base",
         "account",
         "l10n_de",
-        "account_sepa_direct_debit",
+        "account_banking_sepa_direct_debit",
         "website",
         "sale_order_line_sequence",
     ],
