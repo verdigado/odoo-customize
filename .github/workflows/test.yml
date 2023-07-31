@@ -37,9 +37,11 @@ jobs:
         include:
           - container: ghcr.io/oca/oca-ci/py3.9-ocb15.0:latest
             name: test with Odoo
+            EXCLUDE: verdigado_template_default
           - container: ghcr.io/oca/oca-ci/py3.9-ocb15.0:latest
             makepo: "true"
             name: test with OCB
+            EXCLUDE: verdigado_template_default
     services:
       postgres:
         image: postgres:12.0
@@ -47,7 +49,6 @@ jobs:
           POSTGRES_USER: odoo
           POSTGRES_PASSWORD: odoo
           POSTGRES_DB: odoo
-          EXCLUDE: verdigado_template_default
         ports:
           - 5432:5432
     steps:
