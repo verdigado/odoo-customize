@@ -75,9 +75,9 @@ jobs:
         run: oca_run_tests
       - name: Generate coverage.xml
         run: coverage xml --include '*.py'
-#      - uses: codecov/codecov-action@v3
-#        with:
-#          files: coverage.xml
+      - uses: codecov/codecov-action@v3
+        with:
+          files: coverage.xml
       - name: Update .po files
         run: |
           apt install gettext
