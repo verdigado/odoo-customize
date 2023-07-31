@@ -19,6 +19,11 @@ hr-holidays:
         oca: https://github.com/OCA/hr-holidays.git
     merges:
         - oca 15.0
+sale-workflow:
+    remotes:
+        oca: https://github.com/OCA/sale-workflow.git
+    merges:
+        - oca 15.0
 server-backend:
     remotes:
         oca: https://github.com/OCA/server-backend.git
