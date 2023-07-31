@@ -41,6 +41,7 @@
             </t>
         </xpath>
         <!-- we replace the whole template id sdd_report_invoice_document... -->
+        <!--
         <xpath expr="//p[@t-if='o.sdd_mandate_id']" position="replace">
             <p t-if="o.sdd_mandate_id">
                 <span>
@@ -118,5 +119,6 @@
                 </span>
             </p>
         </xpath>
+        -->
     </template>
 </odoo>
