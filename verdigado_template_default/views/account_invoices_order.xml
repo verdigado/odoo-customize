@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="verdigado_view_move_line_form" model="ir.ui.view">
         <field name="name">invoice.move.form.inherit</field>
         <field name="model">account.move</field>
-        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="priority" eval="100" />
         <field name="arch" type="xml">
             <data>
-                <xpath expr="//div[hasclass('o_attachment_preview')]" position="replace">
+                <xpath
+                    expr="//div[hasclass('o_attachment_preview')]"
+                    position="attributes"
+                >
                     <!-- Show last modified invoice first. That's what users expect but the default is 'asc'. -->
-                    <div class="o_attachment_preview" options="{ 'order': 'desc' }" />
+                    <attribute name="options">{ 'order': 'desc' }</attribute>
                 </xpath>
             </data>
         </field>

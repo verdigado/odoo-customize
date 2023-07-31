@@ -1,14 +1,14 @@
 # verdigado attendance
 
-
 ## Features
 
-* Employees can see and edit their attendances.
-* ~~Remove column "Employee" from own attendances view.~~ --> Removed again as did not work in all situations.
-* Add "Working Times" configuration menu to employees -> configuration
-* Disable default filter for own attendances in report "All Employes"
-* Overwrite German language format of time_format to get rid of seconds in all forms.
-* Remove "New Allocation" button in time off module.
+-   Employees can see and edit their attendances.
+-   ~~Remove column "Employee" from own attendances view.~~ --> Removed again as did not
+    work in all situations.
+-   Add "Working Times" configuration menu to employees -> configuration
+-   Disable default filter for own attendances in report "All Employes"
+-   Overwrite German language format of time_format to get rid of seconds in all forms.
+-   Remove "New Allocation" button in time off module.
 
 ## Access Rights
 
@@ -26,7 +26,6 @@ access_hr_attendance_user_verdigado,hr.attendance.user.verdigado,hr_attendance.m
 access_hr_attendance_report_verdigado,hr.attendance.report.verdigado,hr_attendance.model_hr_attendance_report,hr_attendance.group_hr_attendance,1,0,0,0
 ```
 
-
 3. The HR manager can create and edit working times.
 
 ```
@@ -39,4 +38,5 @@ access_resource_calendar_attendance_officer_verdigado,resource.calendar.attendan
 
 4. Allow Manager read employee's attendance
 
-Module `hr_attendance_sheet` removes read access of attendance records for managers. We revert this change.
+Module `hr_attendance_sheet` removes read access of attendance records for managers. We
+revert this change.
