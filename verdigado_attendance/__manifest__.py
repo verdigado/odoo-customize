@@ -14,6 +14,7 @@
         "hr_holidays_attendance",
         "hr_attendance_report_theoretical_time",
         "l10n_de_holidays",
+        "hr_holidays_public_overtime",
     ],
     "data": [
         "data/hr_leave_type.xml",
