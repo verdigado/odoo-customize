@@ -13,6 +13,7 @@
         "hr_attendance",
         "hr_holidays_attendance",
         "hr_attendance_report_theoretical_time",
+        "l10n_de_holidays",
     ],
     "data": [
         "data/hr_leave_type.xml",
