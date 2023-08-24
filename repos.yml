@@ -1,15 +1,22 @@
 hr-attendance:
-    defaults:
-        depth: 1
     remotes:
         oca: https://github.com/OCA/hr-attendance.git
     merges:
         - oca 15.0
+        # https://github.com/OCA/hr-attendance/pull/140
+        - oca refs/pull/140/head
 hr-holidays:
+    remotes:
+        oca: https://github.com/OCA/hr-holidays.git
+    merges:
+        - oca 15.0
+        # https://github.com/OCA/hr-holidays/pull/87
+        - oca refs/pull/87/head
+l10n-germany:
     defaults:
         depth: 1
     remotes:
-        oca: https://github.com/OCA/hr-holidays.git
+        oca: https://github.com/OCA/l10n-germany.git
     merges:
         - oca 15.0
 sale-workflow:

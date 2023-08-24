@@ -12,7 +12,8 @@
     "depends": [
         "hr_attendance",
         "hr_holidays_attendance",
-        "hr_attendance_report_theoretical_time",
+        "l10n_de_holidays",
+        "hr_holidays_public_overtime",
     ],
     "data": [
         "data/hr_leave_type.xml",
@@ -20,7 +21,6 @@
         "security/ir.model.access.csv",
         "security/hr_attendance_rule_attendance_manager.xml",
         "views/hr_attendance_view.xml",
-        "views/hr_attendance_theoretical_time_report.xml",
         "views/hr_leave_type.xml",
         "views/hr_menu_human_resources_configuration.xml",
     ],
