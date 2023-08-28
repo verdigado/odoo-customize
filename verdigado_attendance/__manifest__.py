@@ -18,8 +18,8 @@
     "data": [
         "data/hr_leave_type.xml",
         "data/res.lang.csv",
+        "security/verdigado_attendance.xml",
         "security/ir.model.access.csv",
-        "security/hr_attendance_rule_attendance_manager.xml",
         "views/hr_attendance_view.xml",
         "views/hr_leave_type.xml",
         "views/hr_menu_human_resources_configuration.xml",
