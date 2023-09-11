@@ -3,8 +3,10 @@
 
 from odoo import exceptions
 from odoo.tests.common import TransactionCase
+from odoo.tools.misc import mute_logger
 
 
+@mute_logger("odoo.addons.base.models.ir_rule")
 class TestOvertimeCalculation(TransactionCase):
     @classmethod
     def setUpClass(cls):
@@ -171,6 +173,25 @@ class TestOvertimeCalculation(TransactionCase):
         self.assertEqual(
             self.env["hr.attendance"].with_user(self.user_employeeD).search([]),
             self.attendance_employeeD,
+        )
+        self.assertEqual(
+            self.env["hr.attendance.report"]
+            .with_user(self.user_employeeA)
+            .search([])
+            .mapped("employee_id"),
+            self.employeeA + self.employeeB + self.employeeC,
+        )
+        self.assertEqual(
+            self.env["hr.attendance.report"].with_user(self.user_employeeB).search([]),
+            self.employeeB + self.employeeC,
+        )
+        self.assertEqual(
+            self.env["hr.attendance.report"].with_user(self.user_employeeC).search([]),
+            self.employeeC,
+        )
+        self.assertEqual(
+            self.env["hr.attendance.report"].with_user(self.user_employeeD).search([]),
+            self.employeeD,
         )
         self.assertEqual(
             self.env["hr.attendance.overtime"]

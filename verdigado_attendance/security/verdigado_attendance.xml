@@ -46,6 +46,38 @@
         />
     </record>
 
+    <!-- hr.attendance.report -->
+    <record id="rule_hr_attendance_report_user" model="ir.rule">
+        <field name="name">
+            Restrict HR attendance administrators to their own employees
+        </field>
+        <field name="model_id" ref="hr_attendance.model_hr_attendance_report" />
+        <field name="domain_force">
+            [('employee_id','child_of',user.employee_ids.ids)]
+        </field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_unlink" eval="True" />
+        <field
+            name="groups"
+            eval="[(4, ref('hr_attendance.group_hr_attendance_user'))]"
+        />
+    </record>
+    <record id="rule_hr_attendance_report_manager" model="ir.rule">
+        <field name="name">Lift restrictions for HR attendance administrators</field>
+        <field name="model_id" ref="hr_attendance.model_hr_attendance_report" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_unlink" eval="True" />
+        <field
+            name="groups"
+            eval="[(4, ref('hr_attendance.group_hr_attendance_manager'))]"
+        />
+    </record>
+
     <!-- hr.attendance.overtime -->
     <record
         id="hr_attendance.hr_attendance_rule_attendance_overtime_manager"
