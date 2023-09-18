@@ -61,7 +61,7 @@
         <field name="perm_unlink" eval="True" />
         <field
             name="groups"
-            eval="[(4, ref('hr_attendance.group_hr_attendance_user'))]"
+            eval="[(4, ref('hr_attendance.group_hr_attendance_user')), (4, ref('hr_attendance.group_hr_attendance'))]"
         />
     </record>
     <record id="rule_hr_attendance_report_manager" model="ir.rule">
