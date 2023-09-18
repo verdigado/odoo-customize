@@ -22,6 +22,24 @@
         <field name="groups" eval="[(4, ref('hr.group_hr_manager'))]" />
     </record>
 
+    <!-- hr.employee.public -->
+    <record id="rule_hr_employee_public_user" model="ir.rule">
+        <field name="name">
+            Restrict all users to their own public employees, and employees of their
+            department
+        </field>
+        <field name="model_id" ref="hr.model_hr_employee_public" />
+        <field name="domain_force">
+            [('department_id', 'child_of', user.employee_id.department_id.id) if
+            user.employee_id.department_id else ('id', '=', user.employee_id.id)]
+        </field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_unlink" eval="True" />
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+    </record>
+
     <!-- hr.attendance -->
     <record id="hr_attendance.hr_attendance_rule_attendance_manager" model="ir.rule">
         <!-- note the xmlid of this rule is misleading, it applies to hr_attendance.group_hr_attendance_user -->
