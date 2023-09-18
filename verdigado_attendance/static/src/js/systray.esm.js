@@ -13,7 +13,7 @@ var OvertimeSystray = Widget.extend({
         return this._super().then(this._onOvertimeUpdate.bind(this));
     },
     _onOvertimeClick: function () {
-        return this.do_action("hr_attendance.hr_attendance_action");
+        return this.do_action("hr_holidays.hr_leave_action_new_request");
     },
     _onOvertimeUpdate: function () {
         var self = this;
