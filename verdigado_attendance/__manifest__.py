@@ -27,9 +27,11 @@
     "assets": {
         "web.assets_backend": [
             "verdigado_attendance/static/src/scss/backend.scss",
+            "verdigado_attendance/static/src/js/systray.esm.js",
         ],
         "web.assets_qweb": [
             "verdigado_attendance/static/src/xml/hr_holidays.xml",
+            "verdigado_attendance/static/src/xml/systray.xml",
         ],
     },
 }
