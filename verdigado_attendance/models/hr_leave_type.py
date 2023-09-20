@@ -1,7 +1,7 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class HrLeaveType(models.Model):
@@ -22,3 +22,9 @@ class HrLeaveType(models.Model):
             result[1]["%s_formatted" % key] = formatted
         result[1]["dashboard_action_id"] = self.dashboard_action_id.id
         return result
+
+    @api.model
+    def get_systray_data(self):
+        return self.env.ref(
+            "hr_holidays_attendance.holiday_status_extra_hours"
+        )._get_days_request()
