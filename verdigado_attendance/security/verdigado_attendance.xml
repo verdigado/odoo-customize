@@ -30,14 +30,28 @@
         </field>
         <field name="model_id" ref="hr.model_hr_employee_public" />
         <field name="domain_force">
-            [('department_id', 'child_of', user.employee_id.department_id.id) if
-            user.employee_id.department_id else ('id', '=', user.employee_id.id)]
+            ['|', '|', ('department_id', 'child_of', user.employee_id.department_id.id)
+            if
+            user.employee_id.department_id else ('id', '=', user.employee_id.id),
+            ('employee_id','child_of',user.employee_ids.ids),
+            ('employee_id','parent_of',user.employee_ids.ids),
+            ]
         </field>
         <field name="perm_read" eval="True" />
         <field name="perm_write" eval="True" />
         <field name="perm_create" eval="True" />
         <field name="perm_unlink" eval="True" />
         <field name="groups" eval="[(4, ref('base.group_user'))]" />
+    </record>
+    <record id="rule_hr_employee_public_manager" model="ir.rule">
+        <field name="name">Lift restrictions for HR managers</field>
+        <field name="model_id" ref="hr.model_hr_employee_public" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_create" eval="True" />
+        <field name="perm_unlink" eval="True" />
+        <field name="groups" eval="[(4, ref('hr.group_hr_manager'))]" />
     </record>
 
     <!-- hr.attendance -->
