@@ -1,0 +1,10 @@
+<templates>
+    <t t-extend="TimeOff.CalendarView.extend">
+        <t t-jquery="div.o_timeoff_legend" t-operation="after">
+            <div class="ical_links">
+                <h5>Calendar links</h5>
+                <ul />
+            </div>
+        </t>
+    </t>
+</templates>

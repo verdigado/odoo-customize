@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="ical_my_leaves" model="base.ical">
+        <field name="name">My leaves</field>
+        <field name="model_id" ref="hr_holidays.model_hr_leave" />
+        <field name="domain">[('user_id', '=', user.id)]</field>
+        <field name="expression_uid">str(record.id)</field>
+        <!-- prettier-ignore-start -->
+        <field name="expression_dtstart">(record.request_unit_half or record.request_unit_hours) and record.date_from or record.date_from.date()</field>
+        <field name="expression_dtend">(record.request_unit_half or record.request_unit_hours) and record.date_to or (record.date_to.date() + timedelta(days=1))</field>
+        <!-- prettier-ignore-end -->
+        <field name="expression_summary">
+            '%s: %s' % (record.employee_id.name, record.holiday_status_id.name)
+        </field>
+        <field name="auto" eval="True" />
+        <field name="show_on_holiday_calendar" eval="True" />
+    </record>
+    <record id="ical_my_team_leaves" model="base.ical">
+        <field name="name">My team leaves</field>
+        <field name="model_id" ref="hr_holidays.model_hr_leave" />
+        <field name="domain">[]</field>
+        <field name="expression_uid">str(record.id)</field>
+        <!-- prettier-ignore-start -->
+        <field name="expression_dtstart">(record.request_unit_half or record.request_unit_hours) and record.date_from or record.date_from.date()</field>
+        <field name="expression_dtend">(record.request_unit_half or record.request_unit_hours) and record.date_to or (record.date_to.date() + timedelta(days=1))</field>
+        <!-- prettier-ignore-end -->
+        <field name="expression_summary">
+            '%s: %s' % (record.employee_id.name, record.holiday_status_id.name)
+        </field>
+        <field name="auto" eval="True" />
+        <field name="show_on_holiday_calendar" eval="True" />
+    </record>
+</odoo>
