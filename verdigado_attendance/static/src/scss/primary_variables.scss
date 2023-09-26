@@ -1,0 +1,9 @@
+// overwrite defaults in addons/web/static/src/legacy/scss/primary_variables.scss
+
+$o-community-color: #005437;
+$o-enterprise-color: #005437;
+$o-enterprise-primary-color: $o-community-color;
+
+$o-community-color: $o-community-color;
+$o-brand-odoo: $o-enterprise-color;
+$o-brand-primary: $o-community-color;

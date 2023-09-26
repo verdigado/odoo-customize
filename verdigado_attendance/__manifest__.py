@@ -26,6 +26,9 @@
         "views/hr_menu_human_resources_configuration.xml",
     ],
     "assets": {
+        "web._assets_primary_variables": [
+            "verdigado_attendance/static/src/scss/primary_variables.scss",
+        ],
         "web.assets_backend": [
             "verdigado_attendance/static/src/scss/backend.scss",
             "verdigado_attendance/static/src/js/systray.esm.js",
