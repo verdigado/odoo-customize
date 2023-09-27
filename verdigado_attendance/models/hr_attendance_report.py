@@ -11,7 +11,10 @@ class HrAttendanceReport(models.Model):
     def _join(self):
         """Add overtime adjustments"""
         return super()._join() + " UNION %s %s %s" % (
-            self._select().replace("hra.worked_hours", "0").replace("break_hours", "0"),
+            self._select()
+            .replace("hra.worked_hours", "0")
+            .replace("break_hours", "0")
+            .replace("ot.duration", "0"),
             self._from(),
             super()._join().replace("ot.adjustment = FALSE", "ot.adjustment = TRUE"),
         )
