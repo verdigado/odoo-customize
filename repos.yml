@@ -5,6 +5,8 @@ hr-attendance:
         - oca 15.0
         # https://github.com/OCA/hr-attendance/pull/140
         - oca refs/pull/140/head
+        # https://github.com/OCA/hr-attendance/pull/142
+        - oca refs/pull/142/head
 hr-holidays:
     remotes:
         oca: https://github.com/OCA/hr-holidays.git

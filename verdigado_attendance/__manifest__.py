@@ -11,6 +11,9 @@
     "installable": True,
     "depends": [
         "hr_attendance",
+        "hr_attendance_autoclose",
+        "hr_attendance_break",
+        "hr_attendance_break_autoclose",
         "hr_holidays_attendance",
         "l10n_de_holidays",
         "hr_holidays_public_overtime",
