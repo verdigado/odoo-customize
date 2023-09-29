@@ -20,3 +20,62 @@ msgstr ""
 #: model:ir.ui.menu,name:verdigado_attendance.menu_configuration_workingtimes_verdigado
 msgid "Working Times"
 msgstr "Arbeitszeiten"
+
+#. module: hr_attendance
+#: model:ir.actions.act_window,name:hr_attendance.hr_attendance_overtime_action
+#: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance_overtime__duration
+#: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance_report__overtime_hours
+#: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
+msgid "Extra Hours"
+msgstr "Gleitzeitkonto"
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/systray.xml:0
+#, python-format
+msgid "Extra hours"
+msgstr "Gleitzeitkonto"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields.selection,name:hr_attendance_break.selection__hr_attendance_reason__action_type__break
+msgid "Break"
+msgstr "Pause"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance__break_ids
+#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
+msgid "Breaks"
+msgstr "Pausen"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance__break_hours
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__break_hours
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_report__break_hours
+msgid "Break Hours"
+msgstr "Pausen"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_employee__break_hours_today
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_employee_public__break_hours_today
+msgid "Break Hours Today"
+msgstr "Heutige Pausen"
+
+#. module: hr_attendance_break
+#: model_terms:ir.ui.view,arch_db:hr_attendance_break.view_attendance_tree
+msgid "Show/Edit breaks"
+msgstr "Pausen anzeigen / bearbeiten"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__begin
+msgid "Begin"
+msgstr "Beginn"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__end
+msgid "End"
+msgstr "Ende"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__reason_id
+msgid "Reason"
+msgstr "Grund (optional)"
