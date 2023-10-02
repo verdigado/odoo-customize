@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!-- groups -->
+    <record id="module_category_verdigado" model="ir.module.category">
+        <field name="name">Verdigado</field>
+    </record>
+    <record id="group_verdigado_employee" model="res.groups">
+        <field name="name">Employee</field>
+        <field name="category_id" ref="module_category_verdigado" />
+        <field
+            name="implied_ids"
+            eval="[(6, 0, [ref('hr_attendance.group_hr_attendance'), ref('base.group_user')])]"
+        />
+    </record>
+    <record id="group_verdigado_officer" model="res.groups">
+        <field name="name">Officer</field>
+        <field name="category_id" ref="module_category_verdigado" />
+        <field
+            name="implied_ids"
+            eval="[(6, 0, [ref('group_verdigado_employee'), ref('hr.group_hr_user'), ref('hr_attendance.group_hr_attendance_user'), ref('hr_holidays.group_hr_holidays_user')])]"
+        />
+    </record>
+    <record id="group_verdigado_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="module_category_verdigado" />
+        <field
+            name="implied_ids"
+            eval="[(6, 0, [ref('group_verdigado_officer'), ref('hr.group_hr_manager'), ref('hr_attendance.group_hr_attendance_manager'), ref('hr_holidays.group_hr_holidays_manager')])]"
+        />
+    </record>
     <!-- hr.employee -->
     <record id="rule_hr_employee_user" model="ir.rule">
         <field name="name">Restrict HR users to their own employees</field>

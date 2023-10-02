@@ -28,6 +28,9 @@
         "views/hr_leave_type.xml",
         "views/hr_menu_human_resources_configuration.xml",
     ],
+    "demo": [
+        "demo/res_users.xml",
+    ],
     "assets": {
         "web._assets_primary_variables": [
             "verdigado_attendance/static/src/scss/primary_variables.scss",
