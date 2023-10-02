@@ -79,3 +79,45 @@ msgstr "Ende"
 #: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__reason_id
 msgid "Reason"
 msgstr "Grund (optional)"
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "or to"
+msgstr "oder"
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "take a break"
+msgstr "eine Pause nehmen"
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "return from break"
+msgstr "Pause beenden"
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "End break"
+msgstr "Pause beenden"
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "Take break"
+msgstr "Pause nehmen"
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "break)"
+msgstr "Pause)"
