@@ -46,7 +46,6 @@ class TestOvertimeCalculation(TransactionCase):
             {
                 "year": 2023,
                 "country_id": cls.env.ref("base.de").id,
-                "state_id": cls.env.ref("base.state_de_by").id,
             }
         ).action_run()
         cls.employeeA.company_id.write(
@@ -63,26 +62,26 @@ class TestOvertimeCalculation(TransactionCase):
 
         # regular work
         self.record_time(employeeA, "2023-04-03", "07:10:00", "16:25:00")
-        self.assertOvertime(employeeA, "2023-04-03", 1.25 * 60)
+        self.assertOvertime(employeeA, "2023-04-03", 1.25 * 60, 8 * 60)
 
         self.record_time(employeeA, "2023-04-04", "07:14:00", "15:35:00")
-        self.assertOvertime(employeeA, "2023-04-04", 21)
+        self.assertOvertime(employeeA, "2023-04-04", 21, 8 * 60)
 
         self.take_leave(employeeA, "2023-04-05", "2023-04-06")
 
         # leaves taken from above
         self.record_time(employeeA, "2023-04-05", "00:00:00", "00:00:00")
-        self.assertOvertime(employeeA, "2023-04-05", 0)
+        self.assertOvertime(employeeA, "2023-04-05", 0, 0)
 
         self.record_time(employeeA, "2023-04-06", "00:00:00", "00:00:00")
-        self.assertOvertime(employeeA, "2023-04-06", 0)
+        self.assertOvertime(employeeA, "2023-04-06", 0, 0)
 
         # easter public holidays
         self.record_time(employeeA, "2023-04-07", "00:00:00", "00:00:00")
-        self.assertOvertime(employeeA, "2023-04-07", 0)
+        self.assertOvertime(employeeA, "2023-04-07", 0, 0)
 
         self.record_time(employeeA, "2023-04-10", "00:00:00", "00:00:00")
-        self.assertOvertime(employeeA, "2023-04-10", 0)
+        self.assertOvertime(employeeA, "2023-04-10", 0, 0)
 
         # just no show on work
         self.record_time(employeeA, "2023-04-11", "00:00:00", "00:00:00")
@@ -131,6 +130,14 @@ class TestOvertimeCalculation(TransactionCase):
         self.record_time(employeeA, "2023-04-30", "09:30:00", "14:45:00")
         self.assertOvertime(employeeA, "2023-04-30", 5 * 60 + 15)
 
+        # corpus christi, specific to some states
+        attendance = self.record_time(employeeA, "2023-08-06", "09:00:00", "17:00:00")
+        overtime = self.assertOvertime(employeeA, "2023-08-06", 8 * 60, 0)
+        overtime.unlink()
+        # and test that updating an attendance yields the same result
+        attendance.check_out += timedelta(hours=1)
+        self.assertOvertime(employeeA, "2023-08-06", 9 * 60, 0)
+
     def to_time(self, time_string):
         if isinstance(time_string, str):
             return datetime.strptime(time_string, "%H:%M:%S").time()
@@ -151,7 +158,7 @@ class TestOvertimeCalculation(TransactionCase):
         checkout_time = self.to_time(checkout_time)
 
         tz = pytz.timezone(employee.tz)
-        self.env["hr.attendance"].create(
+        return self.env["hr.attendance"].create(
             {
                 "employee_id": employee.id,
                 "check_in": tz.localize(datetime.combine(date, checkin_time))
@@ -176,7 +183,7 @@ class TestOvertimeCalculation(TransactionCase):
         leave.action_approve()
         leave.action_validate()
 
-    def assertOvertime(self, employee, date, minutes):
+    def assertOvertime(self, employee, date, minutes, expected_minutes=None):
         overtime = self.env["hr.attendance.overtime"].search(
             [
                 ("employee_id", "=", employee.id),
@@ -187,3 +194,8 @@ class TestOvertimeCalculation(TransactionCase):
         self.assertEqual(
             round(sum(overtime.mapped("duration")), 2), round(minutes / 60, 2)
         )
+        self.assertEqual(
+            expected_minutes and round(sum(overtime.mapped("expected_hours")), 2),
+            expected_minutes and round(expected_minutes / 60, 2),
+        )
+        return overtime
