@@ -36,6 +36,12 @@ msgstr "Gleitzeitkonto"
 msgid "Extra hours"
 msgstr "Gleitzeitkonto"
 
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance_overtime__expected_hours
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance_report__expected_hours
+msgid "Expected Hours"
+msgstr "Soll-Stunden"
+
 #. module: hr_attendance_break
 #: model:ir.model.fields.selection,name:hr_attendance_break.selection__hr_attendance_reason__action_type__break
 msgid "Break"
