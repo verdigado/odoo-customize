@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Detect unreleased dependencies
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: |
           for reqfile in requirements.txt test-requirements.txt ; do
               if [ -f ${reqfile} ] ; then
@@ -104,4 +104,3 @@ jobs:
           else
             echo No changes, doing nothing
           fi
-
