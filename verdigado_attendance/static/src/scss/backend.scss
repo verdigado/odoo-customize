@@ -20,3 +20,9 @@ div.o_cp_buttons button.btn.btn-secondary.btn-allocation {
 .o_hr_attendance_kiosk_mode .o_hr_attendance_user_badge {
     background: linear-gradient(90deg, #006e2e, #008939);
 }
+
+/* hide calendar and discuss in menu */
+span[data-menu-xmlid="calendar.mail_menu_calendar"],
+span[data-menu-xmlid="mail.menu_root_discuss"] {
+    display: none;
+}
