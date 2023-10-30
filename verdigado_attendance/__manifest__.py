@@ -35,6 +35,9 @@
         "web._assets_primary_variables": [
             "verdigado_attendance/static/src/scss/primary_variables.scss",
         ],
+        "web.assets_frontend": [
+            "verdigado_attendance/static/src/scss/frontend.scss",
+        ],
         "web.assets_backend": [
             "verdigado_attendance/static/src/scss/backend.scss",
             "verdigado_attendance/static/src/js/systray.esm.js",
