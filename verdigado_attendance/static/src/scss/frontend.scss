@@ -1,3 +1,12 @@
 .bg-100 {
-    background-color: $o-brand-primary !important;
+    background-position-x: 110%;
+    background-position-y: -100px;
+    background-repeat: no-repeat;
+    background-size: auto 380px;
+    background-color: transparent;
+    min-height: 185px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(90deg, #006E2E, #008939) !important;
+    color: #212529;
 }

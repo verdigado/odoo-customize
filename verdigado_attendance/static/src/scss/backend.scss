@@ -26,3 +26,26 @@ span[data-menu-xmlid="calendar.mail_menu_calendar"],
 span[data-menu-xmlid="mail.menu_root_discuss"] {
     display: none;
 }
+
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    color: #000000;
+}
+
+a {
+    color: #006E2E;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.btn-link {
+    font-weight: 400;
+    color: #006E2E;
+    text-decoration: none;
+}
+
+.card-body {
+    background-color: rgba(255, 255, 255, 1) !important;
+    color: #212529;
+}
