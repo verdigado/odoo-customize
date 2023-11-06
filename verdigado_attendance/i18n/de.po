@@ -42,6 +42,26 @@ msgstr "Gleitzeitkonto"
 msgid "Expected Hours"
 msgstr "Soll-Stunden"
 
+#. module: verdigado_attendance
+#: model:res.groups,name:verdigado_attendance.group_verdigado_employee
+msgid "Employee"
+msgstr "Mitarbeiter*in"
+
+#. module: verdigado_attendance
+#: model:res.groups,name:verdigado_attendance.group_verdigado_manager
+msgid "Manager"
+msgstr ""
+
+#. module: verdigado_attendance
+#: model:res.groups,name:verdigado_attendance.group_verdigado_officer
+msgid "Officer"
+msgstr "Personalverantwortliche*r"
+
+#. module: verdigado_attendance
+#: model:ir.actions.server,name:verdigado_attendance.action_hr_attendance_overtime_recalculation
+msgid "Recalculate Overtime"
+msgstr "Neuberechnung der Überstunden"
+
 #. module: hr_attendance_break
 #: model:ir.model.fields.selection,name:hr_attendance_break.selection__hr_attendance_reason__action_type__break
 msgid "Break"
