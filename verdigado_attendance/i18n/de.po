@@ -110,8 +110,8 @@ msgstr "Grund (optional)"
 #. openerp-web
 #: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
 #, python-format
-msgid "or to"
-msgstr "oder"
+msgid "check out or to"
+msgstr "Abmelden oder"
 
 #. module: hr_attendance_break
 #. openerp-web
