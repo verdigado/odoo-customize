@@ -27,8 +27,11 @@ span[data-menu-xmlid="mail.menu_root_discuss"] {
     display: none;
 }
 
-label {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-    color: #000000;
+/* /web/static/src/legacy/scss/fields_extra.scss defined in bundle 'web.assets_backend' */
+// background color in input fields
+.o_required_modifier {
+    &.o_input,
+    .o_input {
+        background-color: #e7f7eb !important;
+    }
 }
