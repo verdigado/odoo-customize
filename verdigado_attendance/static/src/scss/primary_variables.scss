@@ -7,3 +7,10 @@ $o-enterprise-primary-color: $o-community-color;
 $o-community-color: $o-community-color;
 $o-brand-odoo: $o-enterprise-color;
 $o-brand-primary: $o-community-color;
+
+// link color in front- and backend
+$link-color: #006e2e;
+
+// login form, background-color is white, force opacity to 1 (default 0.9)
+$o-card-body-bg-opacity: 1;
+$card-color: #000 !important;
