@@ -16,7 +16,7 @@
             position="replace"
         >
             <td class="text-right">
-                <span t-field="line.sequence2" />
+                <span t-field="line.visible_sequence" />
             </td>
         </xpath>
     </template>
