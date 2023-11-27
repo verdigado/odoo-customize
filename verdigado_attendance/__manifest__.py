@@ -29,6 +29,7 @@
         "views/hr_attendance_view.xml",
         "views/hr_attendance_report.xml",
         "views/hr_leave_type.xml",
+        "views/hr_leave.xml",
         "views/hr_menu_human_resources_configuration.xml",
         "views/menu.xml",
     ],
