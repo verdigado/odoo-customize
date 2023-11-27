@@ -10,6 +10,7 @@
     "license": "AGPL-3",
     "installable": True,
     "depends": [
+        "base_ical",
         "hr_attendance",
         "hr_attendance_autoclose",
         "hr_attendance_break",
@@ -19,10 +20,12 @@
         "hr_holidays_public_overtime",
     ],
     "data": [
+        "data/base_ical.xml",
         "data/hr_leave_type.xml",
         "data/res.lang.csv",
         "security/verdigado_attendance.xml",
         "security/ir.model.access.csv",
+        "views/base_ical.xml",
         "views/hr_attendance_view.xml",
         "views/hr_attendance_report.xml",
         "views/hr_leave_type.xml",
@@ -42,10 +45,12 @@
         "web.assets_backend": [
             "verdigado_attendance/static/src/scss/backend.scss",
             "verdigado_attendance/static/src/js/systray.esm.js",
+            "verdigado_attendance/static/src/js/time_off_calendar.js",
         ],
         "web.assets_qweb": [
             "verdigado_attendance/static/src/xml/hr_holidays.xml",
             "verdigado_attendance/static/src/xml/systray.xml",
+            "verdigado_attendance/static/src/xml/time_off_calendar.xml",
         ],
     },
 }
