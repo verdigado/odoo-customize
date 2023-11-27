@@ -10,7 +10,9 @@
     "license": "AGPL-3",
     "installable": True,
     "depends": [
+        "auditlog",
         "base_ical",
+        "board",
         "hr_attendance",
         "hr_attendance_autoclose",
         "hr_attendance_break",
