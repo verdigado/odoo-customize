@@ -12,8 +12,8 @@ hr-holidays:
         oca: https://github.com/OCA/hr-holidays.git
     merges:
         - oca 15.0
-        # https://github.com/OCA/hr-holidays/pull/87
-        - oca refs/pull/87/head
+        # https://github.com/OCA/hr-holidays/pull/99
+        - oca refs/pull/99/head
 l10n-germany:
     defaults:
         depth: 1
