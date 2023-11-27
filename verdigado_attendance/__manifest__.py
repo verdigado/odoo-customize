@@ -3,7 +3,7 @@
 
 {
     "name": "Verdigado HR Attendance",
-    "version": "15.0.1.0.0",
+    "version": "15.0.1.0.1",
     "category": "Human Resources",
     "website": "https://github.com/OCA/hr-attendance",
     "author": "verdigado eG",
