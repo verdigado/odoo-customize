@@ -18,6 +18,7 @@
         "hr_holidays_attendance",
         "l10n_de_holidays",
         "hr_holidays_public_overtime",
+        "hr_holidays_overlap",
     ],
     "data": [
         "data/base_ical.xml",
