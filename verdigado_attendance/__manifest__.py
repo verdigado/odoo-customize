@@ -5,7 +5,7 @@
     "name": "Verdigado HR Attendance",
     "version": "15.0.1.0.1",
     "category": "Human Resources",
-    "website": "https://github.com/OCA/hr-attendance",
+    "website": "https://github.com/verdigado/odoo-customize",
     "author": "verdigado eG",
     "license": "AGPL-3",
     "installable": True,
@@ -21,6 +21,7 @@
         "l10n_de_holidays",
         "hr_holidays_public_overtime",
         "hr_holidays_overlap",
+        "module_auto_update",
     ],
     "data": [
         "data/base_ical.xml",
