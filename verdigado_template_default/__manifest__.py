@@ -1,7 +1,7 @@
 {
     "name": "Verdigado Standard Templates",
     "author": "verdigado eG",
-    "website": "https://github.com/OCA/hr-attendance",
+    "website": "https://github.com/verdigado/odoo-customize",
     # Categories can be used to filter modules in modules listing
     # Check
     # https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -17,6 +17,7 @@
         "account_sepa_direct_debit",
         "website",
         "sale_order_line_sequence",
+        "module_auto_update",
     ],
     # always loaded
     "data": [
