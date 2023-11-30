@@ -17,7 +17,6 @@
         "hr_attendance_autoclose",
         "hr_attendance_break",
         "hr_attendance_break_autoclose",
-        "hr_attendance_missing_days",
         "hr_holidays_attendance",
         "l10n_de_holidays",
         "hr_holidays_public_overtime",
@@ -27,8 +26,6 @@
     "data": [
         "data/base_ical.xml",
         "data/hr_leave_type.xml",
-        "data/ir_cron.xml",
-        "data/res_company.xml",
         "data/res.lang.csv",
         "security/verdigado_attendance.xml",
         "security/ir.model.access.csv",
