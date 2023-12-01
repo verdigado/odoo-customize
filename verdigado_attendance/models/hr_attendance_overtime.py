@@ -36,3 +36,9 @@ class HrAttendanceOvertime(models.Model):
                     "hours"
                 ]
             )
+
+    def unlink(self):
+        """Exclude adjustments from unlinking if asked"""
+        if self.env.context.get("hr_attendance_overtime_unlink_exclude_adjustment"):
+            self = self.filtered(lambda x: not x.adjustment)
+        return super(HrAttendanceOvertime, self).unlink()

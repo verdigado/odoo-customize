@@ -7,3 +7,4 @@ from . import hr_attendance_overtime
 from . import hr_attendance_report
 from . import hr_leave
 from . import hr_leave_type
+from . import res_company
