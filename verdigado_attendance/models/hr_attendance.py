@@ -33,5 +33,5 @@ class HrAttendance(models.Model):
                 for attendance_date in set(dates)
                 - set(existing_overtime.mapped("date"))
             ]
-        self.env["hr.attendance.overtime"].create(missing_vals)
+        self.env["hr.attendance.overtime"].sudo().create(missing_vals)
         return result
