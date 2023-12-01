@@ -63,6 +63,16 @@ msgid "Recalculate Overtime"
 msgstr "Neuberechnung der Überstunden"
 
 #. module: hr_attendance_break
+#: model:mail.activity.type,name:hr_attendance_break.activity_type_mandatory_break
+msgid "Pflichtpausen nehmen"
+msgstr ""
+
+#. module: hr_attendance_break
+#: model:ir.model,name:hr_attendance_break.model_hr_attendance_break
+msgid "Work break taken"
+msgstr "Arbeitspausen"
+
+#. module: hr_attendance_break
 #: model:ir.model.fields.selection,name:hr_attendance_break.selection__hr_attendance_reason__action_type__break
 msgid "Break"
 msgstr "Pause"
@@ -147,3 +157,91 @@ msgstr "Pause nehmen"
 #, python-format
 msgid "break)"
 msgstr "Pause)"
+
+#. module: hr_attendance_break
+#: model:mail.template,body_html:hr_attendance_break.template_mandatory_break
+msgid ""
+"<p>Dear <t t-out=\"object.name\"/>,</p>\n"
+"            <p>on <t t-out=\"format_date(ctx.get('hr_attendance_break_date', object.last_attendance_id.check_in))\"/>, you only took <t t-out=\"format_duration(ctx.get('hr_attendance_break_hours') or 0)\"/> hours of break, while you should have been taking <t t-out=\"format_duration(ctx.get('hr_attendance_break_threshold', object.env['hr.attendance.break.threshold']).min_break)\"/> hours.</p>\n"
+"            <p>Please review the attendances below:</p>\n"
+"            <ul>\n"
+"                <li t-foreach=\"ctx.get('hr_attendance_break_attendances', object.last_attendance_id)\" t-as=\"attendance\">\n"
+"                    <a t-attf-href=\"/mail/view?model={{ attendance._name }}&amp;res_id={{ attendance.id }}\"><t t-out=\"attendance.display_name\"/></a>\n"
+"                </li>\n"
+"            </ul>\n"
+"        "
+msgstr ""
+"<p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">Hallo <t t-out=\"object.name\"></t>,</p>\n"
+"            <p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">am <t t-out=\"format_date(ctx.get('hr_attendance_break_date', object.last_attendance_id.check_in))\"></t>, hast du eine Pause von&nbsp;<t t-out=\"format_duration(ctx.get('hr_attendance_break_hours') or 0)\"></t>&nbsp;Stunden genommen.</p><p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">Die gesetzliche Regelung erfordert, nach einer Arbeitszeit von 6 Stunden eine Pause von mindestens&nbsp;<t t-out=\"format_duration(ctx.get('hr_attendance_break_threshold', object.env['hr.attendance.break.threshold']).min_break)\"></t>&nbsp;Stunden zu nehmen.</p><p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">Die gesetzliche Regelungen wurden vom System automatisch eingetragen.&nbsp; Bitte überprüfe den Eintrag hier:&nbsp;</p><ul style=\"margin:0px 0 12px 0;box-sizing:border-box;\">\n"
+"                <li t-foreach=\"ctx.get('hr_attendance_break_attendances', object.last_attendance_id)\" t-as=\"attendance\">\n"
+"                    <a t-attf-href=\"/mail/view?model={{ attendance._name }}&amp;res_id={{ attendance.id }}\" style=\"text-decoration:none;box-sizing:border-box;background-color:transparent;color:inherit;\"><t t-out=\"attendance.display_name\"></t></a>\n"
+"                </li>\n"
+"            </ul>\n"
+"        "
+
+#. module: hr_attendance_break
+#: code:addons/hr_attendance_break/models/hr_attendance_break.py:0
+#, python-format
+msgid ""
+"Breaks must be fully contained by the attendance they belong to and can't "
+"overlap"
+msgstr "Pausen müssen sich vollständig in einem Anwesenheits-Zeitraum befinden "
+"und dürfen sich nicht überlappen"
+
+#. module: hr_attendance_break
+#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
+msgid ""
+"Breaks shorter than this value will not be counted towards mandatory breaks"
+msgstr "Pausen die kürzer als angegeben werden nicht zu den Mindestpausen hinzu gerechnet"
+
+#. module: hr_attendance_break
+#: code:addons/hr_attendance_break/models/hr_attendance.py:0
+#, python-format
+msgid "Edit breaks for %s"
+msgstr "Pausen für %s bearbeiten"
+
+#. module: hr_attendance_break
+#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
+msgid "Edit thresholds for mandatory breaks"
+msgstr "Grenzwerte für Pflichtpausenb bearbeiten"
+
+#. module: hr_attendance_break
+#: model:ir.actions.server,name:hr_attendance_break.action_mandatory_break
+#: model:ir.actions.server,name:hr_attendance_break.action_mandatory_break_activity
+#: model:ir.actions.server,name:hr_attendance_break.cron_mandatory_breaks_ir_actions_server
+#: model:ir.cron,cron_name:hr_attendance_break.cron_mandatory_breaks
+#: model:ir.cron,name:hr_attendance_break.cron_mandatory_breaks
+msgid "Flag mandatory breaks"
+msgstr "Kennzeichnung von Pflichtpausen"
+
+#. module: hr_attendance_break
+#: model:ir.actions.server,name:hr_attendance_break.action_mandatory_break_email
+msgid "Mail about mandatory breaks"
+msgstr "Email zu Pflichtpausen"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__min_break
+msgid "Min Break"
+msgstr "Mindestpausenlänge"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_res_company__hr_attendance_break_min_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_res_config_settings__hr_attendance_break_min_break
+msgid "Mindestpausendauer"
+msgstr ""
+
+#. module: hr_attendance_break
+#: model:ir.model,name:hr_attendance_break.model_hr_attendance_break_threshold
+msgid "Minimum break times"
+msgstr "Mindestpausenzeit"
+
+#. module: hr_attendance_break
+#: model:mail.template,subject:hr_attendance_break.template_mandatory_break
+msgid ""
+"Please review your breaks from {{ "
+"format_date(ctx.get('hr_attendance_break_date', "
+"object.last_attendance_id.check_in)) }}"
+msgstr ""
+"Bitte Pausenzeiten überprüfen:  {{ "
+"format_date(ctx.get('hr_attendance_break_date', "
+"object.last_attendance_id.check_in)) }}"
