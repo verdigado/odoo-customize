@@ -12,7 +12,19 @@ class HrAttendanceReport(models.Model):
 
     def _select(self):
         """Add expected hours"""
-        return super()._select() + ", coalesce(ot.expected_hours, 0) expected_hours"
+        return (
+            super()
+            ._select()
+            .replace(
+                "(hr_attendance.check_in::date)",
+                """((hr_attendance.check_in AT TIME ZONE 'utc'::text) AT TIME ZONE (((
+                SELECT calendar.tz
+                FROM resource_calendar calendar
+                JOIN hr_employee employee ON employee.id = hr_attendance.employee_id
+                WHERE calendar.id = employee.resource_calendar_id))))::date""",
+            )
+            + ", coalesce(ot.expected_hours, 0) expected_hours"
+        )
 
     def _join(self):
         """Add overtime adjustments"""
@@ -20,7 +32,6 @@ class HrAttendanceReport(models.Model):
             self._select()
             .replace("hra.worked_hours", "0")
             .replace("break_hours", "0")
-            .replace("ot.duration", "0")
             .replace("coalesce(ot.expected_hours, 0)", "0"),
             self._from(),
             super()._join().replace("ot.adjustment = FALSE", "ot.adjustment = TRUE"),

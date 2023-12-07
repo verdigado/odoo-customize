@@ -10,7 +10,7 @@
         <field name="expression_dtend">(record.request_unit_half or record.request_unit_hours) and record.date_to or (record.date_to.date() + timedelta(days=1))</field>
         <!-- prettier-ignore-end -->
         <field name="expression_summary">
-            '%s: %s' % (record.employee_id.name, record.holiday_status_id.name)
+            '%s: %s' % (record.sudo().employee_id.name, record.holiday_status_id.name)
         </field>
         <field name="auto" eval="True" />
         <field name="show_on_holiday_calendar" eval="True" />
@@ -25,7 +25,7 @@
         <field name="expression_dtend">(record.request_unit_half or record.request_unit_hours) and record.date_to or (record.date_to.date() + timedelta(days=1))</field>
         <!-- prettier-ignore-end -->
         <field name="expression_summary">
-            '%s: %s' % (record.employee_id.name, record.holiday_status_id.name)
+            '%s: %s' % (record.sudo().employee_id.name, record.holiday_status_id.name)
         </field>
         <field name="auto" eval="True" />
         <field name="show_on_holiday_calendar" eval="True" />
