@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="allocation_user_2023" model="hr.leave.allocation">
+        <field name="name">Paid Time Off for Verdigado employee 2023</field>
+        <field name="holiday_status_id" ref="hr_holidays.holiday_status_cl" />
+        <field name="number_of_days">30</field>
+        <field name="employee_id" ref="verdigado_user_employee" />
+        <field name="state">validate</field>
+        <field name="date_from">2023-01-01</field>
+        <field name="date_to">2023-12-31</field>
+    </record>
+    <record id="allocation_user_2042" model="hr.leave.allocation">
+        <field name="name">Paid Time Off for Verdigado employee 2042</field>
+        <field name="holiday_status_id" ref="hr_holidays.holiday_status_cl" />
+        <field name="number_of_days">30</field>
+        <field name="employee_id" ref="verdigado_user_employee" />
+        <field name="state">validate</field>
+        <field name="date_from">2042-01-01</field>
+        <field name="date_to">2042-12-31</field>
+    </record>
+</odoo>

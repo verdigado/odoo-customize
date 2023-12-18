@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="verdigado_manager_employee" model="hr.employee">
+        <field name="name">Verdigado manager</field>
+        <field name="user_id" ref="verdigado_manager" />
+    </record>
+    <record id="verdigado_officer_employee" model="hr.employee">
+        <field name="name">Verdigado officer</field>
+        <field name="user_id" ref="verdigado_officer" />
+        <field name="parent_id" ref="verdigado_manager_employee" />
+    </record>
+    <record id="verdigado_user_employee" model="hr.employee">
+        <field name="name">Verdigado user</field>
+        <field name="user_id" ref="verdigado_user" />
+        <field name="parent_id" ref="verdigado_officer_employee" />
+    </record>
+</odoo>
