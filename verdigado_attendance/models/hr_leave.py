@@ -20,9 +20,10 @@ class HrLeave(models.Model):
 
     def action_draft(self):
         """Allow setting to draft from any state"""
+        self.sudo()._remove_resource_leave()
+        self.read([])
         # manipulate cache to make records look like being in state 'confirm' as
         # super only allows it for this and 'refuse'
-        self.read([])
         for this in self:
             this._cache["state"] = "confirm"
         return super().action_draft()
