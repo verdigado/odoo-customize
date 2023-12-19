@@ -1,3 +1,8 @@
+hr:
+    remotes:
+        oca: https://github.com/OCA/hr.git
+    merges:
+        - oca 15.0
 hr-attendance:
     remotes:
         oca: https://github.com/OCA/hr-attendance.git
@@ -5,8 +10,15 @@ hr-attendance:
         - oca 15.0
         # https://github.com/OCA/hr-attendance/pull/140
         - oca refs/pull/140/head
+        # https://github.com/OCA/hr-attendance/pull/141
+        - oca refs/pull/141/head
         # https://github.com/OCA/hr-attendance/pull/142
         - oca refs/pull/142/head
+mint-system:
+    remotes:
+        mint: https://github.com/Mint-System/Odoo-Apps-HR.git
+    merges:
+        - mint 15.0
 hr-holidays:
     remotes:
         oca: https://github.com/OCA/hr-holidays.git
