@@ -3,6 +3,7 @@
     <record id="verdigado_user" model="res.users" context="{'no_reset_password': True}">
         <field name="login">verdigado_employee</field>
         <field name="name">Verdigado employee</field>
+        <field name="email">employee@verdigado</field>
         <field name="groups_id" eval="[(6, 0, [ref('group_verdigado_employee')])]" />
     </record>
     <record
@@ -12,6 +13,7 @@
     >
         <field name="login">verdigado_officer</field>
         <field name="name">Verdigado officer</field>
+        <field name="email">officer@verdigado</field>
         <field name="groups_id" eval="[(6, 0, [ref('group_verdigado_officer')])]" />
     </record>
     <record
@@ -21,6 +23,7 @@
     >
         <field name="login">verdigado_manager</field>
         <field name="name">Verdigado manager</field>
+        <field name="email">manager@verdigado</field>
         <field name="groups_id" eval="[(6, 0, [ref('group_verdigado_manager')])]" />
     </record>
 </odoo>

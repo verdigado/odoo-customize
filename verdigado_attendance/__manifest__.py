@@ -42,6 +42,8 @@
     ],
     "demo": [
         "demo/res_users.xml",
+        "demo/hr_employee.xml",
+        "demo/hr_leave_allocation.xml",
     ],
     "assets": {
         "web._assets_primary_variables": [
