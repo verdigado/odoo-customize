@@ -195,6 +195,12 @@ msgid ""
 msgstr "Pausen die kürzer als angegeben werden nicht zu den Mindestpausen hinzu gerechnet"
 
 #. module: hr_attendance_break
+#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
+msgid "Edit action to run if mandatory breaks are not adhered"
+msgstr ""
+"Aktionen, die beim Unterschreiten der Mindestpausenlänge ausgelöst werden"
+
+#. module: hr_attendance_break
 #: code:addons/hr_attendance_break/models/hr_attendance.py:0
 #, python-format
 msgid "Edit breaks for %s"
@@ -203,7 +209,7 @@ msgstr "Pausen für %s bearbeiten"
 #. module: hr_attendance_break
 #: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
 msgid "Edit thresholds for mandatory breaks"
-msgstr "Grenzwerte für Pflichtpausenb bearbeiten"
+msgstr "Grenzwerte für Pflichtpausen bearbeiten"
 
 #. module: hr_attendance_break
 #: model:ir.actions.server,name:hr_attendance_break.action_mandatory_break
@@ -220,15 +226,20 @@ msgid "Mail about mandatory breaks"
 msgstr "Email zu Pflichtpausen"
 
 #. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__min_hours
+msgid "Min Hours"
+msgstr "Mindestzeitraum"
+
+#. module: hr_attendance_break
 #: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__min_break
 msgid "Min Break"
-msgstr "Mindestpausenlänge"
+msgstr "Mindestpause"
 
 #. module: hr_attendance_break
 #: model:ir.model.fields,field_description:hr_attendance_break.field_res_company__hr_attendance_break_min_break
 #: model:ir.model.fields,field_description:hr_attendance_break.field_res_config_settings__hr_attendance_break_min_break
-msgid "Mindestpausendauer"
-msgstr ""
+msgid "Minimal break length"
+msgstr "Mindestpausenlänge"
 
 #. module: hr_attendance_break
 #: model:ir.model,name:hr_attendance_break.model_hr_attendance_break_threshold
