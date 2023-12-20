@@ -197,8 +197,7 @@ msgstr "Pausen die kürzer als angegeben werden nicht zu den Mindestpausen hinzu
 #. module: hr_attendance_break
 #: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
 msgid "Edit action to run if mandatory breaks are not adhered"
-msgstr ""
-"Aktionen, die beim Unterschreiten der Mindestpausenlänge ausgelöst werden"
+msgstr "Aktionen, die beim Unterschreiten der Mindestpausenlänge ausgelöst werden"
 
 #. module: hr_attendance_break
 #: code:addons/hr_attendance_break/models/hr_attendance.py:0
