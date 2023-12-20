@@ -133,6 +133,9 @@ class TestOvertimeCalculation(HrCase):
         attendance.apply_holiday_overtime_factor = True
         self.assertOvertime(employeeA, "2023-08-06", 9 * 60, 0)
         self.assertOvertime(employeeA, "2023-08-06", 1.5 * 9 * 60, 0, adjustment=True)
+        attendance.check_out += timedelta(hours=1)
+        self.assertOvertime(employeeA, "2023-08-06", 10 * 60, 0)
+        self.assertOvertime(employeeA, "2023-08-06", 1.5 * 10 * 60, 0, adjustment=True)
 
     def to_time(self, time_string):
         if isinstance(time_string, str):
