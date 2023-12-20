@@ -76,7 +76,7 @@ jobs:
       - name: Run tests
         run: oca_run_tests
       - name: Generate coverage.xml
-        run: coverage xml --include '*.py'
+        run: coverage xml --include '*.py' --omit '**/tests/*'
       - uses: codecov/codecov-action@v3
         with:
           files: coverage.xml
