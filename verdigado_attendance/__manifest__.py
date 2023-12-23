@@ -41,10 +41,12 @@
         "views/base_ical.xml",
         "views/hr_attendance_view.xml",
         "views/hr_attendance_report.xml",
+        "views/hr_employee.xml",
         "views/hr_leave_type.xml",
         "views/hr_leave.xml",
         "views/hr_menu_human_resources_configuration.xml",
         "views/menu.xml",
+        "views/res_config_settings.xml",
     ],
     "demo": [
         "demo/res_users.xml",
@@ -60,10 +62,12 @@
         ],
         "web.assets_backend": [
             "verdigado_attendance/static/src/scss/backend.scss",
+            "verdigado_attendance/static/src/js/hr_attendance.js",
             "verdigado_attendance/static/src/js/systray.esm.js",
             "verdigado_attendance/static/src/js/time_off_calendar.js",
         ],
         "web.assets_qweb": [
+            "verdigado_attendance/static/src/xml/hr_attendance.xml",
             "verdigado_attendance/static/src/xml/hr_holidays.xml",
             "verdigado_attendance/static/src/xml/systray.xml",
             "verdigado_attendance/static/src/xml/time_off_calendar.xml",

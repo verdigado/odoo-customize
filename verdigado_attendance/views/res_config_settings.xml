@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
+<data>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="hr_attendance.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <div name="overtime_settings" position="after">
+                <h2>Overtime on holidays</h2>
+                <div class="row mt16 o_settings_container" name="break_settings">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane" />
+                        <div class="o_setting_right_pane">
+                            <span
+                                class="fa fa-lg fa-building-o"
+                                title="Values set here are company-specific."
+                                role="img"
+                                aria-label="Values set here are company-specific."
+                                groups="base.group_multi_company"
+                            />
+                            <label for="holiday_overtime_factor" />
+                            <div class="text-muted">
+                                When recording attendances on a holiday, this factor
+                                will be applied
+                            </div>
+                            <field name="holiday_overtime_factor" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+</data>
