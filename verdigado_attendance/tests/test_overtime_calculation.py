@@ -138,6 +138,11 @@ class TestOvertimeCalculation(TransactionCase):
         attendance.check_out += timedelta(hours=1)
         self.assertOvertime(employeeA, "2023-08-06", 9 * 60, 0)
 
+        # be sure that a day spanning attendance generates overtime records for all days
+        attendance.check_out += timedelta(days=1)
+        self.assertOvertime(employeeA, "2023-08-06", 33 * 60, 0)
+        self.assertOvertime(employeeA, "2023-08-07", 0, 8 * 60)
+
     def to_time(self, time_string):
         if isinstance(time_string, str):
             return datetime.strptime(time_string, "%H:%M:%S").time()

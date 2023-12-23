@@ -6,10 +6,13 @@ hr:
 hr-attendance:
     remotes:
         oca: https://github.com/OCA/hr-attendance.git
+        hbrunn: https://github.com/hbrunn/hr-attendance.git
     merges:
         - oca 15.0
         # https://github.com/OCA/hr-attendance/pull/140
         - oca refs/pull/140/head
+        # PR on the above
+        - hbrunn 15.0-hr_attendance_missing_days
         # https://github.com/OCA/hr-attendance/pull/141
         - oca refs/pull/141/head
         # https://github.com/OCA/hr-attendance/pull/142
