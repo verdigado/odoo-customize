@@ -63,7 +63,7 @@ class HrAttendance(models.Model):
                             }
                         )
                 else:
-                    holiday_overtime.unlink()
+                    holiday_overtime.sudo().unlink()
         self.env["hr.attendance.overtime"].sudo().create(missing_vals)
         return result
 
