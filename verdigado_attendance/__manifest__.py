@@ -3,7 +3,7 @@
 
 {
     "name": "Verdigado HR Attendance",
-    "version": "15.0.1.0.1",
+    "version": "15.0.1.0.2",
     "category": "Human Resources",
     "website": "https://github.com/verdigado/odoo-customize",
     "author": "verdigado eG",
