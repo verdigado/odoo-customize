@@ -15,19 +15,19 @@
             and we replace all of them with the formatted version
         /-->
         <xpath
-            expr="//span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves']&quot;]"
+            expr="//span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves']&quot; or @t-esc=&quot;timeoff[1]['usable_remaining_leaves']&quot;]"
             position="attributes"
         >
             <!-- prettier-ignore-start -->
-            <attribute name="t-esc">timeoff[1]['virtual_remaining_leaves_formatted']</attribute>
+            <attribute name="t-esc">timeoff[1]['usable_remaining_leaves_formatted']</attribute>
             <!-- prettier-ignore-end -->
         </xpath>
         <xpath
-            expr="//span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves']&quot;]"
+            expr="//span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves']&quot; or @t-esc=&quot;timeoff[1]['usable_remaining_leaves']&quot;]"
             position="attributes"
         >
             <!-- prettier-ignore-start -->
-            <attribute name="t-esc">timeoff[1]['virtual_remaining_leaves_formatted']</attribute>
+            <attribute name="t-esc">timeoff[1]['usable_remaining_leaves_formatted']</attribute>
             <!-- prettier-ignore-end -->
         </xpath>
         <xpath
@@ -43,7 +43,7 @@
             also three times for every branch of the above conditional
         /-->
         <xpath
-            expr="//t/span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves_formatted']&quot;]"
+            expr="//t/span[@t-esc=&quot;timeoff[1]['usable_remaining_leaves_formatted']&quot;]"
             position="before"
         >
             <a
@@ -53,12 +53,12 @@
         </xpath>
         <xpath expr="//a[count(*) = 0]" position="inside">
             <xpath
-                expr="//t/span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves_formatted']&quot;]"
+                expr="//t/span[@t-esc=&quot;timeoff[1]['usable_remaining_leaves_formatted']&quot;]"
                 position="move"
             />
         </xpath>
         <xpath
-            expr="//t/span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves_formatted']&quot;]"
+            expr="//t/span[@t-esc=&quot;timeoff[1]['usable_remaining_leaves_formatted']&quot;]"
             position="before"
         >
             <a
@@ -68,7 +68,7 @@
         </xpath>
         <xpath expr="//a[count(*) = 0]" position="inside">
             <xpath
-                expr="//t/span[@t-esc=&quot;timeoff[1]['virtual_remaining_leaves_formatted']&quot;]"
+                expr="//t/span[@t-esc=&quot;timeoff[1]['usable_remaining_leaves_formatted']&quot;]"
                 position="move"
             />
         </xpath>

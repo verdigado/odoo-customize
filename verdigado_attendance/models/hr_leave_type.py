@@ -12,7 +12,13 @@ class HrLeaveType(models.Model):
     def _get_days_request(self):
         """Add a formatted version for every field used in calendar header"""
         result = super()._get_days_request()
-        for key in ("virtual_leaves_taken", "virtual_remaining_leaves"):
+        for key in (
+            "virtual_leaves_taken",
+            "virtual_remaining_leaves",
+            "usable_remaining_leaves",
+        ):
+            if key not in result[1]:
+                continue
             if result[1]["request_unit"] == "hour":
                 formatted = self.env["ir.qweb.field.float_time"].value_to_html(
                     float(result[1][key]), {}
@@ -21,6 +27,13 @@ class HrLeaveType(models.Model):
                 formatted = result[1][key]
             result[1]["%s_formatted" % key] = formatted
         result[1]["dashboard_action_id"] = self.dashboard_action_id.id
+        if (
+            "usable_remaining_leaves_formatted" in result[1]
+            and "virtual_remaining_leaves_formatted" not in result[1]
+        ):
+            result[1]["virtual_remaining_leaves_formatted"] = result[1][
+                "virtual_usable_leaves_formatted"
+            ]
         return result
 
     @api.model

@@ -23,7 +23,7 @@ var OvertimeSystray = Widget.extend({
             args: [],
             kwargs: {context: session.user_context},
         }).then(function (data) {
-            self.$("a").text(data[1].virtual_remaining_leaves_formatted);
+            self.$("a").text(data[1].usable_remaining_leaves_formatted);
         });
     },
 });
