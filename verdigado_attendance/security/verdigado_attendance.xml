@@ -167,6 +167,18 @@
 
     <record id="base.default_user" model="res.users">
         <!-- don't make new users hr managers by default /-->
-        <field name="groups_id" eval="[(5, ref('hr.group_hr_manager'))]" />
+        <field
+            name="groups_id"
+            eval="[
+                (3, ref('hr.group_hr_manager')),
+                (3, ref('hr.group_hr_user')),
+                (3, ref('hr_attendance.group_hr_attendance_kiosk')),
+                (3, ref('hr_attendance.group_hr_attendance_manager')),
+                (3, ref('hr_attendance.group_hr_attendance_user')),
+                (3, ref('hr_holidays.group_hr_holidays_manager')),
+                (3, ref('hr_holidays.group_hr_holidays_user')),
+                (4, ref('verdigado_attendance.group_verdigado_employee')),
+            ]"
+        />
     </record>
 </odoo>
