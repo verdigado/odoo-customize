@@ -5,20 +5,17 @@ from datetime import datetime, time, timedelta
 import pytz
 
 from odoo import fields
-from odoo.tests.common import TransactionCase
+
+from .hr_case import HrCase
 
 
-class TestOvertimeCalculation(TransactionCase):
+class TestOvertimeCalculation(HrCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.employeeA = cls.env["hr.employee"].create(
+        cls.employeeA = cls.env.ref("verdigado_attendance.verdigado_user_employee")
+        cls.employeeA.write(
             {
-                "name": "employeeA",
-                # 40h/w
-                "resource_calendar_id": cls.env.ref(
-                    "resource.resource_calendar_std"
-                ).id,
                 "address_id": cls.env["res.partner"]
                 .create(
                     {
@@ -30,18 +27,6 @@ class TestOvertimeCalculation(TransactionCase):
                 .id,
             }
         )
-        cls.employeeAallocation = cls.env["hr.leave.allocation"].create(
-            {
-                "employee_id": cls.employeeA.id,
-                "holiday_type": "employee",
-                "holiday_status_id": cls.env.ref("hr_holidays.holiday_status_cl").id,
-                "number_of_days": 30,
-                "date_from": "2023-01-01",
-                "date_to": "2023-12-31",
-            }
-        )
-        cls.employeeAallocation.action_confirm()
-        cls.employeeAallocation.action_validate()
         cls.env["hr.holidays.public.generator"].create(
             {
                 "year": 2023,
@@ -143,6 +128,38 @@ class TestOvertimeCalculation(TransactionCase):
         self.assertOvertime(employeeA, "2023-08-06", 33 * 60, 0)
         self.assertOvertime(employeeA, "2023-08-07", 0, 8 * 60)
 
+        # set an overtime factor and see what happens when we set the flag
+        employeeA.company_id.write(
+            {
+                "holiday_overtime_factor": 1.5,
+            }
+        )
+        employeeA.write(
+            {
+                "custom_holiday_overtime_factor": True,
+                "holiday_overtime_factor": 2.5,
+            }
+        )
+        attendance.apply_holiday_overtime_factor = True
+        self.assertOvertime(employeeA, "2023-08-06", 33 * 60, 0)
+        self.assertOvertime(employeeA, "2023-08-06", 1.5 * 33 * 60, 0, adjustment=True)
+        extra_overtime = self.env["hr.attendance.overtime"].search(
+            [
+                ("employee_id", "=", employeeA.id),
+                ("date", "=", "2023-08-06"),
+                ("adjustment", "=", True),
+            ]
+        )
+        self.assertEqual(
+            extra_overtime.note, "Extra overtime from holiday factor (2.50)"
+        )
+        attendance.check_out += timedelta(hours=1)
+        self.assertOvertime(employeeA, "2023-08-06", 34 * 60, 0)
+        self.assertOvertime(employeeA, "2023-08-06", 1.5 * 34 * 60, 0, adjustment=True)
+        attendance.unlink()
+        self.assertOvertime(employeeA, "2023-08-06", 0, 0)
+        self.assertOvertime(employeeA, "2023-08-06", 0, 0, adjustment=True)
+
     def to_time(self, time_string):
         if isinstance(time_string, str):
             return datetime.strptime(time_string, "%H:%M:%S").time()
@@ -163,37 +180,49 @@ class TestOvertimeCalculation(TransactionCase):
         checkout_time = self.to_time(checkout_time)
 
         tz = pytz.timezone(employee.tz)
-        return self.env["hr.attendance"].create(
-            {
-                "employee_id": employee.id,
-                "check_in": tz.localize(datetime.combine(date, checkin_time))
-                .astimezone(pytz.utc)
-                .replace(tzinfo=None),
-                "check_out": tz.localize(datetime.combine(date, checkout_time))
-                .astimezone(pytz.utc)
-                .replace(tzinfo=None),
-            }
+        return (
+            self.env["hr.attendance"]
+            .with_user(employee.user_id)
+            .create(
+                {
+                    "employee_id": employee.id,
+                    "check_in": tz.localize(datetime.combine(date, checkin_time))
+                    .astimezone(pytz.utc)
+                    .replace(tzinfo=None),
+                    "check_out": tz.localize(datetime.combine(date, checkout_time))
+                    .astimezone(pytz.utc)
+                    .replace(tzinfo=None),
+                }
+            )
         )
 
     def take_leave(self, employee, date_from, date_to):
-        leave = self.env["hr.leave"].create(
-            {
-                "employee_id": employee.id,
-                "date_from": self.local_date_to_utc_datetime(employee, date_from),
-                "date_to": self.local_date_to_utc_datetime(employee, date_to)
-                + timedelta(days=1),
-                "holiday_status_id": self.env.ref("hr_holidays.holiday_status_cl").id,
-            }
+        leave = (
+            self.env["hr.leave"]
+            .with_user(employee.user_id)
+            .create(
+                {
+                    "employee_id": employee.id,
+                    "date_from": self.local_date_to_utc_datetime(employee, date_from),
+                    "date_to": self.local_date_to_utc_datetime(employee, date_to)
+                    + timedelta(days=1),
+                    "holiday_status_id": self.env.ref(
+                        "hr_holidays.holiday_status_cl"
+                    ).id,
+                }
+            )
         )
-        leave.action_approve()
-        leave.action_validate()
+        leave.with_user(self.verdigado_manager).action_approve()
+        leave.with_user(self.verdigado_manager).action_validate()
 
-    def assertOvertime(self, employee, date, minutes, expected_minutes=None):
+    def assertOvertime(
+        self, employee, date, minutes, expected_minutes=None, adjustment=False
+    ):
         overtime = self.env["hr.attendance.overtime"].search(
             [
                 ("employee_id", "=", employee.id),
                 ("date", "=", date),
-                ("adjustment", "=", False),
+                ("adjustment", "=", adjustment),
             ]
         )
         self.assertEqual(

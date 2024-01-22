@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf8" ?>
+<templates>
+    <t t-inherit="hr_attendance.HrAttendanceMyMainMenu">
+        <xpath expr="//h4[@t-if='checked_in']" position="after">
+            <div t-if="checked_in and widget.effective_holiday_overtime_factor != 1">
+                <input type="checkbox" id="apply_holiday_overtime" checked="" />
+                <label for="apply_holiday_overtime">
+                    Apply holiday overtime factor
+                    <!-- prettier-ignore-start -->
+                    (<t t-out="widget.effective_holiday_overtime_factor" />)
+                    <!-- prettier-ignore-end -->
+                </label>
+            </div>
+        </xpath>
+    </t>
+</templates>
