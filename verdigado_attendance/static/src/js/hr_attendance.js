@@ -17,5 +17,17 @@ odoo.define("verdigado_attendance.hr_attendance", function (require) {
             });
             return Promise.all([this._super.apply(this, arguments), promise]);
         },
+        _rpc: function (params) {
+            if (
+                params &&
+                params.model === "hr.employee" &&
+                params.method === "attendance_manual"
+            ) {
+                params.context.default_apply_holiday_overtime_factor = this.$(
+                    "#apply_holiday_overtime"
+                ).is(":checked");
+            }
+            return this._super.apply(this, arguments);
+        },
     });
 });

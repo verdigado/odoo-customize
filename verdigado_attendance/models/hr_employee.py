@@ -39,3 +39,16 @@ class HrEmployee(models.Model):
             )
             else 1
         )
+
+    def _attendance_action_change(self):
+        """React to default flag for overtime factor"""
+        result = super()._attendance_action_change()
+        if "default_apply_holiday_overtime_factor" in self.env.context:
+            result.write(
+                {
+                    "apply_holiday_overtime_factor": self.env.context[
+                        "default_apply_holiday_overtime_factor"
+                    ],
+                }
+            )
+        return result
