@@ -12,5 +12,8 @@
                 </label>
             </div>
         </xpath>
+        <xpath expr="//div[hasclass('o_hr_attendance_user_badge')]" position="inside">
+            <a class="add_to_dashboard" href="#">Add to dashboard</a>
+        </xpath>
     </t>
 </templates>
