@@ -9,6 +9,7 @@ class HrAttendanceReport(models.Model):
     _inherit = "hr.attendance.report"
 
     expected_hours = fields.Float()
+    adjustment_hours = fields.Float()
 
     def _select(self):
         """Add expected hours"""
@@ -23,7 +24,7 @@ class HrAttendanceReport(models.Model):
                 JOIN hr_employee employee ON employee.id = hr_attendance.employee_id
                 WHERE calendar.id = employee.resource_calendar_id))))::date""",
             )
-            + ", coalesce(ot.expected_hours, 0) expected_hours"
+            + ", coalesce(ot.expected_hours, 0) expected_hours, 0 adjustment_hours"
         )
 
     def _join(self):
@@ -32,7 +33,8 @@ class HrAttendanceReport(models.Model):
             self._select()
             .replace("hra.worked_hours", "0")
             .replace("break_hours", "0")
-            .replace("coalesce(ot.expected_hours, 0)", "0"),
+            .replace("coalesce(ot.expected_hours, 0)", "0")
+            .replace("0 adjustment_hours", "coalesce(ot.duration, 0)"),
             self._from(),
             super()._join().replace("ot.adjustment = FALSE", "ot.adjustment = TRUE"),
         )

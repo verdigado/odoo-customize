@@ -9,6 +9,9 @@
             <field name="worked_hours" position="before">
                 <field name="expected_hours" type="measure" widget="float_time" />
             </field>
+            <field name="overtime_hours" position="before">
+                <field name="adjustment_hours" type="measure" widget="float_time" />
+            </field>
         </field>
     </record>
     <record
