@@ -156,6 +156,9 @@ class TestOvertimeCalculation(HrCase):
         attendance.check_out += timedelta(hours=1)
         self.assertOvertime(employeeA, "2023-08-06", 34 * 60, 0)
         self.assertOvertime(employeeA, "2023-08-06", 1.5 * 34 * 60, 0, adjustment=True)
+        attendance.unlink()
+        self.assertOvertime(employeeA, "2023-08-06", 0, 0)
+        self.assertOvertime(employeeA, "2023-08-06", 0, 0, adjustment=True)
 
     def to_time(self, time_string):
         if isinstance(time_string, str):

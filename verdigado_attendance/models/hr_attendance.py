@@ -20,6 +20,8 @@ class HrAttendance(models.Model):
         result = super()._update_overtime(
             employee_attendance_dates=employee_attendance_dates
         )
+        if not self.exists():
+            return result
         if employee_attendance_dates is None:
             employee_attendance_dates = self._get_attendances_dates()
 
