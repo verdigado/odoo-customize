@@ -35,3 +35,26 @@ span[data-menu-xmlid="mail.menu_root_discuss"] {
         background-color: #e7f7eb !important;
     }
 }
+
+/* adapt display of attendance client action within dashboard */
+.oe_dashboard .o_hr_attendance_kiosk_mode_container {
+    position: relative;
+    margin-top: 90px;
+}
+
+.oe_dashboard .o_hr_attendance_kiosk_backdrop {
+    background: none;
+}
+
+/* hide add to dashboard link without mouseover */
+.o_hr_attendance_user_badge .add_to_dashboard {
+    display: none;
+}
+.o_hr_attendance_user_badge:hover .add_to_dashboard {
+    display: block;
+    color: white;
+}
+
+.oe_dashboard .o_hr_attendance_user_badge:hover .add_to_dashboard {
+    display: none;
+}

@@ -62,6 +62,7 @@
         ],
         "web.assets_backend": [
             "verdigado_attendance/static/src/scss/backend.scss",
+            "verdigado_attendance/static/src/js/board_renderer.js",
             "verdigado_attendance/static/src/js/hr_attendance.js",
             "verdigado_attendance/static/src/js/systray.esm.js",
             "verdigado_attendance/static/src/js/time_off_calendar.js",

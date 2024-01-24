@@ -5,8 +5,13 @@ odoo.define("verdigado_attendance.hr_attendance", function (require) {
     "use strict";
 
     var myAttendances = require("hr_attendance.my_attendances");
+    var core = require("web.core");
 
     myAttendances.include({
+        events: _.extend(myAttendances.prototype.events, {
+            "click a.add_to_dashboard": "_add_to_dashboard",
+        }),
+
         willStart: function () {
             var self = this;
             var promise = this._rpc({
@@ -17,6 +22,7 @@ odoo.define("verdigado_attendance.hr_attendance", function (require) {
             });
             return Promise.all([this._super.apply(this, arguments), promise]);
         },
+
         _rpc: function (params) {
             if (
                 params &&
@@ -28,6 +34,19 @@ odoo.define("verdigado_attendance.hr_attendance", function (require) {
                 ).is(":checked");
             }
             return this._super.apply(this, arguments);
+        },
+
+        _add_to_dashboard: function () {
+            return this._rpc({
+                route: "/board/add_to_dashboard",
+                params: {
+                    action_id: -1,
+                    context_to_save: {},
+                    domain: [],
+                    view_mode: "hr_attendance_my_attendances",
+                    name: core._t("Check In / Check Out"),
+                },
+            });
         },
     });
 });
