@@ -5,7 +5,7 @@
             <div t-if="checked_in and widget.effective_holiday_overtime_factor != 1">
                 <input type="checkbox" id="apply_holiday_overtime" checked="" />
                 <label for="apply_holiday_overtime">
-                    Apply holiday overtime factor
+                    Apply Holiday Overtime Factor
                     <!-- prettier-ignore-start -->
                     (<t t-out="widget.effective_holiday_overtime_factor" />)
                     <!-- prettier-ignore-end -->

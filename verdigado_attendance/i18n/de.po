@@ -6,28 +6,111 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-31 20:53+0000\n"
-"PO-Revision-Date: 2022-05-31 20:53+0000\n"
+"POT-Creation-Date: 2024-01-24 14:56+0000\n"
+"PO-Revision-Date: 2024-01-24 21:15+0100\n"
 "Last-Translator: Alexander Bigga, 2022\n"
 "Language-Team: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Language: de\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. module: verdigado_attendance
-#: model:ir.ui.menu,name:verdigado_attendance.menu_configuration_workingtimes_verdigado
-msgid "Working Times"
-msgstr "Arbeitszeiten"
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_attendance.xml:0
+#, python-format
+msgid "Add to dashboard"
+msgstr "Zum Dashboard hinzufügen"
 
-#. module: hr_attendance
-#: model:ir.actions.act_window,name:hr_attendance.hr_attendance_overtime_action
-#: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance_overtime__duration
-#: model:ir.model.fields,field_description:hr_attendance.field_hr_attendance_report__overtime_hours
-#: model_terms:ir.ui.view,arch_db:hr_attendance.res_config_settings_view_form
-msgid "Extra Hours"
-msgstr "Gleitzeitkonto"
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance_report__adjustment_hours
+msgid "Adjustment Hours"
+msgstr "Angepasste Stunden"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance__apply_holiday_overtime_factor
+msgid "Apply Holiday Overtime Factor"
+msgstr "Höherwertung anwenden"
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_attendance.xml:0
+#, python-format
+msgid "Apply holiday overtime factor"
+msgstr "Höherwertung anwenden"
+
+#. module: verdigado_attendance
+#: model:ir.model,name:verdigado_attendance.model_hr_attendance
+msgid "Attendance"
+msgstr "Anwesenheiten"
+
+#. module: verdigado_attendance
+#: model:ir.model,name:verdigado_attendance.model_hr_attendance_overtime
+msgid "Attendance Overtime"
+msgstr "Neuberechnung der Überstunden"
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/time_off_calendar.xml:0
+#, python-format
+msgid "Calendar links"
+msgstr "Kalender Links (ics-Export)"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance__check_in
+msgid "Check In"
+msgstr ""
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/js/hr_attendance.js:0
+#, python-format
+msgid "Check In / Check Out"
+msgstr ""
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance__check_out
+msgid "Check Out"
+msgstr ""
+
+#. module: verdigado_attendance
+#: model:ir.model,name:verdigado_attendance.model_res_company
+msgid "Companies"
+msgstr "Unternehmen"
+
+#. module: verdigado_attendance
+#: model:ir.model,name:verdigado_attendance.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_employee__custom_holiday_overtime_factor
+msgid "Custom Holiday Overtime Factor"
+msgstr "Spezifischer Höherwertungs-Faktor an Wochenend- und Feiertagen"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_leave_type__dashboard_action_id
+msgid "Dashboard Action"
+msgstr "Dashboard Aktion"
+
+#. module: verdigado_attendance
+#: model:ir.model,name:verdigado_attendance.model_base_ical
+msgid "Definition of an iCal export"
+msgstr ""
+
+#. module: verdigado_attendance
+#: model:ir.model,name:verdigado_attendance.model_hr_employee
+#: model:res.groups,name:verdigado_attendance.group_verdigado_employee
+msgid "Employee"
+msgstr "Mitarbeiter*in"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance_overtime__expected_hours
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance_report__expected_hours
+msgid "Expected Hours"
+msgstr "Soll-Stunden"
 
 #. module: verdigado_attendance
 #. openerp-web
@@ -37,15 +120,22 @@ msgid "Extra hours"
 msgstr "Gleitzeitkonto"
 
 #. module: verdigado_attendance
-#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance_overtime__expected_hours
-#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance_report__expected_hours
-msgid "Expected Hours"
-msgstr "Soll-Stunden"
+#: code:addons/verdigado_attendance/models/hr_attendance.py:0
+#, python-format
+msgid "Extra overtime from holiday factor (%.2f)"
+msgstr "Höherwertung durch Faktor (%.2f) Wochenend- und Feiertagen"
 
 #. module: verdigado_attendance
-#: model:res.groups,name:verdigado_attendance.group_verdigado_employee
-msgid "Employee"
-msgstr "Mitarbeiter*in"
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_employee__holiday_overtime_factor
+#: model:ir.model.fields,field_description:verdigado_attendance.field_res_company__holiday_overtime_factor
+#: model:ir.model.fields,field_description:verdigado_attendance.field_res_config_settings__holiday_overtime_factor
+msgid "Holiday Overtime Factor"
+msgstr "Höherwertungs-Faktor an Wochenend- und Feiertagen"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance_overtime__holiday_overtime_for_overtime_id
+msgid "Holiday Overtime For Overtime"
+msgstr "Höherwertungs-Faktor an Wochenend- und Feiertagen"
 
 #. module: verdigado_attendance
 #: model:res.groups,name:verdigado_attendance.group_verdigado_manager
@@ -53,14 +143,100 @@ msgid "Manager"
 msgstr ""
 
 #. module: verdigado_attendance
+#: model:base.ical,name:verdigado_attendance.ical_my_leaves
+msgid "My leaves"
+msgstr "Meine Urlaube (ics)"
+
+#. module: verdigado_attendance
+#: model:base.ical,name:verdigado_attendance.ical_my_team_leaves
+msgid "My team leaves"
+msgstr "Urlaube meines Teams (ics)"
+
+#. module: verdigado_attendance
 #: model:res.groups,name:verdigado_attendance.group_verdigado_officer
 msgid "Officer"
 msgstr "Personalverantwortliche*r"
 
 #. module: verdigado_attendance
+#: model_terms:ir.ui.view,arch_db:verdigado_attendance.res_config_settings_view_form
+msgid "Overtime on holidays"
+msgstr "Überstunden an Wochenend- und Feiertagen"
+
+#. module: verdigado_attendance
 #: model:ir.actions.server,name:verdigado_attendance.action_hr_attendance_overtime_recalculation
 msgid "Recalculate Overtime"
 msgstr "Neuberechnung der Überstunden"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_base_ical__show_on_holiday_calendar
+msgid "Show on holiday calendar"
+msgstr "Im Urlaubs-Kalender anzeigen"
+
+#. module: verdigado_attendance
+#: model:ir.model,name:verdigado_attendance.model_hr_leave
+msgid "Time Off"
+msgstr ""
+
+#. module: verdigado_attendance
+#: model:ir.actions.act_window,name:verdigado_attendance.action_hr_leave_report
+msgid "Time Off Analysis"
+msgstr "Abwesenheitsanalyse"
+
+#. module: verdigado_attendance
+#: model:ir.model,name:verdigado_attendance.model_hr_leave_type
+msgid "Time Off Type"
+msgstr "Abwesenheitsart"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,help:verdigado_attendance.field_hr_employee__custom_holiday_overtime_factor
+msgid "Use a custom overtime factor for holidays/weekens instead of the company's"
+msgstr ""
+
+#. module: verdigado_attendance
+#: model:ir.model,name:verdigado_attendance.model_res_users
+msgid "Users"
+msgstr "Benutzer"
+
+#. module: verdigado_attendance
+#: model:ir.module.category,name:verdigado_attendance.module_category_verdigado
+#: model_terms:ir.ui.view,arch_db:verdigado_attendance.edit_holiday_status_form
+msgid "Verdigado"
+msgstr ""
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,help:verdigado_attendance.field_hr_employee__holiday_overtime_factor
+#: model:ir.model.fields,help:verdigado_attendance.field_res_company__holiday_overtime_factor
+#: model:ir.model.fields,help:verdigado_attendance.field_res_config_settings__holiday_overtime_factor
+msgid "When activated on holidays/weekends, overtime is multiplied with this factor"
+msgstr "Wenn aktiv, werden die Überstunden an Wochenend- und Feiertagen mit dem Faktor multipliziert"
+
+#. module: verdigado_attendance
+#: model_terms:ir.ui.view,arch_db:verdigado_attendance.res_config_settings_view_form
+msgid ""
+"When recording attendances on a holiday, this factor\n"
+"                                will be applied"
+msgstr ""
+"Überstunden an Wochenend- und Feiertagen werden mit diesem \n"
+"Faktor multipliziert"
+
+#. module: verdigado_attendance
+#: model:ir.ui.menu,name:verdigado_attendance.menu_configuration_workingtimes_verdigado
+msgid "Working Times"
+msgstr "Arbeitszeiten"
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#, python-format
+msgid "timeoff[1]['usable_remaining_leaves_formatted']"
+msgstr ""
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#, python-format
+msgid "timeoff[1]['virtual_leaves_taken_formatted']"
+msgstr ""
 
 #. module: hr_attendance_break
 #: model:mail.activity.type,name:hr_attendance_break.activity_type_mandatory_break
@@ -182,16 +358,12 @@ msgstr ""
 #. module: hr_attendance_break
 #: code:addons/hr_attendance_break/models/hr_attendance_break.py:0
 #, python-format
-msgid ""
-"Breaks must be fully contained by the attendance they belong to and can't "
-"overlap"
-msgstr "Pausen müssen sich vollständig in einem Anwesenheits-Zeitraum befinden "
-"und dürfen sich nicht überlappen"
+msgid "Breaks must be fully contained by the attendance they belong to and can't overlap"
+msgstr "Pausen müssen sich vollständig in einem Anwesenheits-Zeitraum befinden und dürfen sich nicht überlappen"
 
 #. module: hr_attendance_break
 #: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
-msgid ""
-"Breaks shorter than this value will not be counted towards mandatory breaks"
+msgid "Breaks shorter than this value will not be counted towards mandatory breaks"
 msgstr "Pausen die kürzer als angegeben werden nicht zu den Mindestpausen hinzu gerechnet"
 
 #. module: hr_attendance_break
@@ -247,11 +419,5 @@ msgstr "Mindestpausenzeit"
 
 #. module: hr_attendance_break
 #: model:mail.template,subject:hr_attendance_break.template_mandatory_break
-msgid ""
-"Please review your breaks from {{ "
-"format_date(ctx.get('hr_attendance_break_date', "
-"object.last_attendance_id.check_in)) }}"
-msgstr ""
-"Bitte Pausenzeiten überprüfen:  {{ "
-"format_date(ctx.get('hr_attendance_break_date', "
-"object.last_attendance_id.check_in)) }}"
+msgid "Please review your breaks from {{ format_date(ctx.get('hr_attendance_break_date', object.last_attendance_id.check_in)) }}"
+msgstr "Bitte Pausenzeiten überprüfen:  {{ format_date(ctx.get('hr_attendance_break_date', object.last_attendance_id.check_in)) }}"
