@@ -34,6 +34,17 @@ class HrLeaveType(models.Model):
             result[1]["virtual_remaining_leaves_formatted"] = result[1][
                 "virtual_usable_leaves_formatted"
             ]
+        overlap_ids = []
+        overlap_time = 0.0
+        for overlap1, overlap2, time in self._get_overlap(
+            self._get_contextual_employee_id()
+        ):
+            overlap_ids += overlap1.ids + overlap2.ids
+            overlap_time += time
+        result[1]["overlap"] = {
+            "time": overlap_time,
+            "ids": overlap_ids,
+        }
         return result
 
     @api.model

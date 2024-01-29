@@ -41,4 +41,23 @@ odoo.define("verdigado_attendance.time_off_calendar", function (require) {
             });
         },
     });
+    var Controller = viewRegistry.get("time_off_calendar_all").prototype.config
+        .Controller;
+    Controller.include({
+        events: _.extend({}, Controller.prototype.events, {
+            "click .overlap": "_onOverlap",
+        }),
+        _onOverlap: function (e) {
+            return this.do_action({
+                type: "ir.actions.act_window",
+                res_model: "hr.leave",
+                views: [
+                    [false, "list"],
+                    [false, "form"],
+                ],
+                target: "current",
+                domain: [["id", "in", jQuery(e.currentTarget).data("ids")]],
+            });
+        },
+    });
 });
