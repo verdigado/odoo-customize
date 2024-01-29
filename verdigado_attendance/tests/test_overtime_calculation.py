@@ -33,6 +33,12 @@ class TestOvertimeCalculation(HrCase):
                 "country_id": cls.env.ref("base.de").id,
             }
         ).action_run()
+        cls.env["hr.holidays.public.generator"].create(
+            {
+                "year": 2024,
+                "country_id": cls.env.ref("base.de").id,
+            }
+        ).action_run()
         cls.employeeA.company_id.write(
             {
                 # TODO: fix odoo's off-by-one error here in hr.attendance#_get_attendances_dates
@@ -160,6 +166,29 @@ class TestOvertimeCalculation(HrCase):
         self.assertOvertime(employeeA, "2023-08-06", 0, 0)
         self.assertOvertime(employeeA, "2023-08-06", 0, 0, adjustment=True)
 
+        # overtime on an excluded weekend day with a holiday
+        employeeA.holiday_overtime_saturday = False
+        self.record_time(
+            employeeA,
+            "2024-01-06",
+            "09:30:00",
+            "13:30:00",
+            apply_holiday_overtime_factor=True,
+        )
+        self.assertOvertime(employeeA, "2024-01-06", 4 * 60)
+        self.assertOvertime(employeeA, "2024-01-06", 1.5 * 4 * 60, adjustment=True)
+
+        # but no extra overtime on excluded weekend day without a holiday
+        self.record_time(
+            employeeA,
+            "2024-01-13",
+            "09:30:00",
+            "13:30:00",
+            apply_holiday_overtime_factor=True,
+        )
+        self.assertOvertime(employeeA, "2024-01-13", 4 * 60)
+        self.assertOvertime(employeeA, "2024-01-13", 0, adjustment=True)
+
     def to_time(self, time_string):
         if isinstance(time_string, str):
             return datetime.strptime(time_string, "%H:%M:%S").time()
@@ -174,7 +203,14 @@ class TestOvertimeCalculation(HrCase):
             .replace(tzinfo=None)
         )
 
-    def record_time(self, employee, date, checkin_time, checkout_time):
+    def record_time(
+        self,
+        employee,
+        date,
+        checkin_time,
+        checkout_time,
+        apply_holiday_overtime_factor=False,
+    ):
         date = fields.Date.to_date(date)
         checkin_time = self.to_time(checkin_time)
         checkout_time = self.to_time(checkout_time)
@@ -192,6 +228,7 @@ class TestOvertimeCalculation(HrCase):
                     "check_out": tz.localize(datetime.combine(date, checkout_time))
                     .astimezone(pytz.utc)
                     .replace(tzinfo=None),
+                    "apply_holiday_overtime_factor": apply_holiday_overtime_factor,
                 }
             )
         )

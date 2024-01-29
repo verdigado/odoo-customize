@@ -10,6 +10,9 @@ class ResCompany(models.Model):
         default=1,
         help="When activated on holidays/weekends, overtime is multiplied with this factor",
     )
+    holiday_overtime_holidays = fields.Boolean(string="Holidays", default=True)
+    holiday_overtime_saturday = fields.Boolean(string="Saturdays", default=True)
+    holiday_overtime_sunday = fields.Boolean(string="Sundays", default=True)
 
     def write(self, vals):
         """Don't delete overtime records that are adjustments when changing overtime settings"""

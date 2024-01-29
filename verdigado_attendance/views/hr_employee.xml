@@ -10,6 +10,18 @@
                     name="holiday_overtime_factor"
                     attrs="{'invisible': [('custom_holiday_overtime_factor', '=', False)]}"
                 />
+                <field
+                    name="holiday_overtime_holidays"
+                    attrs="{'invisible': [('custom_holiday_overtime_factor', '=', False)]}"
+                />
+                <field
+                    name="holiday_overtime_saturday"
+                    attrs="{'invisible': [('custom_holiday_overtime_factor', '=', False)]}"
+                />
+                <field
+                    name="holiday_overtime_sunday"
+                    attrs="{'invisible': [('custom_holiday_overtime_factor', '=', False)]}"
+                />
             </field>
         </field>
     </record>
