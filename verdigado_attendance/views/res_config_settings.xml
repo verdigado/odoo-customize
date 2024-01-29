@@ -28,6 +28,45 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mt16 o_settings_container" name="break_settings">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="holiday_overtime_holidays" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="holiday_overtime_holidays" />
+                            <div class="text-muted">
+                                Overtime factor is applied on holidays
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt16 o_settings_container" name="break_settings">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="holiday_overtime_saturday" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="holiday_overtime_saturday" />
+                            <div class="text-muted">
+                                Overtime factor is applied on Saturdays
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt16 o_settings_container" name="break_settings">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="holiday_overtime_sunday" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="holiday_overtime_sunday" />
+                            <div class="text-muted">
+                                Overtime factor is applied on Sundays
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </field>
     </record>

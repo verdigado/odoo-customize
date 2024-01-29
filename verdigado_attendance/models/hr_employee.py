@@ -15,6 +15,15 @@ class HrEmployee(models.Model):
         help="When activated on holidays/weekends, overtime is multiplied with this factor",
         groups="hr.group_hr_user",
     )
+    holiday_overtime_holidays = fields.Boolean(
+        string="On Holidays", default=True, groups="hr.group_hr_user"
+    )
+    holiday_overtime_saturday = fields.Boolean(
+        string="On Saturdays", default=True, groups="hr.group_hr_user"
+    )
+    holiday_overtime_sunday = fields.Boolean(
+        string="On Sundays", default=True, groups="hr.group_hr_user"
+    )
 
     def _get_effective_holiday_overtime_factor(self, date=None):
         """Return an employee's effective overtime factor for some date"""
@@ -27,6 +36,7 @@ class HrEmployee(models.Model):
                 fields.Datetime.now(),
             )[1]
         )
+        weekday = date.isoweekday()
         return (
             (
                 self.custom_holiday_overtime_factor
@@ -34,8 +44,23 @@ class HrEmployee(models.Model):
                 or self.company_id.holiday_overtime_factor
             )
             if (
-                date.isoweekday() >= 6
-                or self.env["hr.holidays.public"].is_public_holiday(date, self.id)
+                self.custom_holiday_overtime_factor
+                and (
+                    self.holiday_overtime_saturday
+                    and weekday == 6
+                    or self.holiday_overtime_sunday
+                    and weekday == 7
+                    or self.holiday_overtime_holidays
+                    and self.env["hr.holidays.public"].is_public_holiday(date, self.id)
+                )
+                or (
+                    self.company_id.holiday_overtime_saturday
+                    and weekday == 6
+                    or self.company_id.holiday_overtime_sunday
+                    and weekday == 7
+                    or self.company_id.holiday_overtime_holidays
+                    and self.env["hr.holidays.public"].is_public_holiday(date, self.id)
+                )
             )
             else 1
         )
