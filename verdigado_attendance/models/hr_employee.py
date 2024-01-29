@@ -53,7 +53,8 @@ class HrEmployee(models.Model):
                     or self.holiday_overtime_holidays
                     and self.env["hr.holidays.public"].is_public_holiday(date, self.id)
                 )
-                or (
+                or not self.custom_holiday_overtime_factor
+                and (
                     self.company_id.holiday_overtime_saturday
                     and weekday == 6
                     or self.company_id.holiday_overtime_sunday
