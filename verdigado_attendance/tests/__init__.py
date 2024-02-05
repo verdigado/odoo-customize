@@ -3,6 +3,7 @@
 
 from . import hr_case
 from . import test_holidays
+from . import test_holiday_wizard
 from . import test_hr_access
 from . import test_overtime_calculation
 from . import test_misc
