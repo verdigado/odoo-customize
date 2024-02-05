@@ -87,5 +87,56 @@
                 position="move"
             />
         </xpath>
+        <xpath expr="(//div[hasclass('mt-1')]/t)[1]" position="inside">
+            <span t-if="timeoff[1]['overlap']['time'] > 0">
+                <br />
+                (incl.
+                <t t-out="timeoff[1]['overlap']['time']" />
+                from
+                <!-- prettier-ignore-start -->
+                <a
+                    href="#"
+                    class="overlap"
+                    t-att-data-ids="JSON.stringify(timeoff[1]['overlap']['ids'])"
+                >
+                    overlaps
+                </a>)
+                <!-- prettier-ignore-end -->
+            </span>
+        </xpath>
+        <xpath expr="(//div[hasclass('mt-1')]/t)[2]" position="inside">
+            <span t-if="timeoff[1]['overlap']['time'] > 0">
+                <br />
+                (incl.
+                <t t-out="timeoff[1]['overlap']['time']" />
+                from
+                <!-- prettier-ignore-start -->
+                <a
+                    href="#"
+                    class="overlap"
+                    t-att-data-ids="JSON.stringify(timeoff[1]['overlap']['ids'])"
+                >
+                    overlaps
+                </a>)
+                <!-- prettier-ignore-end -->
+            </span>
+        </xpath>
+        <xpath expr="(//div[hasclass('mt-1')]/t)[3]" position="inside">
+            <span t-if="timeoff[1]['overlap']['time'] > 0">
+                <br />
+                (incl.
+                <t t-out="timeoff[1]['overlap']['time']" />
+                from
+                <!-- prettier-ignore-start -->
+                <a
+                    href="#"
+                    class="overlap"
+                    t-att-data-ids="JSON.stringify(timeoff[1]['overlap']['ids'])"
+                >
+                    overlaps
+                </a>)
+                <!-- prettier-ignore-end -->
+            </span>
+        </xpath>
     </t>
 </templates>
