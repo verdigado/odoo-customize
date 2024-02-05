@@ -12,7 +12,7 @@
     "depends": [
         "auditlog",
         "base_ical",
-        "board",
+        "board_group_board",
         "hr_attendance",
         "hr_attendance_reason",
         "hr_attendance_calendar_view",
