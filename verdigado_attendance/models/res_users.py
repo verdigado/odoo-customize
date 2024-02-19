@@ -8,4 +8,7 @@ class ResUsers(models.Model):
 
     @api.model
     def get_effective_holiday_overtime_factor(self):
-        return self.env.user.employee_id._get_effective_holiday_overtime_factor()
+        if self.env.user.employee_id:
+            return self.env.user.employee_id._get_effective_holiday_overtime_factor()
+        else:
+            return 1.0
