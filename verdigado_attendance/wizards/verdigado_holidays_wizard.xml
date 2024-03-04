@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="verdigado_holiday_wizard_form" model="ir.ui.view">
+        <field name="model">verdigado.holidays.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <div>
+                    This wizard creates allocations proportional to a FTE with following
+                    values
+                </div>
+                <group>
+                    <field name="full_vacation" />
+                    <field name="year" />
+                    <field name="date_start" />
+                    <field name="date_end" />
+                    <field name="leave_type_id" />
+                    <field
+                        name="employee_ids"
+                        widget="many2many_tags"
+                        invisible="context.get('active_model') == 'hr.employee'"
+                        required="context.get('active_model') != 'hr.employee'"
+                    />
+                </group>
+                <footer>
+                    <button
+                        string="Create allocations"
+                        name="button_assign_vacation"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Discard" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_verdigado_holiday_wizard" model="ir.actions.act_window">
+        <field name="name">Allocate vacation</field>
+        <field name="res_model">verdigado.holidays.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="hr.model_hr_employee" />
+    </record>
+
+    <menuitem
+        id="menu_verdigado_holiday_wizard"
+        parent="hr_holidays.menu_hr_holidays_approvals"
+        action="action_verdigado_holiday_wizard"
+    />
+</odoo>

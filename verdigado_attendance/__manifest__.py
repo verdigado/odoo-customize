@@ -47,6 +47,7 @@
         "views/hr_menu_human_resources_configuration.xml",
         "views/menu.xml",
         "views/res_config_settings.xml",
+        "wizards/verdigado_holidays_wizard.xml",
     ],
     "demo": [
         "demo/res_users.xml",
