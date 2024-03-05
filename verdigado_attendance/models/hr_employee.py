@@ -7,7 +7,7 @@ class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
     custom_holiday_overtime_factor = fields.Boolean(
-        help="Use a custom overtime factor for holidays/weekens instead of the company's",
+        help="Use a custom overtime factor for holidays/weekends instead of the company's",
         groups="hr.group_hr_user",
     )
     holiday_overtime_factor = fields.Float(
