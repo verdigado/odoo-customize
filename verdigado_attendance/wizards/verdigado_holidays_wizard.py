@@ -35,7 +35,7 @@ class VerdigadoHolidaysWizard(models.TransientModel):
     date_end = fields.Date(
         string="Validity end",
         default=lambda self: fields.Date.today()
-        + relativedelta(month=1, day=1, years=1),
+        + relativedelta(month=3, day=31, years=2),
     )
     leave_type_id = fields.Many2one(
         "hr.leave.type",

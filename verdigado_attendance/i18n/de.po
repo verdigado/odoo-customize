@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-24 14:56+0000\n"
-"PO-Revision-Date: 2024-01-24 21:15+0100\n"
+"POT-Creation-Date: 2024-03-04 16:21+0000\n"
+"PO-Revision-Date: 2024-03-05 10:51+0100\n"
 "Last-Translator: Alexander Bigga, 2022\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -16,6 +16,73 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#, python-format
+msgid "(incl."
+msgstr ""
+
+#. module: hr_attendance_break
+#: model:mail.template,body_html:hr_attendance_break.template_mandatory_break
+msgid ""
+"<p>Dear <t t-out=\"object.name\"/>,</p>\n"
+"            <p>on <t t-out=\"format_date(ctx.get('hr_attendance_break_date', "
+"object.last_attendance_id.check_in))\"/>, you only took <t t-"
+"out=\"format_duration(ctx.get('hr_attendance_break_hours') or 0)\"/> hours "
+"of break, while you should have been taking <t t-out=\"format_duration(ctx."
+"get('hr_attendance_break_threshold', object.env['hr.attendance.break."
+"threshold']).min_break)\"/> hours.</p>\n"
+"            <p>Please review the attendances below:</p>\n"
+"            <ul>\n"
+"                <li t-foreach=\"ctx.get('hr_attendance_break_attendances', "
+"object.last_attendance_id)\" t-as=\"attendance\">\n"
+"                    <a t-attf-href=\"/mail/view?model={{ attendance._name }}"
+"&amp;res_id={{ attendance.id }}\"><t t-out=\"attendance.display_name\"/></"
+"a>\n"
+"                </li>\n"
+"            </ul>\n"
+"        "
+msgstr ""
+"<p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">Hallo <t t-"
+"out=\"object.name\"></t>,</p>\n"
+"            <p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">am <t t-"
+"out=\"format_date(ctx.get('hr_attendance_break_date', object."
+"last_attendance_id.check_in))\"></t>, hast du eine Pause von&nbsp;<t t-"
+"out=\"format_duration(ctx.get('hr_attendance_break_hours') or 0)\"></t>&nbsp;"
+"Stunden genommen.</p><p style=\"margin:0px 0 12px 0;box-sizing:border-box;"
+"\">Die gesetzliche Regelung erfordert, nach einer Arbeitszeit von 6 Stunden "
+"eine Pause von mindestens&nbsp;<t t-out=\"format_duration(ctx."
+"get('hr_attendance_break_threshold', object.env['hr.attendance.break."
+"threshold']).min_break)\"></t>&nbsp;Stunden zu nehmen.</p><p "
+"style=\"margin:0px 0 12px 0;box-sizing:border-box;\">Die gesetzliche "
+"Regelungen wurden vom System automatisch eingetragen.&nbsp; Bitte überprüfe "
+"den Eintrag hier:&nbsp;</p><ul style=\"margin:0px 0 12px 0;box-sizing:border-"
+"box;\">\n"
+"                <li t-foreach=\"ctx.get('hr_attendance_break_attendances', "
+"object.last_attendance_id)\" t-as=\"attendance\">\n"
+"                    <a t-attf-href=\"/mail/view?model={{ attendance._name }}"
+"&amp;res_id={{ attendance.id }}\" style=\"text-decoration:none;box-sizing:"
+"border-box;background-color:transparent;color:inherit;\"><t t-"
+"out=\"attendance.display_name\"></t></a>\n"
+"                </li>\n"
+"            </ul>\n"
+"        "
+
+#. modules: verdigado_attendance, hr_attendance_break
+#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:verdigado_attendance.res_config_settings_view_form
+msgid ""
+"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
+"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
+"\" groups=\"base.group_multi_company\"/>"
+msgstr ""
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_reason__action_type
+msgid "Action Type"
+msgstr ""
 
 #. module: verdigado_attendance
 #. openerp-web
@@ -30,19 +97,27 @@ msgid "Adjustment Hours"
 msgstr "Angepasste Stunden"
 
 #. module: verdigado_attendance
-#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance__apply_holiday_overtime_factor
-msgid "Apply Holiday Overtime Factor"
-msgstr "Höherwertung anwenden"
+#: model:ir.actions.act_window,name:verdigado_attendance.action_verdigado_holiday_wizard
+#: model:ir.ui.menu,name:verdigado_attendance.menu_verdigado_holiday_wizard
+msgid "Allocate vacation"
+msgstr "Urlaubsansprüche Wizard"
+
+#. module: hr_holidays_overlap
+#: model:ir.model.fields,field_description:hr_holidays_overlap.field_hr_leave_type__can_overlap
+msgid "Allow overlap with other leaves"
+msgstr ""
 
 #. module: verdigado_attendance
 #. openerp-web
 #: code:addons/verdigado_attendance/static/src/xml/hr_attendance.xml:0
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance__apply_holiday_overtime_factor
 #, python-format
-msgid "Apply holiday overtime factor"
+msgid "Apply Holiday Overtime Factor"
 msgstr "Höherwertung anwenden"
 
-#. module: verdigado_attendance
+#. modules: verdigado_attendance, hr_attendance_break
 #: model:ir.model,name:verdigado_attendance.model_hr_attendance
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__attendance_id
 msgid "Attendance"
 msgstr "Anwesenheiten"
 
@@ -50,6 +125,87 @@ msgstr "Anwesenheiten"
 #: model:ir.model,name:verdigado_attendance.model_hr_attendance_overtime
 msgid "Attendance Overtime"
 msgstr "Neuberechnung der Überstunden"
+
+#. module: hr_attendance_break
+#: model:ir.model,name:hr_attendance_break.model_hr_attendance_reason
+#, fuzzy
+#| msgid "Attendance"
+msgid "Attendance Reason"
+msgstr "Anwesenheiten"
+
+#. module: verdigado_attendance
+#: model:ir.model,name:verdigado_attendance.model_hr_attendance_report
+msgid "Attendance Statistics"
+msgstr "Neuberechnung der Überstunden"
+
+#. module: hr_attendance_break
+#: model:mail.template,name:hr_attendance_break.template_mandatory_break
+#, fuzzy
+#| msgid "Flag mandatory breaks"
+msgid "Attendance: Mandatory break"
+msgstr "Kennzeichnung von Pflichtpausen"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance_break__begin
+msgid "Begin"
+msgstr "Beginn"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields.selection,name:hr_attendance_break.selection__hr_attendance_reason__action_type__break
+msgid "Break"
+msgstr "Pause"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance__break_hours
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__break_hours
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_report__break_hours
+msgid "Break Hours"
+msgstr "Pausen"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_employee__break_hours_today
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_employee_public__break_hours_today
+msgid "Break Hours Today"
+msgstr "Heutige Pausen"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_employee__break_state
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_employee_public__break_state
+#, fuzzy
+#| msgid "Break"
+msgid "Break State"
+msgstr "Pause"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance__break_ids
+#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
+msgid "Breaks"
+msgstr "Pausen"
+
+#. module: hr_attendance_break
+#: code:addons/hr_attendance_break/models/hr_attendance_break.py:0
+#, python-format
+msgid ""
+"Breaks must be fully contained by the attendance they belong to and can't "
+"overlap"
+msgstr ""
+"Pausen müssen sich vollständig in einem Anwesenheits-Zeitraum befinden und "
+"dürfen sich nicht überlappen"
+
+#. module: hr_attendance_break
+#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
+msgid ""
+"Breaks shorter than this value will not be counted towards mandatory breaks"
+msgstr ""
+"Pausen die kürzer als angegeben werden nicht zu den Mindestpausen hinzu "
+"gerechnet"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_reason__bypass_minimum_break
+#, fuzzy
+#| msgid "Min Break"
+msgid "Bypass Minimum Break"
+msgstr "Mindestpause"
 
 #. module: verdigado_attendance
 #. openerp-web
@@ -75,14 +231,58 @@ msgstr ""
 msgid "Check Out"
 msgstr ""
 
+#. module: hr_attendance_break
+#: model:ir.model.fields,help:hr_attendance_break.field_hr_attendance_reason__bypass_minimum_break
+msgid ""
+"Check this to have breaks of this type always be counted, independent of "
+"minimum break settings"
+msgstr ""
+
 #. module: verdigado_attendance
 #: model:ir.model,name:verdigado_attendance.model_res_company
 msgid "Companies"
 msgstr "Unternehmen"
 
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__company_id
+#, fuzzy
+#| msgid "Companies"
+msgid "Company"
+msgstr "Unternehmen"
+
 #. module: verdigado_attendance
 #: model:ir.model,name:verdigado_attendance.model_res_config_settings
 msgid "Config Settings"
+msgstr "Konfiguration"
+
+#. module: verdigado_attendance
+#: model_terms:ir.ui.view,arch_db:verdigado_attendance.verdigado_holiday_wizard_form
+msgid "Create allocations"
+msgstr "Urlaubsansprüche erstellen"
+
+#. module: verdigado_attendance
+#: model:ir.model,name:verdigado_attendance.model_verdigado_holidays_wizard
+msgid "Create holidays allocations"
+msgstr "Urlaubs-Ansprüche erstellen"
+
+#. module: verdigado_attendance
+#: code:addons/verdigado_attendance/wizards/verdigado_holidays_wizard.py:0
+#, python-format
+msgid "Created allocations"
+msgstr "Erstellte Urlaubsansprüche"
+
+#. modules: verdigado_attendance, hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__create_uid
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__create_uid
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. modules: verdigado_attendance, hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__create_date
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__create_date
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard__create_date
+msgid "Created on"
 msgstr ""
 
 #. module: verdigado_attendance
@@ -101,10 +301,63 @@ msgid "Definition of an iCal export"
 msgstr ""
 
 #. module: verdigado_attendance
+#: model_terms:ir.ui.view,arch_db:verdigado_attendance.verdigado_holiday_wizard_form
+msgid "Discard"
+msgstr "Verwerfen"
+
+#. modules: verdigado_attendance, hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__display_name
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__display_name
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: hr_attendance_break
+#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
+msgid "Edit action to run if mandatory breaks are not adhered"
+msgstr ""
+"Aktionen, die beim Unterschreiten der Mindestpausenlänge ausgelöst werden"
+
+#. module: hr_attendance_break
+#: code:addons/hr_attendance_break/models/res_config_settings.py:0
+#, fuzzy, python-format
+#| msgid "Edit breaks for %s"
+msgid "Edit break thresholds"
+msgstr "Pausen für %s bearbeiten"
+
+#. module: hr_attendance_break
+#: code:addons/hr_attendance_break/models/hr_attendance.py:0
+#, python-format
+msgid "Edit breaks for %s"
+msgstr "Pausen für %s bearbeiten"
+
+#. module: hr_attendance_break
+#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
+msgid "Edit thresholds for mandatory breaks"
+msgstr "Grenzwerte für Pflichtpausen bearbeiten"
+
+#. module: verdigado_attendance
 #: model:ir.model,name:verdigado_attendance.model_hr_employee
 #: model:res.groups,name:verdigado_attendance.group_verdigado_employee
 msgid "Employee"
 msgstr "Mitarbeiter*in"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard__employee_ids
+msgid "Employees"
+msgstr "Mitarbeiter*in"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance_break__end
+msgid "End"
+msgstr "Ende"
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "End break"
+msgstr "Pause beenden"
 
 #. module: verdigado_attendance
 #: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance_overtime__expected_hours
@@ -125,6 +378,14 @@ msgstr "Gleitzeitkonto"
 msgid "Extra overtime from holiday factor (%.2f)"
 msgstr "Höherwertung durch Faktor (%.2f) Wochenend- und Feiertagen"
 
+#. module: hr_attendance_break
+#: model:ir.actions.server,name:hr_attendance_break.action_mandatory_break_activity
+#: model:ir.actions.server,name:hr_attendance_break.cron_mandatory_breaks_ir_actions_server
+#: model:ir.cron,cron_name:hr_attendance_break.cron_mandatory_breaks
+#: model:ir.cron,name:hr_attendance_break.cron_mandatory_breaks
+msgid "Flag mandatory breaks"
+msgstr "Kennzeichnung von Pflichtpausen"
+
 #. module: verdigado_attendance
 #: model:ir.model.fields,field_description:verdigado_attendance.field_hr_employee__holiday_overtime_factor
 #: model:ir.model.fields,field_description:verdigado_attendance.field_res_company__holiday_overtime_factor
@@ -138,9 +399,93 @@ msgid "Holiday Overtime For Overtime"
 msgstr "Höherwertungs-Faktor an Wochenend- und Feiertagen"
 
 #. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_res_company__holiday_overtime_holidays
+#: model:ir.model.fields,field_description:verdigado_attendance.field_res_config_settings__holiday_overtime_holidays
+msgid "Holidays"
+msgstr "Feiertage"
+
+#. modules: verdigado_attendance, hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__id
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__id
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: hr_attendance_break
+#: model:ir.actions.server,name:hr_attendance_break.action_mandatory_break_impose
+#, fuzzy
+#| msgid "Flag mandatory breaks"
+msgid "Impose mandatory breaks"
+msgstr "Kennzeichnung von Pflichtpausen"
+
+#. modules: verdigado_attendance, hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break____last_update
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold____last_update
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. modules: verdigado_attendance, hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__write_uid
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__write_uid
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. modules: verdigado_attendance, hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__write_date
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__write_date
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard__leave_type_id
+msgid "Leave Type"
+msgstr "Abwesenheitsart"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,help:hr_attendance_break.field_hr_attendance_reason__action_type
+msgid "Leave empty if it is independent"
+msgstr ""
+
+#. module: hr_attendance_break
+#: model:ir.actions.server,name:hr_attendance_break.action_mandatory_break_email
+msgid "Mail about mandatory breaks"
+msgstr "Email zu Pflichtpausen"
+
+#. module: verdigado_attendance
 #: model:res.groups,name:verdigado_attendance.group_verdigado_manager
 msgid "Manager"
 msgstr ""
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__min_break
+msgid "Min Break"
+msgstr "Mindestpause"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__min_hours
+msgid "Min Hours"
+msgstr "Mindestzeitraum"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_res_company__hr_attendance_break_min_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_res_config_settings__hr_attendance_break_min_break
+msgid "Minimal break length"
+msgstr "Mindestpausenlänge"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_res_company__hr_attendance_break_threshold_ids
+#, fuzzy
+#| msgid "Minimal break length"
+msgid "Minimal break thresholds"
+msgstr "Mindestpausenlänge"
+
+#. module: hr_attendance_break
+#: model:ir.model,name:hr_attendance_break.model_hr_attendance_break_threshold
+msgid "Minimum break times"
+msgstr "Mindestpausenzeit"
 
 #. module: verdigado_attendance
 #: model:base.ical,name:verdigado_attendance.ical_my_leaves
@@ -152,15 +497,78 @@ msgstr "Meine Urlaube (ics)"
 msgid "My team leaves"
 msgstr "Urlaube meines Teams (ics)"
 
+#. module: hr_attendance_break
+#: model:ir.model.fields.selection,name:hr_attendance_break.selection__hr_employee__break_state__no_break
+msgid "Not on break"
+msgstr "Eine Pause nehmen"
+
 #. module: verdigado_attendance
 #: model:res.groups,name:verdigado_attendance.group_verdigado_officer
 msgid "Officer"
 msgstr "Personalverantwortliche*r"
 
 #. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_employee__holiday_overtime_holidays
+msgid "On Holidays"
+msgstr "An Feiertagen"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_employee__holiday_overtime_saturday
+msgid "On Saturdays"
+msgstr "An Samstagen"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_hr_employee__holiday_overtime_sunday
+msgid "On Sundays"
+msgstr "An Sonntagen"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields.selection,name:hr_attendance_break.selection__hr_employee__break_state__on_break
+#, fuzzy
+#| msgid "End break"
+msgid "On break"
+msgstr "Pause beenden"
+
+#. module: verdigado_attendance
+#: model_terms:ir.ui.view,arch_db:verdigado_attendance.res_config_settings_view_form
+msgid "Overtime factor is applied on Saturdays"
+msgstr "Höherwertungs-Faktor wird an Samstagen angewendet"
+
+#. module: verdigado_attendance
+#: model_terms:ir.ui.view,arch_db:verdigado_attendance.res_config_settings_view_form
+msgid "Overtime factor is applied on Sundays"
+msgstr "Höherwertungs-Faktor wird an Sonntagen angewendet"
+
+#. module: verdigado_attendance
+#: model_terms:ir.ui.view,arch_db:verdigado_attendance.res_config_settings_view_form
+msgid "Overtime factor is applied on holidays"
+msgstr "Höherwertungs-Faktor wird an Feiertagen angewendet"
+
+#. module: verdigado_attendance
 #: model_terms:ir.ui.view,arch_db:verdigado_attendance.res_config_settings_view_form
 msgid "Overtime on holidays"
 msgstr "Überstunden an Wochenend- und Feiertagen"
+
+#. module: hr_attendance_break
+#: model:mail.template,subject:hr_attendance_break.template_mandatory_break
+msgid ""
+"Please review your breaks from {{ format_date(ctx."
+"get('hr_attendance_break_date', object.last_attendance_id.check_in)) }}"
+msgstr ""
+"Bitte Pausenzeiten überprüfen:  {{ format_date(ctx."
+"get('hr_attendance_break_date', object.last_attendance_id.check_in)) }}"
+
+#. module: hr_attendance_break
+#: model:ir.model,name:hr_attendance_break.model_hr_employee_public
+#, fuzzy
+#| msgid "Employee"
+msgid "Public Employee"
+msgstr "Mitarbeiter*in"
+
+#. module: hr_attendance_break
+#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__reason_id
+msgid "Reason"
+msgstr "Grund (optional)"
 
 #. module: verdigado_attendance
 #: model:ir.actions.server,name:verdigado_attendance.action_hr_attendance_overtime_recalculation
@@ -168,9 +576,54 @@ msgid "Recalculate Overtime"
 msgstr "Neuberechnung der Überstunden"
 
 #. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_res_company__holiday_overtime_saturday
+#: model:ir.model.fields,field_description:verdigado_attendance.field_res_config_settings__holiday_overtime_saturday
+msgid "Saturdays"
+msgstr "Samstage"
+
+#. module: verdigado_attendance
 #: model:ir.model.fields,field_description:verdigado_attendance.field_base_ical__show_on_holiday_calendar
 msgid "Show on holiday calendar"
 msgstr "Im Urlaubs-Kalender anzeigen"
+
+#. module: hr_attendance_break
+#: model_terms:ir.ui.view,arch_db:hr_attendance_break.view_attendance_tree
+msgid "Show/Edit breaks"
+msgstr "Pausen anzeigen / bearbeiten"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_res_company__holiday_overtime_sunday
+#: model:ir.model.fields,field_description:verdigado_attendance.field_res_config_settings__holiday_overtime_sunday
+msgid "Sundays"
+msgstr "Sonntage"
+
+#. module: hr_attendance_break
+#: model:ir.actions.server,name:hr_attendance_break.action_mandatory_break
+msgid "Take action if employee didn't take mandatory break"
+msgstr ""
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "Take break"
+msgstr "Pause nehmen"
+
+#. module: hr_attendance_break
+#: model:mail.activity.type,name:hr_attendance_break.activity_type_mandatory_break
+#, fuzzy
+#| msgid "Flag mandatory breaks"
+msgid "Take mandatory breaks"
+msgstr "Kennzeichnung von Pflichtpausen"
+
+#. module: verdigado_attendance
+#: model_terms:ir.ui.view,arch_db:verdigado_attendance.verdigado_holiday_wizard_form
+msgid ""
+"This wizard creates allocations proportional to a FTE with following\n"
+"                    values"
+msgstr ""
+"Dieser Wizard erstellt Urlaubsansprüche proportional zu einer \n"
+"Vollzeitstelle mit den folgenden Werten"
 
 #. module: verdigado_attendance
 #: model:ir.model,name:verdigado_attendance.model_hr_leave
@@ -189,13 +642,36 @@ msgstr "Abwesenheitsart"
 
 #. module: verdigado_attendance
 #: model:ir.model.fields,help:verdigado_attendance.field_hr_employee__custom_holiday_overtime_factor
-msgid "Use a custom overtime factor for holidays/weekens instead of the company's"
+msgid ""
+"Use a custom overtime factor for holidays/weekends instead of the company's"
 msgstr ""
+"Es soll ein individueller Höherwertungs-Faktor für Wochenend- und Feiertage "
+"genutzt werden, der vom Unternehmensstandard abweicht"
 
 #. module: verdigado_attendance
 #: model:ir.model,name:verdigado_attendance.model_res_users
 msgid "Users"
 msgstr "Benutzer"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard__full_vacation
+msgid "Vacation days (100%)"
+msgstr "Urlaub in Tagen (100%)"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,help:verdigado_attendance.field_verdigado_holidays_wizard__full_vacation
+msgid "Vacation of a FTE in days"
+msgstr "Urlaubsanspruch einer Vollzeitstelle in Tagen"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard__date_end
+msgid "Validity end"
+msgstr "Gültigkeit Ende"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard__date_start
+msgid "Validity start"
+msgstr "Gültigkeit Beginn"
 
 #. module: verdigado_attendance
 #: model:ir.module.category,name:verdigado_attendance.module_category_verdigado
@@ -207,8 +683,11 @@ msgstr ""
 #: model:ir.model.fields,help:verdigado_attendance.field_hr_employee__holiday_overtime_factor
 #: model:ir.model.fields,help:verdigado_attendance.field_res_company__holiday_overtime_factor
 #: model:ir.model.fields,help:verdigado_attendance.field_res_config_settings__holiday_overtime_factor
-msgid "When activated on holidays/weekends, overtime is multiplied with this factor"
-msgstr "Wenn aktiv, werden die Überstunden an Wochenend- und Feiertagen mit dem Faktor multipliziert"
+msgid ""
+"When activated on holidays/weekends, overtime is multiplied with this factor"
+msgstr ""
+"Wenn aktiv, werden die Überstunden an Wochenend- und Feiertagen mit dem "
+"Faktor multipliziert"
 
 #. module: verdigado_attendance
 #: model_terms:ir.ui.view,arch_db:verdigado_attendance.res_config_settings_view_form
@@ -220,9 +699,68 @@ msgstr ""
 "Faktor multipliziert"
 
 #. module: verdigado_attendance
+#: model:ir.model,name:verdigado_attendance.model_hr_attendance_break
+msgid "Work break taken"
+msgstr "Arbeitspausen"
+
+#. module: verdigado_attendance
 #: model:ir.ui.menu,name:verdigado_attendance.menu_configuration_workingtimes_verdigado
 msgid "Working Times"
 msgstr "Arbeitszeiten"
+
+#. module: verdigado_attendance
+#: model:ir.model.fields,field_description:verdigado_attendance.field_verdigado_holidays_wizard__year
+msgid "Year"
+msgstr "Jahr"
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "break)"
+msgstr "Pause)"
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "checked_in and widget.break_state != 'on_break'"
+msgstr ""
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#, python-format
+msgid "from"
+msgstr ""
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "or to"
+msgstr ""
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#, python-format
+msgid "overlaps"
+msgstr ""
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "return from break"
+msgstr "Pause beenden"
+
+#. module: hr_attendance_break
+#. openerp-web
+#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
+#, python-format
+msgid "take a break"
+msgstr "eine Pause nehmen"
 
 #. module: verdigado_attendance
 #. openerp-web
@@ -238,186 +776,10 @@ msgstr ""
 msgid "timeoff[1]['virtual_leaves_taken_formatted']"
 msgstr ""
 
-#. module: hr_attendance_break
-#: model:mail.activity.type,name:hr_attendance_break.activity_type_mandatory_break
-msgid "Pflichtpausen nehmen"
-msgstr ""
-
-#. module: hr_attendance_break
-#: model:ir.model,name:hr_attendance_break.model_hr_attendance_break
-msgid "Work break taken"
-msgstr "Arbeitspausen"
-
-#. module: hr_attendance_break
-#: model:ir.model.fields.selection,name:hr_attendance_break.selection__hr_attendance_reason__action_type__break
-msgid "Break"
-msgstr "Pause"
-
-#. module: hr_attendance_break
-#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance__break_ids
-#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
-msgid "Breaks"
-msgstr "Pausen"
-
-#. module: hr_attendance_break
-#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance__break_hours
-#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__break_hours
-#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_report__break_hours
-msgid "Break Hours"
-msgstr "Pausen"
-
-#. module: hr_attendance_break
-#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_employee__break_hours_today
-#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_employee_public__break_hours_today
-msgid "Break Hours Today"
-msgstr "Heutige Pausen"
-
-#. module: hr_attendance_break
-#: model_terms:ir.ui.view,arch_db:hr_attendance_break.view_attendance_tree
-msgid "Show/Edit breaks"
-msgstr "Pausen anzeigen / bearbeiten"
-
-#. module: hr_attendance_break
-#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__begin
-msgid "Begin"
-msgstr "Beginn"
-
-#. module: hr_attendance_break
-#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__end
-msgid "End"
-msgstr "Ende"
-
-#. module: hr_attendance_break
-#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break__reason_id
-msgid "Reason"
-msgstr "Grund (optional)"
-
-#. module: hr_attendance_break
-#. openerp-web
-#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
 #, python-format
-msgid "check out or to"
-msgstr "Abmelden oder"
+#~ msgid "Apply holiday overtime factor"
+#~ msgstr "Höherwertung anwenden"
 
-#. module: hr_attendance_break
-#. openerp-web
-#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
 #, python-format
-msgid "take a break"
-msgstr "eine Pause nehmen"
-
-#. module: hr_attendance_break
-#. openerp-web
-#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
-#, python-format
-msgid "return from break"
-msgstr "Pause beenden"
-
-#. module: hr_attendance_break
-#. openerp-web
-#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
-#, python-format
-msgid "End break"
-msgstr "Pause beenden"
-
-#. module: hr_attendance_break
-#. openerp-web
-#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
-#, python-format
-msgid "Take break"
-msgstr "Pause nehmen"
-
-#. module: hr_attendance_break
-#. openerp-web
-#: code:addons/hr_attendance_break/static/src/xml/hr_attendance_break.xml:0
-#, python-format
-msgid "break)"
-msgstr "Pause)"
-
-#. module: hr_attendance_break
-#: model:mail.template,body_html:hr_attendance_break.template_mandatory_break
-msgid ""
-"<p>Dear <t t-out=\"object.name\"/>,</p>\n"
-"            <p>on <t t-out=\"format_date(ctx.get('hr_attendance_break_date', object.last_attendance_id.check_in))\"/>, you only took <t t-out=\"format_duration(ctx.get('hr_attendance_break_hours') or 0)\"/> hours of break, while you should have been taking <t t-out=\"format_duration(ctx.get('hr_attendance_break_threshold', object.env['hr.attendance.break.threshold']).min_break)\"/> hours.</p>\n"
-"            <p>Please review the attendances below:</p>\n"
-"            <ul>\n"
-"                <li t-foreach=\"ctx.get('hr_attendance_break_attendances', object.last_attendance_id)\" t-as=\"attendance\">\n"
-"                    <a t-attf-href=\"/mail/view?model={{ attendance._name }}&amp;res_id={{ attendance.id }}\"><t t-out=\"attendance.display_name\"/></a>\n"
-"                </li>\n"
-"            </ul>\n"
-"        "
-msgstr ""
-"<p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">Hallo <t t-out=\"object.name\"></t>,</p>\n"
-"            <p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">am <t t-out=\"format_date(ctx.get('hr_attendance_break_date', object.last_attendance_id.check_in))\"></t>, hast du eine Pause von&nbsp;<t t-out=\"format_duration(ctx.get('hr_attendance_break_hours') or 0)\"></t>&nbsp;Stunden genommen.</p><p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">Die gesetzliche Regelung erfordert, nach einer Arbeitszeit von 6 Stunden eine Pause von mindestens&nbsp;<t t-out=\"format_duration(ctx.get('hr_attendance_break_threshold', object.env['hr.attendance.break.threshold']).min_break)\"></t>&nbsp;Stunden zu nehmen.</p><p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">Die gesetzliche Regelungen wurden vom System automatisch eingetragen.&nbsp; Bitte überprüfe den Eintrag hier:&nbsp;</p><ul style=\"margin:0px 0 12px 0;box-sizing:border-box;\">\n"
-"                <li t-foreach=\"ctx.get('hr_attendance_break_attendances', object.last_attendance_id)\" t-as=\"attendance\">\n"
-"                    <a t-attf-href=\"/mail/view?model={{ attendance._name }}&amp;res_id={{ attendance.id }}\" style=\"text-decoration:none;box-sizing:border-box;background-color:transparent;color:inherit;\"><t t-out=\"attendance.display_name\"></t></a>\n"
-"                </li>\n"
-"            </ul>\n"
-"        "
-
-#. module: hr_attendance_break
-#: code:addons/hr_attendance_break/models/hr_attendance_break.py:0
-#, python-format
-msgid "Breaks must be fully contained by the attendance they belong to and can't overlap"
-msgstr "Pausen müssen sich vollständig in einem Anwesenheits-Zeitraum befinden und dürfen sich nicht überlappen"
-
-#. module: hr_attendance_break
-#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
-msgid "Breaks shorter than this value will not be counted towards mandatory breaks"
-msgstr "Pausen die kürzer als angegeben werden nicht zu den Mindestpausen hinzu gerechnet"
-
-#. module: hr_attendance_break
-#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
-msgid "Edit action to run if mandatory breaks are not adhered"
-msgstr "Aktionen, die beim Unterschreiten der Mindestpausenlänge ausgelöst werden"
-
-#. module: hr_attendance_break
-#: code:addons/hr_attendance_break/models/hr_attendance.py:0
-#, python-format
-msgid "Edit breaks for %s"
-msgstr "Pausen für %s bearbeiten"
-
-#. module: hr_attendance_break
-#: model_terms:ir.ui.view,arch_db:hr_attendance_break.res_config_settings_view_form
-msgid "Edit thresholds for mandatory breaks"
-msgstr "Grenzwerte für Pflichtpausen bearbeiten"
-
-#. module: hr_attendance_break
-#: model:ir.actions.server,name:hr_attendance_break.action_mandatory_break
-#: model:ir.actions.server,name:hr_attendance_break.action_mandatory_break_activity
-#: model:ir.actions.server,name:hr_attendance_break.cron_mandatory_breaks_ir_actions_server
-#: model:ir.cron,cron_name:hr_attendance_break.cron_mandatory_breaks
-#: model:ir.cron,name:hr_attendance_break.cron_mandatory_breaks
-msgid "Flag mandatory breaks"
-msgstr "Kennzeichnung von Pflichtpausen"
-
-#. module: hr_attendance_break
-#: model:ir.actions.server,name:hr_attendance_break.action_mandatory_break_email
-msgid "Mail about mandatory breaks"
-msgstr "Email zu Pflichtpausen"
-
-#. module: hr_attendance_break
-#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__min_hours
-msgid "Min Hours"
-msgstr "Mindestzeitraum"
-
-#. module: hr_attendance_break
-#: model:ir.model.fields,field_description:hr_attendance_break.field_hr_attendance_break_threshold__min_break
-msgid "Min Break"
-msgstr "Mindestpause"
-
-#. module: hr_attendance_break
-#: model:ir.model.fields,field_description:hr_attendance_break.field_res_company__hr_attendance_break_min_break
-#: model:ir.model.fields,field_description:hr_attendance_break.field_res_config_settings__hr_attendance_break_min_break
-msgid "Minimal break length"
-msgstr "Mindestpausenlänge"
-
-#. module: hr_attendance_break
-#: model:ir.model,name:hr_attendance_break.model_hr_attendance_break_threshold
-msgid "Minimum break times"
-msgstr "Mindestpausenzeit"
-
-#. module: hr_attendance_break
-#: model:mail.template,subject:hr_attendance_break.template_mandatory_break
-msgid "Please review your breaks from {{ format_date(ctx.get('hr_attendance_break_date', object.last_attendance_id.check_in)) }}"
-msgstr "Bitte Pausenzeiten überprüfen:  {{ format_date(ctx.get('hr_attendance_break_date', object.last_attendance_id.check_in)) }}"
+#~ msgid "check out or to"
+#~ msgstr "Abmelden oder"
