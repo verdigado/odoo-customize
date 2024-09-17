@@ -7,7 +7,7 @@
     # https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     "category": "Customizations",
-    "version": "15.0.0.3.0",
+    "version": "16.0.0.1.0",
     "license": "AGPL-3",
     # any module necessary for this one to work correctly
     "depends": [
@@ -21,13 +21,14 @@
     ],
     # always loaded
     "data": [
-        "views/debrand_web.xml",
-        "views/debrand_mail.xml",
-        "views/res_partner.xml",
+#        "views/debrand_web.xml",
+#        "views/debrand_mail.xml",
+#        "views/res_partner.xml",
+#        "views/order_line_number.xml",
+        "views/report_invoice.xml",
         "views/sepa_invoice.xml",
-        "views/order_line_number.xml",
-        "views/verdigado.xml",
-        "views/account_invoices_order.xml",
+#        "views/verdigado.xml",
+#        "views/account_invoices_order.xml",
     ],
     "assets": {
         "web._assets_primary_variables": [

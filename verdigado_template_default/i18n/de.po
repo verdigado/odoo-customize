@@ -20,3 +20,93 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:verdigado_template_default.verdigado_mail_notification_paynow
 msgid "View"
 msgstr "Ansicht"
+
+#. module: sale_order_line_sequence
+#: model:ir.model.fields,field_description:sale_order_line_sequence.field_account_move_line__related_so_sequence
+msgid "SO Line Number"
+msgstr "Nr."
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__invoice_user_id
+#: model:ir.model.fields,field_description:account.field_account_invoice_report__invoice_user_id
+#: model:ir.model.fields,field_description:account.field_account_move__invoice_user_id
+#: model:ir.model.fields,field_description:account.field_account_payment__invoice_user_id
+#: model_terms:ir.ui.view,arch_db:account.portal_invoice_page
+#: model_terms:ir.ui.view,arch_db:account.view_account_invoice_filter
+#: model_terms:ir.ui.view,arch_db:account.view_account_invoice_report_search
+#: model_terms:ir.ui.view,arch_db:account.view_invoice_tree
+msgid "Salesperson"
+msgstr "Ansprechpartner*in"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_res_partner__user_id
+#: model:ir.model.fields,field_description:base.field_res_users__user_id
+#: model_terms:ir.ui.view,arch_db:base.view_res_partner_filter
+msgid "Salesperson"
+msgstr "Ansprechpartner*in"
+
+#. module: mail
+#: model:ir.model.fields,field_description:mail.field_res_partner__user_id
+#: model:ir.model.fields,field_description:mail.field_res_users__user_id
+msgid "Salesperson"
+msgstr "Ansprechpartner*in"
+
+#. module: sale
+#: model:ir.model.fields,field_description:sale.field_sale_order__user_id
+#: model:ir.model.fields,field_description:sale.field_sale_order_line__salesman_id
+#: model:ir.model.fields,field_description:sale.field_sale_report__user_id
+#: model_terms:ir.ui.view,arch_db:sale.view_order_product_search
+#: model_terms:ir.ui.view,arch_db:sale.view_sales_order_filter
+#: model_terms:ir.ui.view,arch_db:sale.view_sales_order_line_filter
+msgid "Salesperson"
+msgstr "Ansprechpartner*in"
+
+#. module: sale
+#: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_template
+msgid "<strong class=\"text-muted\">Salesperson</strong>"
+msgstr "<strong class=\"text-muted\">Ansprechpartner*in</strong>"
+
+#. module: sale_subscription
+#: model:ir.model.fields,field_description:sale_subscription.field_sale_order_log__user_id
+#: model:ir.model.fields,field_description:sale_subscription.field_sale_subscription_report__user_id
+#: model_terms:ir.ui.view,arch_db:sale_subscription.sale_subscription_report_search
+#: model_terms:ir.ui.view,arch_db:sale_subscription.sale_subscription_view_search
+msgid "Salesperson"
+msgstr "Ansprechpartner*in"
+
+#. module: sale_subscription
+#: model_terms:ir.ui.view,arch_db:sale_subscription.subscription
+msgid "<strong class=\"text-muted\">Subscription Manager:</strong>"
+msgstr "<strong class=\"text-muted\">Ansprechpartner*in:</strong>"
+
+#. module: sales_team
+#: model_terms:ir.ui.view,arch_db:sales_team.crm_team_member_view_form
+#: model_terms:ir.ui.view,arch_db:sales_team.crm_team_member_view_tree
+msgid "Sales Men"
+msgstr "Ansprechpartner*in"
+
+#. module: sales_team
+#: model_terms:ir.ui.view,arch_db:sales_team.crm_team_member_view_search
+msgid "Sales Person"
+msgstr "Ansprechpartner*in"
+
+#. module: sales_team
+#: model:ir.model.fields,field_description:sales_team.field_crm_team_member__user_id
+msgid "Salesperson"
+msgstr "Ansprechpartner*in"
+
+#. module: sales_team
+#: model:ir.model.fields,field_description:sales_team.field_crm_team__member_ids
+msgid "Salespersons"
+msgstr "Ansprechpartner*in"
+
+#. module: website_sale
+#: model:ir.model.fields,field_description:website_sale.field_res_config_settings__salesperson_id
+#: model:ir.model.fields,field_description:website_sale.field_website__salesperson_id
+msgid "Salesperson"
+msgstr "Ansprechpartner*in"
+
+#. module: sale_order_line_sequence
+#: model_terms:ir.ui.view,arch_db:sale_order_line_sequence.report_saleorder_document_sequence
+msgid "<strong>Line Number</strong>"
+msgstr "<strong>Nr.</strong>"

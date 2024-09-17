@@ -1,79 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template
-        id="verdigado_report_invoice_with_payments"
-        inherit_id="account.report_invoice_with_payments"
-        priority="100"
-    >
-        <xpath expr="//t[@t-set='print_with_payments']" position="replace">
-            <!-- We do not want to see the payments especially in case of SEPA direct debit -->
-            <t t-set="print_with_payments" t-value="False" />
-        </xpath>
-    </template>
 
-    <template
-        id="verdigado_sepa_report_invoice_document"
-        inherit_id="account.report_invoice_document"
-        priority="100"
-    >
-        <xpath expr="//p[@name='payment_communication']" position="replace">
-            <!-- in case of SEPA, we skip the payment_communication -->
-            <t t-if="o.sdd_mandate_id" />
-            <t t-else="">
-                <p
-                    t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference"
-                    name="payment_communication"
-                >
-                    Bitte benutzen Sie den folgenden Verwendungszweck für Ihre Zahlung:
-                    <b>
-                        <span t-field="o.payment_reference" />
-                    </b>
-                </p>
-            </t>
-        </xpath>
-        <xpath expr="//p[@t-if='o.invoice_payment_term_id']" position="replace">
-            <!-- in case of SEPA, we skip the payment_term -->
-            <t t-if="o.sdd_mandate_id" />
-            <t t-else="">
-                <p t-if="o.invoice_payment_term_id" name="payment_term">
-                    <span t-field="o.invoice_payment_term_id.note" />
-                </p>
-            </t>
-        </xpath>
-        <!-- we replace the whole template id sdd_report_invoice_document... -->
+    <template id="verdigado_sdd_report_invoice_document" inherit_id="account_sepa_direct_debit.sdd_report_invoice_document" priority="1001">
         <xpath expr="//p[@t-if='o.sdd_mandate_id']" position="replace">
             <p t-if="o.sdd_mandate_id">
                 <span>
                     <p>
                         Wir buchen den Betrag in Kürze per SEPA-Basislastschrift vom
-                        unten
-            aufgeführten Konto ab:
+                        unten aufgeführten Konto ab:
                         <table style="width: 80%;">
                             <tr>
                                 <td>IBAN</td>
                                 <td>
                                     <strong>
-                                        <t
-                                            t-if="not o.sdd_mandate_id.partner_bank_id.acc_number"
-                                        >
+                                        <t t-if="not o.sdd_mandate_id.partner_bank_id.acc_number">
                                             ......................................
                                         </t>
-                                        <t
-                                            t-else=""
-                                            t-out="o.sdd_mandate_id.partner_bank_id.acc_number"
-                                        />
+                                        <t t-else="" t-out="o.sdd_mandate_id.partner_bank_id.acc_number" />
                                     </strong>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Kontoinhaber</td>
-                                <td
-                                    t-if="o.sdd_mandate_id.partner_bank_id.acc_holder_name"
-                                >
+                                <td t-if="o.sdd_mandate_id.partner_bank_id.acc_holder_name">
                                     <strong>
-                                        <t
-                                            t-out="o.sdd_mandate_id.partner_bank_id.acc_holder_name"
-                                        />
+                                        <t t-out="o.sdd_mandate_id.partner_bank_id.acc_holder_name" />
                                     </strong>
                                 </td>
                                 <td t-else="">
@@ -107,9 +58,7 @@
                                 </td>
                                 <td>
                                     <strong>
-                                        <t
-                                            t-out="o.company_id.sdd_creditor_identifier"
-                                        />
+                                        <t t-out="o.company_id.sdd_creditor_identifier" />
                                     </strong>
                                 </td>
                             </tr>
@@ -117,6 +66,39 @@
                     </p>
                 </span>
             </p>
+        </xpath>
+    </template>
+
+
+
+    <template id="verdigado_report_invoice_with_payments" inherit_id="account.report_invoice_with_payments" priority="100">
+        <xpath expr="//t[@t-set='print_with_payments']" position="replace">
+            <!-- We do not want to see the payments especially in case of SEPA direct debit -->
+            <t t-set="print_with_payments" t-value="False" />
+        </xpath>
+    </template>
+
+    <template id="verdigado_sepa_report_invoice_document" inherit_id="account.report_invoice_document" priority="100">
+        <xpath expr="//p[@name='payment_communication']" position="replace">
+            <!-- in case of SEPA, we skip the payment_communication -->
+            <t t-if="o.sdd_mandate_id" />
+            <t t-else="">
+                <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication">
+                    Bitte benutzen Sie den folgenden Verwendungszweck für Ihre Zahlung:
+                    <b>
+                        <span t-field="o.payment_reference" />
+                    </b>
+                </p>
+            </t>
+        </xpath>
+        <xpath expr="//p[@t-if='o.invoice_payment_term_id']" position="replace">
+            <!-- in case of SEPA, we skip the payment_term -->
+            <t t-if="o.sdd_mandate_id" />
+            <t t-else="">
+                <p t-if="o.invoice_payment_term_id" name="payment_term">
+                    <span t-field="o.invoice_payment_term_id.note" />
+                </p>
+            </t>
         </xpath>
     </template>
 </odoo>
