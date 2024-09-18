@@ -4,11 +4,12 @@
     <template id="verdigado_sdd_report_invoice_document" inherit_id="account_sepa_direct_debit.sdd_report_invoice_document" priority="1001">
         <xpath expr="//p[@t-if='o.sdd_mandate_id']" position="replace">
             <p t-if="o.sdd_mandate_id">
+            <div name="payment_term">
                 <span>
                     <p>
                         Wir buchen den Betrag in Kürze per SEPA-Basislastschrift vom
                         unten aufgeführten Konto ab:
-                        <table style="width: 80%;">
+                        <table style="width: 80%">
                             <tr>
                                 <td>IBAN</td>
                                 <td>
@@ -65,6 +66,7 @@
                         </table>
                     </p>
                 </span>
+            </div>
             </p>
         </xpath>
     </template>

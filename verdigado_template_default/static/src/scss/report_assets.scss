@@ -107,10 +107,23 @@
                 }
             }
 
-            .table-sm > tbody > tr {
+            [name=invoice_line_table].table-sm > tbody > tr {
                 border-top: 1px solid #bbb !important;
                 td {
                     vertical-align: top;
+                }
+            }
+            // Don't ask me where this border comes from. It's only in PDF export.
+            [name=payment_term] table {
+                border: none !important;
+                tbody {
+                    border: none !important;
+                    tr {
+                        border: none !important;
+                        td {
+                            border: none !important;
+                        }
+                    }
                 }
             }
         }
