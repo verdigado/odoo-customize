@@ -24,11 +24,10 @@
 #        "views/debrand_web.xml",
 #        "views/debrand_mail.xml",
 #        "views/res_partner.xml",
-#        "views/order_line_number.xml",
+        # "views/order_line_number.xml",
         "views/report_invoice.xml",
         "views/sepa_invoice.xml",
-#        "views/verdigado.xml",
-#        "views/account_invoices_order.xml",
+#        "views/verdigado.xml"
     ],
     "assets": {
         "web._assets_primary_variables": [
