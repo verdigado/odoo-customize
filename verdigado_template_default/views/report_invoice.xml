@@ -65,7 +65,9 @@
                                             </t>
                                             <t t-if="o.partner_id.ref">
                                                 <tr>
-                                                    <td><span>Kd. Nr.</span></td>
+                                                    <td>
+                                                        <span>Kund*innennr.</span>
+                                                    </td>
                                                     <td>
                                                         <span t-field="o.partner_id.ref" />
                                                     </td>
@@ -90,49 +92,79 @@
                             </span>
                         </h2>
                         <t t-out="0"/>
-                        <div class="mt-5"><div class="page"><div name="terms">Es gelten unsere Allgemeinen Geschäftsbedingungen: <a href="https://verdigado.com/agb">https://verdigado.com/agb</a>.</div></div></div>
+                        <div class="mt-5">
+                            <div class="page">
+                                <div name="terms">Es gelten unsere Allgemeinen Geschäftsbedingungen: <a href="https://verdigado.com/agb">https://verdigado.com/agb</a>.
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div t-attf-class="din_page verdigado footer o_company_#{company.id}_layout #{'din_page_pdf' if report_type == 'pdf' else ''}">
                         <div class="text-end page_number">
                             <div class="text-muted">
-                            Seite: <span class="page"/> / <span class="topage"/>
-                            </div>
-                        </div>
-
-                        <div class="company_details">
-                            <table class="table-borderless">
-                                <tr>
-                                    <td>
-                                        <ul class="list-inline text-nowrap">
-                                            <li t-if="company.name"><span t-field="company.name"/></li>
-                                            <li t-if="company.street"><span t-field="company.street"/></li>
-                                            <li><span t-if="company.zip" t-field="company.zip"/> <span t-if="company.city" t-field="company.city"/></li>
-                                            <li t-if="company.website"><span t-field="company.website"/></li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline text-nowrap">
-                                            <li><span>Sitz der Genossenschaft: Nürnberg</span></li>
-                                            <li><span>Registergericht: Amtsgericht Nürnberg</span></li>
-                                            <li><span>Registernummer: GnR 344</span></li>
-                                            <li><span>Vorstand: Katja Mecking, Dominik Ach</span></li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline text-nowrap">
-                                            <li><span>Bankverbindung</span></li>
-                                            <li><span>IBAN: DE19 4306 0967 1041 8961 00</span></li>
-                                            <li t-if="company.vat">Umsatzsteuer-ID: <span t-field="company.vat"/></li>
-                                            <li><span>Vorsitzender Aufsichtsrat: Marc Urbatsch</span></li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            </table>
+                            Seite: <span class="page"/>
+ /                            <span class="topage"/>
                         </div>
                     </div>
+
+                    <div class="company_details">
+                        <table class="table-borderless">
+                            <tr>
+                                <td>
+                                    <ul class="list-inline text-nowrap">
+                                        <li t-if="company.name">
+                                            <span t-field="company.name"/>
+                                        </li>
+                                        <li t-if="company.street">
+                                            <span t-field="company.street"/>
+                                        </li>
+                                        <li>
+                                            <span t-if="company.zip" t-field="company.zip"/>
+                                            <span t-if="company.city" t-field="company.city"/>
+                                        </li>
+                                        <li t-if="company.website">
+                                            <span t-field="company.website"/>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul class="list-inline text-nowrap">
+                                        <li>
+                                            <span>Sitz der Genossenschaft: Nürnberg</span>
+                                        </li>
+                                        <li>
+                                            <span>Registergericht: Amtsgericht Nürnberg</span>
+                                        </li>
+                                        <li>
+                                            <span>Registernummer: GnR 344</span>
+                                        </li>
+                                        <li>
+                                            <span>Vorstand: Katja Mecking, Dominik Ach</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul class="list-inline text-nowrap">
+                                        <li>
+                                            <span>Bankverbindung</span>
+                                        </li>
+                                        <li>
+                                            <span>IBAN: DE19 4306 0967 1041 8961 00</span>
+                                        </li>
+                                        <li t-if="company.vat">Umsatzsteuer-ID: <span t-field="company.vat"/>
+                                        </li>
+                                        <li>
+                                            <span>Vorsitzender Aufsichtsrat: Marc Urbatsch</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-            </xpath>
-        </template>
-    </data>
+            </div>
+        </xpath>
+    </template>
+</data>
 </odoo>

@@ -42,6 +42,8 @@ msgstr "Ansprechpartner*in"
 #: model:ir.model.fields,field_description:base.field_res_partner__user_id
 #: model:ir.model.fields,field_description:base.field_res_users__user_id
 #: model_terms:ir.ui.view,arch_db:base.view_res_partner_filter
+#: model:ir.model.fields.selection,name:account_followup.selection__account_followup_followup_line__activity_default_responsible_type__salesperson
+#: model_terms:ir.ui.view,arch_db:account_followup.customer_statements_search_view
 msgid "Salesperson"
 msgstr "Ansprechpartner*in"
 
@@ -105,6 +107,16 @@ msgstr "Ansprechpartner*in"
 #: model:ir.model.fields,field_description:website_sale.field_website__salesperson_id
 msgid "Salesperson"
 msgstr "Ansprechpartner*in"
+
+#. modules: account_followup, l10n_din5008_sale
+#. odoo-python
+#: code:addons/l10n_din5008_sale/models/sale.py:0
+#: model:ir.model.fields.selection,name:account_followup.selection__account_followup_followup_line__activity_default_responsible_type__salesperson
+#: model_terms:ir.ui.view,arch_db:account_followup.customer_statements_search_view
+#, python-format
+msgid "Salesperson"
+msgstr "Ansprechpartner*in"
+
 
 #. module: sale_order_line_sequence
 #: model_terms:ir.ui.view,arch_db:sale_order_line_sequence.report_saleorder_document_sequence

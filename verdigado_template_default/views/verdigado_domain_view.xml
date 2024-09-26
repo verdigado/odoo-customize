@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_verdigado_domain_form" model="ir.ui.view">
+            <field name="name">verdigado.domain.form</field>
+            <field name="model">verdigado.domain</field>
+            <field name="arch" type="xml">
+                <form string="Domain">
+                    <sheet>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <group name="domain_details" col="4">
+                            <field name="domain_id" invisible="1"/>
+                            <field name="domain_name"/>
+                            <field name="partner_id"/>
+                            <field name="is_main"/>
+                            <field name="is_extern"/>
+                            <field name="notes" />
+                        </group>
+                        <group>
+                            <group name="booking_details">
+                                <field name="active" invisible="1"/>
+                                <field name="start" />
+                                <field name="end" />
+                            </group>
+                        </group>
+                        <group>
+                            <group name="lists_details">
+                                <field name="is_list"/>
+                                <field name="lists_booked" />
+                                <field name="lists_used" />
+                            </group>
+                            <group name="mailbox_details">
+                                <field name="mailboxes_booked"/>
+                                <field name="mailboxes_used"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- show given fields in domain list  -->
+        <record id="view_verdigado_domain_tree" model="ir.ui.view">
+            <field name="name">verdigado.domain.view.tree</field>
+            <field name="model">verdigado.domain</field>
+            <field name="arch" type="xml">
+                <tree string="Domains">
+                    <field name="domain_id"/>
+                    <field name="is_list"/>
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- show "Archived" in search -->
+        <record id="res_verdigado_domain_search" model="ir.ui.view">
+            <field name="name">verdigado.domain.view.search</field>
+            <field name="model">verdigado.domain</field>
+            <field name="arch" type="xml">
+                <search string="Search Domain">
+                    <field name="domain_id"/>
+                    <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- unklar -->
+        <record id="action_verdigado_domain_form" model="ir.actions.act_window">
+            <field name="name">Domains</field>
+            <field name="res_model">verdigado.domain</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="res_verdigado_domain_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create a Domain
+                </p>
+                <p>
+                Domains are the financial institutions at which you and your contacts have their accounts.
+                </p>
+            </field>
+        </record>
+
+
+        <!-- <record id="view_company_verdigado_domain_form" model="ir.ui.view">
+            <field name="name">company.verdigado.domain.form</field>
+            <field name="model">verdigado.domain</field>
+            <field name="inherit_id" ref="view_verdigado_domain_form"/>
+            <field name="mode">primary</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record> -->
+
+        <record id="action_res_partner_verdigado_domain_form" model="ir.actions.act_window">
+            <field name="name">Verdigado Domains</field>
+            <field name="res_model">verdigado.domain</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create a Domain
+                </p>
+                <p>
+                From here you can manage all verdigado domains linked to you and your contacts.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

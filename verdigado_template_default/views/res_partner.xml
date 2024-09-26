@@ -12,4 +12,19 @@
             </xpath>
         </field>
     </record>
+
+    <record id="verdigado_view_res_partner_filter" model="ir.ui.view">
+        <field name="name">res.partner.select</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="x_hauptdomain" string="Hauptdomain" />
+            </xpath>
+            <xpath expr="//group[@name='group_by']/filter[@name='group_country']" position="after">
+                <filter name="x_kunde_hosting" string="Hostingkunde" context="{'group_by': 'x_kunde_hosting'}"/>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

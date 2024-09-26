@@ -1,8 +1,14 @@
 /* web_enterprise/static/src/legacy/scss/ui.scss */
-.o_home_menu_background {
-    background: url(/verdigado_template_default/static/head1.png),
-        linear-gradient(to right bottom, #00354e, #a00057);
-    background-size: contain;
-    background-position: bottom;
-    background-repeat: no-repeat;
+.o_home_menu_background, .o_web_client.o_home_menu_background {
+    background: {
+        size: contain;
+        repeat: no-repeat;
+        position: bottom;
+        color: var(--homeMenu-bg-color, #a00057);
+        // image: url("/verdigado_template_default/static/head1.png");
+        image: var(--homeMenu-bg-image,
+            url("/verdigado_template_default/static/head1.png"),
+            linear-gradient(to right bottom, #00354e, #a00057)
+        );
+    }
 }

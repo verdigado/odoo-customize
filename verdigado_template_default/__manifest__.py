@@ -1,11 +1,10 @@
+# Copyright 2022 verdigado eG
+# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
+
 {
     "name": "Verdigado Standard Templates",
     "author": "verdigado eG",
     "website": "https://github.com/verdigado/odoo-customize",
-    # Categories can be used to filter modules in modules listing
-    # Check
-    # https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
     "category": "Customizations",
     "version": "16.0.0.1.0",
     "license": "AGPL-3",
@@ -21,13 +20,12 @@
     ],
     # always loaded
     "data": [
-#        "views/debrand_web.xml",
-#        "views/debrand_mail.xml",
-#        "views/res_partner.xml",
-        # "views/order_line_number.xml",
+        "views/debrand_web.xml",
+        "views/debrand_mail.xml",
+        "views/res_partner.xml",
+        "views/order_line_number.xml",
         "views/report_invoice.xml",
         "views/sepa_invoice.xml",
-#        "views/verdigado.xml"
     ],
     "assets": {
         "web._assets_primary_variables": [
@@ -35,15 +33,14 @@
         ],
         "web.assets_frontend": [
             "verdigado_template_default/static/src/scss/verdigado_style.scss",
+            "verdigado_template_default/static/src/scss/ui.scss",
         ],
         "web.assets_backend": [
-            "verdigado_template_default/static/src/scss/web_backend.scss",
+            "verdigado_template_default/static/src/scss/web_backend.scss"
         ],
-        "web._assets_common_styles": [
-            "verdigado_template_default/static/src/scss/ui.scss"
-        ],
+        "web.assets_common": ["verdigado_template_default/static/src/scss/ui.scss"],
         "web.report_assets_common": [
-            "verdigado_template_default/static/src/scss/report_assets.scss",
+            "verdigado_template_default/static/src/scss/report_assets.scss"
         ],
     },
     "images": [
