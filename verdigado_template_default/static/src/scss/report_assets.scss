@@ -27,9 +27,6 @@
     &.invoice_note {
         tr {
             td {
-                vertical-align: bottom;
-            }
-            &:nth-child(2) td {
                 vertical-align: top;
             }
             .address, .information_block, .shipping_address, .invoice_address {
@@ -85,14 +82,15 @@
                 th {
                     color: $o-enterprise-color;
                 }
-            }
-
-            [name=invoice_line_table].table-sm > tbody > tr {
                 border-top: 1px solid #bbb !important;
+                tr {
+                    border-top: 1px solid #bbb !important;
+                }
                 td {
                     vertical-align: top;
                 }
             }
+
             // Don't ask me where this border comes from. It's only in PDF export.
             [name=payment_term] table {
                 border: none !important;
