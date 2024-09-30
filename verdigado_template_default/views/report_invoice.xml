@@ -63,7 +63,7 @@
                                                     </td>
                                                 </tr>
                                             </t>
-                                            <t t-if="o.partner_id.ref">
+                                            <t t-if="o and o.partner_id and o.partner_id.ref">
                                                 <tr>
                                                     <td>
                                                         <span>Kund*innennr.</span>

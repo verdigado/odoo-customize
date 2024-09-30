@@ -4,11 +4,11 @@ from odoo import models, fields, api
 
 
 class VerdigadoDomain(models.Model):
-    _name = 'verdigado.domain'
-    _description = 'Domain specific fields'
+    _name = "verdigado.domain"
+    _description = "Domain specific fields"
     _order = "domain_name"
 
-    domain_id = fields.Many2one('verdigado.domain', string='Domain')
+    domain_id = fields.Many2one("verdigado.domain", string="Domain")
     domain_name = fields.Char(readonly=False)
 
     active = fields.Boolean(default=True)
@@ -25,9 +25,8 @@ class VerdigadoDomain(models.Model):
     lists_booked = fields.Integer()
     lists_used = fields.Integer(readonly=True)
 
-    partner_id = fields.Many2one('res.partner', 'Partner', readonly=True)
-
+    partner_id = fields.Many2one("res.partner", "Partner", readonly=True)
 
     _sql_constraints = [
-        ('unique_domain', 'unique(domain_name, active)', 'Domain must be unique')
+        ("unique_domain", "unique(domain_name, active)", "Domain must be unique")
     ]

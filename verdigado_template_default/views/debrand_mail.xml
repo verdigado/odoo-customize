@@ -5,7 +5,7 @@
         <!-- we replace the whole template... -->
         <xpath expr="//p[@style='color: #555555; font-size:11px;']" position="replace">
             <a href="https://www.verdigado.com">
-                <img t-att-src="'/verdigado_template_default/static/img/verdigado_Logo.png'" t-att-style="'max-width:250px;'" t-att-alt="'Logo von verdigado eG mit Claim IT_with_attitude'" />
+                <img t-attf-src="/verdigado_template_default/static/img/verdigado_Logo.png" t-att-style="'max-width:250px;'" t-att-alt="'Logo von verdigado eG mit Claim IT_with_attitude'" />
             </a>
         </xpath>
     </template>

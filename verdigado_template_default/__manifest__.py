@@ -18,7 +18,6 @@
         "sale_order_line_sequence",
         "module_auto_update",
     ],
-    # always loaded
     "data": [
         "views/debrand_web.xml",
         "views/debrand_mail.xml",

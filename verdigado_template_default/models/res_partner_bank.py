@@ -2,7 +2,6 @@ from odoo import models
 
 # make IBAN unique for single partner - not for whole company
 
-
 # 1. change constraint for unique_number
 class ResPartnerBank(models.Model):
 
