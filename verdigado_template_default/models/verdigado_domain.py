@@ -2,7 +2,6 @@
 
 from odoo import models, fields, api
 
-
 class VerdigadoDomain(models.Model):
     _name = "verdigado.domain"
     _description = "Domain specific fields"
