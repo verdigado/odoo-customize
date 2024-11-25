@@ -57,6 +57,10 @@ class HrLeaveType(models.Model):
         """Return overlapping leaves and the working time of the overlap"""
         HrLeave = self.env["hr.leave"]
 
+        # Make sure, employee_id is int, not list
+        if type(employee_id) is list:
+            employee_id = employee_id[0]
+
         for possible_overlap in HrLeave.search(
             [
                 ("employee_id", "=", employee_id),
