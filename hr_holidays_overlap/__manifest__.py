@@ -8,7 +8,7 @@
     "development_status": "Beta",
     "category": "Human Resources/Time Off",
     "website": "https://github.com/OCA/hr-holidays",
-    "author": "Hunki Enterprises BV, Odoo Community Association (OCA)",
+    "author": "Hunki Enterprises BV, Odoo Community Association (OCA), verdigado eG",
     "maintainers": ["hbrunn"],
     "license": "AGPL-3",
     "depends": [
