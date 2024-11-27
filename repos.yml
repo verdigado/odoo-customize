@@ -10,7 +10,7 @@ hr-attendance:
     merges:
         - oca 15.0
         # PR on the above
-        - hbrunn 15.0-hr_attendance_missing_days
+        - hbrunn 15.0-hr_attendance_break
         # https://github.com/OCA/hr-attendance/pull/142
         - oca refs/pull/142/head
 mint-system:
