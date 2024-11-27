@@ -8,7 +8,7 @@
     "development_status": "Alpha",
     "category": "Tools",
     "website": "https://github.com/OCA/server-backend",
-    "author": "Hunki Enterprises BV, Odoo Community Association (OCA)",
+    "author": "Hunki Enterprises BV, Odoo Community Association (OCA), verdigado eG",
     "maintainers": ["hbrunn"],
     "license": "AGPL-3",
     "external_dependencies": {
