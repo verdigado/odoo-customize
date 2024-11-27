@@ -37,11 +37,6 @@ sale-workflow:
         oca: https://github.com/OCA/sale-workflow.git
     merges:
         - oca 15.0
-server-backend:
-    remotes:
-        oca: https://github.com/OCA/server-backend.git
-    merges:
-        - oca 15.0
 server-brand:
     defaults:
         depth: 1
