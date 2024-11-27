@@ -40,10 +40,8 @@ sale-workflow:
 server-backend:
     remotes:
         oca: https://github.com/OCA/server-backend.git
-        hbrunn: https://github.com/hbrunn/server-backend.git
     merges:
         - oca 15.0
-        - hbrunn 15.0-base_ical
 server-brand:
     defaults:
         depth: 1
