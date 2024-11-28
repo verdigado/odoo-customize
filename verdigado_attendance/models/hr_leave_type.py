@@ -42,7 +42,7 @@ class HrLeaveType(models.Model):
             overlap_ids += overlap1.ids + overlap2.ids
             overlap_time += time
         result[1]["overlap"] = {
-            "time": overlap_time,
+            "time": round(overlap_time, 2),
             "ids": overlap_ids,
         }
         return result
