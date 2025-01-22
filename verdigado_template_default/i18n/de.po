@@ -16,11 +16,6 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: verdigado_template_default
-#: model_terms:ir.ui.view,arch_db:verdigado_template_default.verdigado_mail_notification_paynow
-msgid "View"
-msgstr "Ansicht"
-
 #. module: sale_order_line_sequence
 #: model:ir.model.fields,field_description:sale_order_line_sequence.field_account_move_line__related_so_sequence
 msgid "SO Line Number"

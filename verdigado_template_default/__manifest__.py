@@ -17,6 +17,7 @@
         "website",
         # "sale_order_line_sequence",
         "module_auto_update",
+        "auth_oidc"
     ],
     "data": [
         "views/debrand_web.xml",
