@@ -3,6 +3,10 @@
 
 {
     "name": "Verdigado Standard Templates",
+    'description': """
+verdigado-Layout für odoo
+=============================================
+""",
     "author": "verdigado eG",
     "website": "https://github.com/verdigado/odoo-customize",
     "category": "Customizations",
