@@ -29,7 +29,7 @@ class ResUsers(models.Model):
                 # If not found, search by email.
                 oauth_user = self.search([("login", "=", email)])
                 if oauth_user:
-                    _logger.info("User with email %s found. Will add oauth settings for %s", email, provider.name)
+                    _logger.info("User with email %s found and will add oauth settings.", email)
                     # If the user with that email exists, we update their OAuth data
                     oauth_user.write({
                         'oauth_provider_id': provider,
