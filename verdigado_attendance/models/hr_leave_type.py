@@ -37,8 +37,7 @@ class HrLeaveType(models.Model):
         overlap_ids = []
         overlap_time = 0.0
         for overlap1, overlap2, time in self._get_overlap(
-            self._get_contextual_employee_id(),
-            leave_type=self.id
+            self._get_contextual_employee_id(), leave_type=self.id
         ):
             overlap_ids += overlap1.ids + overlap2.ids
             overlap_time += time

@@ -21,8 +21,7 @@ class HrLeaveType(models.Model):
             for this in result[employee_id]:
                 allocation_dict = result[employee_id][this]
                 for possible_overlap, _overlap, number_of_days in self._get_overlap(
-                    employee_id,
-                    this.id
+                    employee_id, this.id
                 ):
                     for allocation, allocation_days in allocation_dict.items():
                         if (
