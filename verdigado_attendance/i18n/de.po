@@ -22,7 +22,7 @@ msgstr ""
 #: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
 msgid "(incl."
-msgstr ""
+msgstr "(inkl."
 
 #. module: hr_attendance_break
 #: model:mail.template,body_html:hr_attendance_break.template_mandatory_break
@@ -732,7 +732,7 @@ msgstr ""
 #: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
 msgid "from"
-msgstr ""
+msgstr "aus"
 
 #. module: hr_attendance_break
 #. openerp-web
@@ -746,7 +746,7 @@ msgstr ""
 #: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
 msgid "overlaps"
-msgstr ""
+msgstr "Überlappungen"
 
 #. module: hr_attendance_break
 #. openerp-web
