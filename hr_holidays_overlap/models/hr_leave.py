@@ -5,6 +5,7 @@ from odoo import api, models
 
 exclude_sentinel = object()
 
+
 class HrLeave(models.Model):
     _inherit = "hr.leave"
 
