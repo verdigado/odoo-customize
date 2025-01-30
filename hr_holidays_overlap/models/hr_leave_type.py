@@ -1,9 +1,7 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0)
 
-
 from odoo import fields, models
-
 
 class HrLeaveType(models.Model):
     _inherit = "hr.leave.type"
@@ -23,7 +21,8 @@ class HrLeaveType(models.Model):
             for this in result[employee_id]:
                 allocation_dict = result[employee_id][this]
                 for possible_overlap, _overlap, number_of_days in self._get_overlap(
-                    employee_id
+                    employee_id,
+                    this.id
                 ):
                     for allocation, allocation_days in allocation_dict.items():
                         if (
@@ -35,6 +34,7 @@ class HrLeaveType(models.Model):
                             )
                         ):
                             continue
+                        # found allocation which is right now valid
                         allocation_days["virtual_remaining_leaves"] += number_of_days
                         allocation_days["virtual_leaves_taken"] -= number_of_days
                         if possible_overlap.state == "validate":
@@ -53,7 +53,7 @@ class HrLeaveType(models.Model):
                             del allocation_dict[False]
         return result
 
-    def _get_overlap(self, employee_id):
+    def _get_overlap(self, employee_id, leave_type):
         """Return overlapping leaves and the working time of the overlap"""
         HrLeave = self.env["hr.leave"]
 
@@ -75,7 +75,7 @@ class HrLeaveType(models.Model):
                     ("id", "not in", possible_overlap.ids),
                     ("date_from", "<=", possible_overlap.date_to),
                     ("date_to", ">=", possible_overlap.date_from),
-                    ("holiday_status_id", "in", self.ids),
+                    ("holiday_status_id", "=", leave_type),
                 ]
             ):
                 number_of_days = overlap.employee_id._get_work_days_data_batch(
