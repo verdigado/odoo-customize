@@ -19,10 +19,11 @@
         <field name="inherit_id" ref="base.view_res_partner_filter" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='user_id']" position="after">
-                <field name="x_hauptdomain" string="Hauptdomain" />
+                <field name="x_hauptdomain" />
+                <field name="x_gliederungsid" />
             </xpath>
             <xpath expr="//group[@name='group_by']/filter[@name='group_country']" position="after">
-                <filter name="x_kunde_hosting" string="Hostingkunde" context="{'group_by': 'x_kunde_hosting'}"/>
+                <filter name="x_kunde_hosting" context="{'group_by': 'x_kunde_hosting'}"/>
             </xpath>
         </field>
     </record>
