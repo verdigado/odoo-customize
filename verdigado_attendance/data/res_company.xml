@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<odoo>
-    <record model="res.company" id="base.main_company">
-        <field
-            name="attendance_missing_days_reason"
-            ref="hr_attendance_missing_days.attendance_reason_missing_days"
-        />
-    </record>
-</odoo>

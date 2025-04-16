@@ -1,0 +1,43 @@
+// Shared with web client and login screen
+// addons/web_enterprise/static/src/webclient/home_menu/home_menu_background.scss
+.o_home_menu_background,
+.o_web_client.o_home_menu_background {
+    background: {
+        size: contain;
+        repeat: no-repeat;
+        position: bottom;
+        color: var(--homeMenu-bg-color, #a00057);
+        image: var(--homeMenu-bg-image,
+            url("/verdigado_template_default/static/head1.png"),
+            linear-gradient(to right bottom, #00354e, #a00057)
+        );
+    }
+}
+
+/* /web/static/src/webclient/switch_company_menu/switch_company_menu.scss */
+.o_switch_company_menu .oe_topbar_name {
+    color: white;
+}
+
+.o_main_navbar {
+    // topbar icons and main menu title
+    .o_menu_brand {
+        color: white;
+
+        &:hover {
+            color: white;
+            font-weight: 900;
+        }
+    }
+    // link animation on hover
+    // addons/web/static/src/webclient/navbar/navbar.scss
+    .o_menu_toggle {
+        &.hasImage:not(.o_menu_toggle_back) {
+            &:hover {
+                .o_menu_toggle_icon {
+                    color: white;
+                }
+            }
+        }
+    }
+}

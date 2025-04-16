@@ -1,4 +1,4 @@
-// overwrite defaults in addons/web/static/src/legacy/scss/primary_variables.scss
+// overwrite defaults in addons/web/static/src/scss/primary_variables.scss
 
 $o-community-color: #00354e;
 $o-enterprise-color: #a00057;
@@ -10,3 +10,73 @@ $o-brand-primary: $o-community-color;
 
 // main navbar colors
 $o-navbar-background: $o-enterprise-color;
+:root {
+    --NavBar-entry-color: white;
+    --NavBar-brand-color: white;
+}
+
+$o-home-menu-caption-color: #ffffff;
+$o-theme-headings-font-weight:              600;
+
+
+// override bootstrap button colors.
+// based on addons/web_enterprise/static/src/scss/primary_variables.scss
+// = Buttons
+$o-btns-bs-override: () ;
+$o-btns-bs-override: map-merge((
+    "primary": (
+        background: $o-brand-primary,
+        border: $o-brand-primary,
+        color: white,
+
+        hover-background: lighten($o-brand-primary, 5%),
+        hover-border: lighten($o-brand-primary, 5%),
+        hover-color: white,
+
+        active-background: lighten($o-brand-primary, 10%),
+        active-border: lighten($o-brand-primary, 10%),
+        active-color: white,
+    ),
+
+    "secondary": (
+        background: $o-gray-300,
+        border: $o-gray-300,
+        color: $o-gray-900,
+
+        hover-background: $o-gray-400,
+        hover-border: $o-gray-400,
+        hover-color: $o-gray-900,
+
+        active-background: mix($o-action, $o-gray-100, 15%),
+        active-border: lighten($o-action, 10%),
+        active-color: $o-black,
+    ),
+
+    "light": (
+        background: $o-gray-200,
+        border: $o-gray-200,
+        color: $o-gray-800,
+
+        hover-background: $o-gray-300,
+        hover-border: $o-gray-300,
+        hover-color: $o-gray-900,
+
+        active-background: mix($o-action, $o-gray-100, 15%),
+        active-border:  darken($o-action, 10%),
+        active-color: $o-black,
+    ),
+
+    "danger": (
+        background: $o-danger,
+        border: $o-danger,
+        color: $o-white,
+
+        hover-background: lighten($o-danger, 5%),
+        hover-border: lighten($o-danger, 5%),
+        hover-color: $o-white,
+
+        active-background: lighten($o-danger, 10%),
+        active-border: lighten($o-danger, 10%),
+        active-color: $o-white,
+    ),
+), $o-btns-bs-override);

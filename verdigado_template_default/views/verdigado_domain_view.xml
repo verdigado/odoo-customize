@@ -41,14 +41,14 @@
 
         <!-- show given fields in domain list  -->
         <record id="view_verdigado_domain_tree" model="ir.ui.view">
-            <field name="name">verdigado.domain.view.tree</field>
+            <field name="name">verdigado.domain.view.list</field>
             <field name="model">verdigado.domain</field>
             <field name="arch" type="xml">
-                <tree string="Domains">
+                <list string="Domains">
                     <field name="domain_id"/>
                     <field name="is_list"/>
                     <field name="partner_id"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -69,7 +69,7 @@
         <record id="action_verdigado_domain_form" model="ir.actions.act_window">
             <field name="name">Domains</field>
             <field name="res_model">verdigado.domain</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="search_view_id" ref="res_verdigado_domain_search"/>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
@@ -98,7 +98,7 @@
         <record id="action_res_partner_verdigado_domain_form" model="ir.actions.act_window">
             <field name="name">Verdigado Domains</field>
             <field name="res_model">verdigado.domain</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                 Create a Domain

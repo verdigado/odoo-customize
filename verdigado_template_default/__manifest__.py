@@ -10,7 +10,7 @@ verdigado-Layout für odoo
     "author": "verdigado eG",
     "website": "https://github.com/verdigado/odoo-customize",
     "category": "Customizations",
-    "version": "16.0.0.1.0",
+    "version": "18.0.1.0.0",
     "license": "AGPL-3",
     # any module necessary for this one to work correctly
     "depends": [
@@ -24,28 +24,27 @@ verdigado-Layout für odoo
         "auth_oidc"
     ],
     "data": [
-        "views/debrand_web.xml",
-        "views/debrand_mail.xml",
+        # "views/debrand_web.xml",
+        # "views/debrand_mail.xml",
         "views/res_partner.xml",
         # "views/order_line_number.xml",
-        "views/report_invoice.xml",
-        "views/sepa_invoice.xml",
+        # "views/report_invoice.xml",
+        # "views/sepa_invoice.xml",
     ],
     "assets": {
+        "web.assets_frontend": [
+            "verdigado_template_default/static/src/scss/home_menu_background.scss", # used by login page
+            "verdigado_template_default/static/src/scss/verdigado_style.scss",
+        ],
         "web._assets_primary_variables": [
             "verdigado_template_default/static/src/scss/primary_variables.scss",
         ],
-        "web.assets_frontend": [
-            "verdigado_template_default/static/src/scss/verdigado_style.scss",
-            "verdigado_template_default/static/src/scss/ui.scss",
-        ],
         "web.assets_backend": [
-            "verdigado_template_default/static/src/scss/web_backend.scss"
+            "verdigado_template_default/static/src/scss/home_menu_background.scss"
         ],
-        "web.assets_common": ["verdigado_template_default/static/src/scss/ui.scss"],
-        "web.report_assets_common": [
-            "verdigado_template_default/static/src/scss/report_assets.scss"
-        ],
+        # "web.report_assets_common": [
+        #     "verdigado_template_default/static/src/scss/report_assets.scss"
+        # ],
     },
     "images": [
         "static/src/img/head1.jpg",

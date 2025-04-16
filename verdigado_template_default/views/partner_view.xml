@@ -17,20 +17,20 @@
                         <group>
                             <group string="Bank Accounts" name="banks" groups="account.group_account_invoice,account.group_account_readonly">
                                 <field name="bank_ids" nolabel="1">
-                                    <tree editable="bottom">
+                                    <list editable="bottom">
                                         <field name="bank_id"/>
                                         <field name="acc_number"/>
-                                    </tree>
+                                    </list>
                                 </field>
                                 <button type="action" class="btn-link" name="%(base.action_res_partner_bank_account_form)d" context="{'search_default_partner_id': active_id, 'default_partner_id': active_id, 'form_view_ref': 'account.view_company_partner_bank_form'}" string="View accounts detail" colspan="2" />
                             </group>
                             <group string="Domain Entries" name="domain_entries">
                                 <field name="hosting_customer"/>
                                 <field name="domain_ids" nolabel="1">
-                                    <tree editable="bottom">
+                                    <list editable="bottom">
                                         <field name="domain_name" />
                                         <field name="is_main" />
-                                    </tree>
+                                    </list>
                                 </field>
                                 <button type="action" class="btn-link" name="%(action_res_partner_verdigado_domain_form)d" string="View domain detail" colspan="3" />
                             </group>
