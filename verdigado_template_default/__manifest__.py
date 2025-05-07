@@ -24,7 +24,7 @@ verdigado-Layout für odoo
         "auth_oidc"
     ],
     "data": [
-        # "views/debrand_web.xml",
+        "views/debrand_web.xml",
         # "views/debrand_mail.xml",
         "views/res_partner.xml",
         # "views/order_line_number.xml",
