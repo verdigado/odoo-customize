@@ -1,8 +1,12 @@
 body {
     // main section on login screen
-    div#wrapwrap main {
-        background-color: $o-community-color !important;
+    div#wrapwrap main form.oe_login_form {
+        background-color: $o-community-color;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         color: white;
+        padding: 20px;
+        max-width: 350px;
     }
 
     .btn-primary {

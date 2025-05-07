@@ -16,7 +16,7 @@
         </xpath>
         <xpath expr="//t[@t-set='final_message']" position="replace">
             <t t-set="final_message">
-                Support: support@verdigado.com, +49 30 629-3390-80 (Mo-Fr 09:00 - 17:00)
+                Support: support@verdigado.com, +49 30 629-3390-80 (Mo-Fr 09:00 - 17:00 Uhr)
                 %s%s
             </t>
             <t t-set="_message" />
