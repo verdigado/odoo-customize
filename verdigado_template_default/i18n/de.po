@@ -16,11 +16,6 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: sale_order_line_sequence
-#: model:ir.model.fields,field_description:sale_order_line_sequence.field_account_move_line__related_so_sequence
-msgid "SO Line Number"
-msgstr "Nr."
-
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_line__invoice_user_id
 #: model:ir.model.fields,field_description:account.field_account_invoice_report__invoice_user_id

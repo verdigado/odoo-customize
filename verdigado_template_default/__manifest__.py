@@ -25,10 +25,9 @@ verdigado-Layout für odoo
     ],
     "data": [
         "views/debrand_web.xml",
-        # "views/debrand_mail.xml",
+        "views/debrand_mail.xml",
         "views/res_partner.xml",
-        # "views/order_line_number.xml",
-        # "views/report_invoice.xml",
+        "views/report_invoice.xml",
         # "views/sepa_invoice.xml",
     ],
     "assets": {
