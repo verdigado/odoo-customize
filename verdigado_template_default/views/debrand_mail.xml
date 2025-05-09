@@ -3,7 +3,7 @@
     <!-- original template is in addons/mail/data/mail_templates_email_layouts.xml -->
     <template id="verdigado_mail_notification_layout" inherit_id="mail.mail_notification_layout" priority="100">
         <!-- we replace the whole template... -->
-        <xpath expr="//p[@style='color: #555555; font-size:11px;']" position="replace">
+        <xpath expr="//div[@t-if='show_footer' and @style='color: #555555; font-size:11px;']" position="replace">
             <a href="https://www.verdigado.com">
                 <img t-attf-src="/verdigado_template_default/static/img/verdigado_Logo.png" t-att-style="'max-width:250px;'" t-att-alt="'Logo von verdigado eG mit Claim IT_with_attitude'" />
             </a>
