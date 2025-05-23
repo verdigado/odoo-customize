@@ -26,9 +26,9 @@ verdigado-Layout für odoo
     "data": [
         "views/debrand_web.xml",
         "views/debrand_mail.xml",
-        "views/res_partner.xml",
         "views/report_invoice.xml",
-        # "views/sepa_invoice.xml",
+        "views/res_partner.xml",
+        "views/sepa_invoice.xml",
     ],
     "assets": {
         "web.assets_frontend": [
@@ -41,9 +41,9 @@ verdigado-Layout für odoo
         "web.assets_backend": [
             "verdigado_template_default/static/src/scss/home_menu_background.scss"
         ],
-        # "web.report_assets_common": [
-        #     "verdigado_template_default/static/src/scss/report_assets.scss"
-        # ],
+        "web.report_assets_common": [
+            "verdigado_template_default/static/src/scss/report_assets.scss"
+        ],
     },
     "images": [
         "static/src/img/head1.jpg",

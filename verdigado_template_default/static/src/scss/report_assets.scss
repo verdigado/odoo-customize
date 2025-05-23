@@ -21,6 +21,7 @@
             img {
                 padding-top: 10mm;
                 float: right;
+                max-width: 100%;
             }
         }
     }
@@ -91,6 +92,9 @@
                 }
             }
 
+            #payment_term {
+                clear: both;
+            }
             // Don't ask me where this border comes from. It's only in PDF export.
             [name=payment_term] table {
                 border: none !important;
