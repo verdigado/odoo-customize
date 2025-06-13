@@ -51,16 +51,12 @@
                                 <t t-set="din5008_document_information">
                                     <div class="information_block" t-if="o and o._name=='account.move'">
                                         <table>
-                                            <tr t-if="o.name">
-                                                <td>Rechnungsnummer</td>
-                                                <td><t t-out="o.name"/></td>
-                                            </tr>
                                             <tr t-if="o.invoice_date">
-                                                <td>Rechnungsdatum</td>
+                                                <td>Datum</td>
                                                 <td><t t-out="o.invoice_date" t-options="{'widget': 'date'}"/></td>
                                             </tr>
                                             <tr t-if="o.invoice_date_due">
-                                                <td>Fälligkeitsdatum</td>
+                                                <td>Fälligkeit</td>
                                                 <td><t t-out="o.invoice_date_due" t-options="{'widget': 'date'}"/></td>
                                             </tr>
                                             <tr t-if="o.delivery_date">
@@ -95,7 +91,7 @@
                             <span t-else="">
                                 <t t-set="o" t-value="docs[0]" t-if="not o" />
                                 <t t-if="din5008_document_title">
-                                    <t t-out="din5008_document_title"/>
+                                    <t t-out="din5008_document_title"/> <t t-out="o.name"/>
                                 </t>
                                 <span t-elif="'name' in o" t-field="o.name"/>
                             </span>
