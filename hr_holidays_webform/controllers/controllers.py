@@ -12,3 +12,14 @@ class CmsFormPublicController(cms_form_main.CMSFormController):
     )
     def cms_form(self, model, model_id=None, **kw):
         return super().cms_form(model, model_id, **kw)
+
+    @http.route(
+        "/my/form/submit",
+        type="http",
+        auth="public",
+        methods=["POST"],
+        website=True,
+        csrf=True,
+    )
+    def submit_form(self, **kwargs):
+        return super().submit_form(**kwargs)
