@@ -6,14 +6,22 @@
             <form string="Create Leaves">
                 <group>
                     <field name="request_id" readonly="1" />
-                    <field name="employee_id" />
-                    <field name="leave_type_id" />
+                </group>
+                <group>
+                    <group>
+                        <field name="employee_id" />
+                        <field name="leave_type_id" />
+                    </group>
+                    <group>
+                        <field name="start_date" />
+                        <field name="end_date" />
+                    </group>
                 </group>
                 <footer>
                     <button
                         string="Create"
                         type="object"
-                        name="action_create_leaves"
+                        name="action_create_leave"
                         class="btn-primary"
                     />
                     <button string="Cancel" class="btn-secondary" special="cancel" />

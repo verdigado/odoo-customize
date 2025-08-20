@@ -8,16 +8,18 @@ class HrLeaveRequestWizard(models.TransientModel):
     request_id = fields.Many2one(
         "hr.leave.request", string="Leave Request", required=True, readonly=True
     )
-    employee_id = fields.Many2one("hr.employee", string="Employees", required=True)
+    employee_id = fields.Many2one("hr.employee", string="Employee", required=True)
     leave_type_id = fields.Many2one("hr.leave.type", string="Leave Type", required=True)
+    start_date = fields.Date(required=True)
+    end_date = fields.Date(required=True)
 
     def action_create_leave(self):
         self.env["hr.leave"].create(
             {
-                "employee_id": self.employee.id,
+                "employee_id": self.employee_id.id,
                 "holiday_status_id": self.leave_type_id.id,
-                "request_date_from": self.request_id.start_date,
-                "request_date_to": self.request_id.end_date,
+                "date_from": self.start_date,
+                "date_to": self.end_date,
                 "name": f"Leave from request {self.request_id.id}",
             }
         )

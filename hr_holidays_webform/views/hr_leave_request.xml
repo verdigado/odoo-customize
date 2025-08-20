@@ -11,6 +11,7 @@
                         <field name="employee_surname" />
                         <field name="start_date" />
                         <field name="end_date" />
+                        <field name="leave_id" />
                         <field name="certificate_file" />
                     </group>
                     <footer>
@@ -38,6 +39,7 @@
                 />
                 <field name="employee_name" />
                 <field name="employee_surname" />
+                <field name="leave_id" />
                 <field name="start_date" />
                 <field name="end_date" />
             </tree>
