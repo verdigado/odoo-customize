@@ -14,6 +14,7 @@
     ],
     "data": [
         "security/ir.model.access.csv",
+        "views/hr_leave_request.xml",
     ],
     "demo": [],
 }
