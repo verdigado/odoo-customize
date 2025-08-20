@@ -14,7 +14,7 @@ class HrLeaveRequestWizard(models.TransientModel):
     end_date = fields.Date(required=True)
 
     def action_create_leave(self):
-        self.env["hr.leave"].create(
+        leave = self.env["hr.leave"].create(
             {
                 "employee_id": self.employee_id.id,
                 "holiday_status_id": self.leave_type_id.id,
@@ -23,3 +23,5 @@ class HrLeaveRequestWizard(models.TransientModel):
                 "name": f"Leave from request {self.request_id.id}",
             }
         )
+        self.env["hr.leave.request"].browse(self.request_id.id).leave_id = leave.id
+        return {"type": "ir.actions.client", "tag": "reload"}
