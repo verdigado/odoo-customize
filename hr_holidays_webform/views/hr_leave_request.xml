@@ -13,6 +13,14 @@
                         <field name="end_date" />
                         <field name="certificate_file" />
                     </group>
+                    <footer>
+                        <button
+                            name="action_open_wizard"
+                            string="Create Leave"
+                            type="object"
+                            class="oe_highlight"
+                        />
+                    </footer>
                 </sheet>
             </form>
         </field>
@@ -21,7 +29,13 @@
         <field name="name">hr.leave.request.tree</field>
         <field name="model">hr.leave.request</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree delete="0" edit="0">
+                <button
+                    name="action_open_wizard"
+                    string="Create Leave"
+                    type="object"
+                    class="oe_highlight"
+                />
                 <field name="employee_name" />
                 <field name="employee_surname" />
                 <field name="start_date" />

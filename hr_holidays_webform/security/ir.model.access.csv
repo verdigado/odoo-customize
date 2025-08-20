@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_hr_leave_request_verdigado,hr.leave.request,hr_holidays_webform.model_hr_leave_request,base.group_user,1,1,1,1
 access_hr_leave_request_verdigado_pub,hr.leave.request.public,hr_holidays_webform.model_hr_leave_request,base.group_public,1,1,1,1
+access_hr_leave_request_wizard,access_hr_leave_request_wizard,model_hr_leave_request_wizard,base.group_user,1,1,1,1
