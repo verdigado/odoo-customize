@@ -45,10 +45,31 @@
             </tree>
         </field>
     </record>
+    <record id="view_hr_leave_request_search" model="ir.ui.view">
+        <field name="name">hr.leave.request.search</field>
+        <field name="model">hr.leave.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="leave_id" />
+                <group>
+                    <filter
+                        string="Without Leave"
+                        name="without_leave"
+                        domain="[('leave_id','=',False)]"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
     <record id="action_hr_leave_request" model="ir.actions.act_window">
         <field name="name">Leave Requests</field>
         <field name="res_model">hr.leave.request</field>
         <field name="view_mode">tree,form</field>
+        <field
+            name="search_view_id"
+            ref="hr_holidays_webform.view_hr_leave_request_search"
+        />
+        <field name="context">{'search_default_without_leave': 1}</field>
     </record>
     <menuitem
         id="menu_hr_leave_request"
