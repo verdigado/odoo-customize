@@ -15,6 +15,12 @@ class HrLeaveRequest(models.Model):
     end_date = fields.Date()
     certificate_file = fields.Binary()
     leave_id = fields.Many2one("hr.leave")
+    leave_type_id = fields.Many2one(
+        "hr.leave.type",
+        default=lambda self: self.env["ir.config_parameter"]
+        .sudo()
+        .get_param("hr_leave_request.default_leave_type"),
+    )
 
     @api.depends("employee_surname", "employee_name", "start_date", "end_date")
     def _compute_name(self):
@@ -41,5 +47,6 @@ class HrLeaveRequest(models.Model):
                 "default_request_id": self.id,
                 "default_start_date": self.start_date,
                 "default_end_date": self.end_date,
+                "default_leave_type_id": self.leave_type_id.id,
             },
         }

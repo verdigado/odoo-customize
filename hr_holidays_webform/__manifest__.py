@@ -16,6 +16,7 @@
         "security/ir.model.access.csv",
         "views/hr_leave_request.xml",
         "views/hr_leave_request_wizard.xml",
+        "views/res_config_settings.xml",
     ],
     "demo": [],
 }
