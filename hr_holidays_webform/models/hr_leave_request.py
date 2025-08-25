@@ -52,6 +52,7 @@ class HrLeaveRequest(models.Model):
             )
 
     def action_open_wizard(self):
+        self.ensure_one()
         return {
             "name": "Create HR Leaves",
             "type": "ir.actions.act_window",
