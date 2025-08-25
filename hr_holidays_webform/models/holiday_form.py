@@ -10,7 +10,6 @@ class HolidayRequestForm(models.AbstractModel):
     form_required_fields = ("name",)
 
     employee_name = fields.Char(required=True)
-    employee_surname = fields.Char(required=True)
     start_date = fields.Date(required=True)
     end_date = fields.Date(required=True)
     certificate_type = fields.Selection(
