@@ -9,10 +9,20 @@ class HrLeaveRequest(models.Model):
         compute="_compute_name",
         store=True,
     )
-    employee_name = fields.Char()
-    employee_surname = fields.Char()
-    start_date = fields.Date()
-    end_date = fields.Date()
+    employee_name = fields.Char(required=True)
+    employee_surname = fields.Char(required=True)
+    start_date = fields.Date(required=True)
+    end_date = fields.Date(required=True)
+    certificate_type = fields.Selection(
+        selection=[
+            ("none", "No Certificate"),
+            ("cert", "Certificate"),
+            ("e-cert", "E-Certificate"),
+            ("child", "Child Sick Leave"),
+        ],
+        default="cert",
+        required=True,
+    )
     certificate_file = fields.Binary()
     leave_id = fields.Many2one("hr.leave")
     leave_type_id = fields.Many2one(
