@@ -21,6 +21,7 @@ class HrLeaveRequestWizard(models.TransientModel):
                 "date_from": self.start_date,
                 "date_to": self.end_date,
                 "name": f"Leave from request {self.request_id.id}",
+                "leave_request_id": self.request_id.id,
             }
         )
         self.env["hr.leave.request"].browse(self.request_id.id).leave_id = leave.id

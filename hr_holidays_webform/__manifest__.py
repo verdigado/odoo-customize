@@ -19,6 +19,7 @@
         "views/report.xml",
         "views/report_hr_leave_request_template.xml",
         "views/hr_leave_request.xml",
+        "views/hr_leave.xml",
         "views/hr_leave_request_wizard.xml",
         "views/res_config_settings.xml",
     ],

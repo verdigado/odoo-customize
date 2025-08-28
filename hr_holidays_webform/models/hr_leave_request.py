@@ -103,6 +103,7 @@ class HrLeaveRequest(models.Model):
                 "holiday_status_id": leave_type.id,
                 "date_from": date_from,
                 "date_to": date_to,
+                "leave_request_id": record.id,
             }
         )
         record.leave_id = leave
