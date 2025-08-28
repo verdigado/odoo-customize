@@ -1,5 +1,8 @@
+import base64
 import logging
 from datetime import datetime
+
+from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models
 
@@ -104,3 +107,44 @@ class HrLeaveRequest(models.Model):
         )
         record.leave_id = leave
         return record
+
+    def cron_generate_monthly_report(self):
+        today = fields.Date.today()
+        first_of_this_month = today.replace(day=1)
+        first_of_last_month = first_of_this_month - relativedelta(months=1)
+        last_of_last_month = first_of_this_month - relativedelta(days=1)
+        records = self.search(
+            [
+                ("create_date", ">=", first_of_last_month),
+                ("create_date", "<=", last_of_last_month),
+            ]
+        )
+
+        if not records:
+            return
+
+        pdf_content, _ = self.env.ref(
+            "hr_holidays_webform.report_hr_leave_request_pdf"
+        )._render_qweb_pdf(records.ids)
+
+        attachment = self.env["ir.attachment"].create(
+            {
+                "name": "Monthly_Leave_Request_Report.pdf",
+                "type": "binary",
+                "datas": base64.b64encode(pdf_content),
+                "res_model": "hr.leave.request",
+                "res_id": records[0].id,
+                "mimetype": "application/pdf",
+            }
+        )
+        template = self.env.ref(
+            "hr_holidays_webform.mail_template_hr_leave_request_monthly_report"
+        )
+        if template:
+            # force_attachment prevents Odoo from regenerating attachments
+            # defined in the template
+            template.send_mail(
+                records[0].id,
+                force_send=True,
+                email_values={"attachment_ids": [(6, 0, [attachment.id])]},
+            )

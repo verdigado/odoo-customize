@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="ir_cron_hr_leave_request_monthly_report" model="ir.cron">
+        <field name="name">Leave Request Monthly Report</field>
+        <field name="model_id" ref="model_hr_leave_request" />
+        <field name="state">code</field>
+        <field name="code">model.cron_generate_monthly_report()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">months</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+</odoo>
