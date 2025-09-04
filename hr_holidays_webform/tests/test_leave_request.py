@@ -1,3 +1,4 @@
+import datetime
 import logging
 
 from odoo import fields
@@ -25,8 +26,8 @@ class TestLeaveRequest(TransactionCase):
         request = self.env["hr.leave.request"].create(
             {
                 "employee_name": "John Doe",
-                "start_date": fields.Date.today(),
-                "end_date": fields.Date.today(),
+                "start_date": "2023-01-02",
+                "end_date": "2023-01-04",
                 "leave_type_id": self.leave_type.id,
             }
         )
@@ -38,6 +39,15 @@ class TestLeaveRequest(TransactionCase):
         self.assertEqual(leave.employee_id, self.employee, "Employee mismatch")
         self.assertEqual(
             leave.holiday_status_id, self.leave_type, "Leave type mismatch"
+        )
+        self.assertEqual(
+            leave.request_date_from, datetime.date(2023, 1, 2), "Start date mismatch"
+        )
+        self.assertEqual(
+            leave.request_date_to, datetime.date(2023, 1, 4), "End date mismatch"
+        )
+        self.assertEqual(
+            leave.name, f"Leave from request {request.id}", "Name mismatch"
         )
 
     def test_webform_no_matching_employee(self):
@@ -66,8 +76,8 @@ class TestLeaveRequest(TransactionCase):
         request = self.env["hr.leave.request"].create(
             {
                 "employee_name": "Johnny Doe",
-                "start_date": fields.Date.today(),
-                "end_date": fields.Date.today(),
+                "start_date": "2023-01-02",
+                "end_date": "2023-01-04",
                 "leave_type_id": self.leave_type.id,
             }
         )
@@ -79,14 +89,23 @@ class TestLeaveRequest(TransactionCase):
                 "request_id": request.id,
                 "employee_id": self.employee.id,
                 "leave_type_id": self.leave_type.id,
-                "start_date": fields.Date.today(),
-                "end_date": fields.Date.today(),
+                "start_date": "2023-01-02",
+                "end_date": "2023-01-04",
             }
         )
         wizard.action_create_leave()
 
         leave = self.env["hr.leave"].search([("employee_id", "=", self.employee.id)])
         self.assertTrue(leave, "Wizard did not create leave record")
+        self.assertEqual(
+            leave.request_date_from, datetime.date(2023, 1, 2), "Start date mismatch"
+        )
+        self.assertEqual(
+            leave.request_date_to, datetime.date(2023, 1, 4), "End date mismatch"
+        )
+        self.assertEqual(
+            leave.name, f"Leave from request {request.id}", "Name mismatch"
+        )
 
     def test_action_open_wizard_context(self):
         request = self.env["hr.leave.request"].create(
