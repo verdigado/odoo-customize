@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from odoo import fields, models
 
 
@@ -14,15 +16,12 @@ class HrLeaveRequestWizard(models.TransientModel):
     end_date = fields.Date(required=True)
 
     def action_create_leave(self):
-        leave = self.env["hr.leave"].create(
-            {
-                "employee_id": self.employee_id.id,
-                "holiday_status_id": self.leave_type_id.id,
-                "date_from": self.start_date,
-                "date_to": self.end_date,
-                "name": f"Leave from request {self.request_id.id}",
-                "leave_request_id": self.request_id.id,
-            }
+        date_from = datetime.combine(self.start_date, datetime.min.time())
+        date_to = datetime.combine(self.end_date, datetime.max.time())
+        self.request_id.create_leave_from_leave_request(
+            employee_id=self.employee_id.id,
+            date_from=date_from,
+            date_to=date_to,
+            leave_type_id=self.leave_type_id,
         )
-        self.env["hr.leave.request"].browse(self.request_id.id).leave_id = leave.id
         return {"type": "ir.actions.client", "tag": "reload"}

@@ -70,15 +70,51 @@ class HrLeaveRequest(models.Model):
             },
         }
 
+    def create_leave_from_leave_request(
+        self, employee_id, date_from=None, date_to=None, leave_type_id=None
+    ):
+        self.ensure_one()
+        leave_type_id = leave_type_id or self.leave_type_id
+        if not leave_type_id:
+            logger.warning(
+                f"Cannot create leave from leave request {self.id}: No leave_type"
+            )
+            return self.env["hr.leave"]
+
+        if date_from is None:
+            date_from = datetime.combine(self.start_date, datetime.min.time())
+        if date_to is None:
+            date_to = datetime.combine(self.end_date, datetime.max.time())
+        vals = {
+            "private_name": f"Leave from request {self.id}",
+            "employee_id": employee_id,
+            "holiday_status_id": leave_type_id.id,
+            "date_from": date_from,
+            "date_to": date_to,
+            "leave_request_id": self.id,
+        }
+        vals.update(
+            self.env["hr.leave"]
+            .with_user(self.env.ref("base.public_user"))
+            ._default_get_request_parameters(vals)
+        )  # always use the public user, because logged-in users time zone shifts the date
+        leave = self.env["hr.leave"].create(vals)
+        leave._compute_date_from_to()
+        self.leave_id = leave
+        return leave
+
     @api.model
     def create(self, vals):
         record = super().create(vals)
-        self = self.sudo()  # allow public users to search and create records
-        employee = self.env["hr.employee"].search(
-            [
-                ("name", "=", record.employee_name),
-            ],
-            limit=1,
+        employee = (
+            self.env["hr.employee"]
+            .sudo()
+            .search(
+                [
+                    ("name", "=", record.employee_name),
+                ],
+                limit=1,
+            )
         )
         if not employee:
             logger.warning(
@@ -86,27 +122,7 @@ class HrLeaveRequest(models.Model):
                 f"Could not find employee {record.employee_name}"
             )
             return record
-
-        leave_type = record.leave_type_id
-        if not leave_type:
-            logger.warning(
-                f"Cannot create leave from leave request {record.id}: No default leave_type"
-            )
-            return record
-
-        date_from = datetime.combine(record.start_date, datetime.min.time())
-        date_to = datetime.combine(record.end_date, datetime.max.time())
-        leave = self.env["hr.leave"].create(
-            {
-                "name": f"Leave from request {record.id}",
-                "employee_id": employee.id,
-                "holiday_status_id": leave_type.id,
-                "date_from": date_from,
-                "date_to": date_to,
-                "leave_request_id": record.id,
-            }
-        )
-        record.leave_id = leave
+        record.sudo().create_leave_from_leave_request(employee_id=employee.id)
         return record
 
     def cron_generate_monthly_report(self):
