@@ -3,12 +3,8 @@
         <field name="name">Leave Request Report</field>
         <field name="model">hr.leave.request</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">
-            hr_holidays_webform.report_hr_leave_request_template
-        </field>
-        <field name="report_file">
-            hr_holidays_webform.report_hr_leave_request_template
-        </field>
+        <field name="report_name">hr_holidays_webform.report_hr_leave_request_template</field>
+        <field name="report_file">hr_holidays_webform.report_hr_leave_request_template</field>
         <field name="print_report_name">'Leave_Request_Report_' + object.name</field>
         <field name="binding_model_id" ref="model_hr_leave_request" />
         <field name="binding_type">report</field>
