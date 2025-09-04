@@ -1,4 +1,4 @@
-<odoo>
+<odoo noupdate="1">
     <record id="mail_template_hr_leave_request_monthly_report" model="mail.template">
         <field name="name">Leave Request Monthly Report</field>
         <field name="model_id" ref="model_hr_leave_request" />

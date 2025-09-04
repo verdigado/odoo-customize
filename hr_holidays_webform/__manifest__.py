@@ -14,6 +14,7 @@
     ],
     "data": [
         "security/ir.model.access.csv",
+        "data/leave_requests_mail_template.xml",
         "data/leave_requests_report_mail_template.xml",
         "data/cron_send_monthly_report.xml",
         "views/report.xml",
