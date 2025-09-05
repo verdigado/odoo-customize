@@ -23,3 +23,9 @@ class HolidayRequestForm(models.AbstractModel):
         required=True,
     )
     certificate_file = fields.Binary()
+
+    def form_load_defaults(self, main_object=None, request_values=None):
+        defaults = super().form_load_defaults(main_object, request_values)
+        if self.env.user and not self.env.user._is_public():
+            defaults["employee_name"] = self.env.user.name
+        return defaults
