@@ -108,7 +108,7 @@ class HrLeaveRequest(models.Model):
         record = super().create(vals)
         template = self.env.ref("hr_holidays_webform.mail_template_hr_leave_request")
         if template:
-            template.send_mail(record.id, force_send=True, raise_exception=False)
+            template.sudo().send_mail(record.id, force_send=True, raise_exception=False)
         employee = (
             self.env["hr.employee"]
             .sudo()
