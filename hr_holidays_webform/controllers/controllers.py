@@ -23,3 +23,9 @@ class CmsFormPublicController(cms_form_main.CMSFormController):
     )
     def submit_form(self, **kwargs):
         return super().submit_form(**kwargs)
+
+
+class LeaveRequestSuccessPage(http.Controller):
+    @http.route("/leave-request-success", type="http", auth="public", website=True)
+    def thank_you(self, **kwargs):
+        return http.request.render("hr_holidays_webform.page_leave_request_thankyou")

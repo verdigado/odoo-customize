@@ -29,3 +29,6 @@ class HolidayRequestForm(models.AbstractModel):
         if self.env.user and not self.env.user._is_public():
             defaults["employee_name"] = self.env.user.name
         return defaults
+
+    def form_next_url(self):
+        return "/leave-request-success"

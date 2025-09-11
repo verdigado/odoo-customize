@@ -24,6 +24,7 @@
         "views/hr_leave_request_wizard.xml",
         "views/res_config_settings.xml",
         "views/login_inherit.xml",
+        "views/leave_request_form_templates.xml",
     ],
     "demo": [],
 }
