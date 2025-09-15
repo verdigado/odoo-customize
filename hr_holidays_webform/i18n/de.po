@@ -1,0 +1,501 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_holidays_webform
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-15 11:18+0000\n"
+"PO-Revision-Date: 2025-09-15 11:18+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_holidays_webform
+#: model:mail.template,body_html:hr_holidays_webform.mail_template_hr_leave_request_monthly_report
+msgid ""
+"\n"
+"            \n"
+"                <p>Hello,</p>\n"
+"                <p>Please find attached the monthly Leave Requests report.</p>\n"
+"                <p>Best regards,<br/>Odoo System</p>\n"
+"            \n"
+"        "
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:mail.template,body_html:hr_holidays_webform.mail_template_hr_leave_request
+msgid ""
+"\n"
+"            \n"
+"            <p>Hello,</p>\n"
+"            <p>A new leave request has been submitted:</p>\n"
+"            <ul>\n"
+"                <li><strong>Employee:</strong> <t t-out=\"object.employee_name\"</t></li>\n"
+"                <li><strong>From:</strong> <t t-out=\"object.start_date\"</t></li>\n"
+"                <li><strong>To:</strong> <t t-out=\"object.end_date\"</t></li>\n"
+"                <li><strong>Certificate:</strong> <t t-out=\"object.get_selection_label('certificate_type')\"</t></li>\n"
+"            </ul>\n"
+"            <p>Regards,<br/>Odoo</p>\n"
+"            \n"
+"        "
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.actions.report,print_report_name:hr_holidays_webform.report_hr_leave_request_pdf
+msgid "'Leave_Request_Report_' + object.name"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.page_leave_request_thankyou
+msgid "Back to Home"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.view_hr_leave_request_wizard_form
+msgid "Cancel"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields.selection,name:hr_holidays_webform.selection__cms_form_hr_leave_request__certificate_type__cert
+#: model:ir.model.fields.selection,name:hr_holidays_webform.selection__hr_leave_request__certificate_type__cert
+msgid "Certificate"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__certificate_file
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__certificate_file
+msgid "Certificate File"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__certificate_type
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__certificate_type
+msgid "Certificate Type"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields.selection,name:hr_holidays_webform.selection__cms_form_hr_leave_request__certificate_type__child
+#: model:ir.model.fields.selection,name:hr_holidays_webform.selection__hr_leave_request__certificate_type__child
+msgid "Child Sick Leave"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model,name:hr_holidays_webform.model_res_config_settings
+msgid "Config Settings"
+msgstr "Konfigurationseinstellungen"
+
+#. module: hr_holidays_webform
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.view_hr_leave_request_wizard_form
+msgid "Create"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.hr_leave_request_view_form
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.hr_leave_request_view_tree
+msgid "Create Leave"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.view_hr_leave_request_wizard_form
+msgid "Create Leaves"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__create_uid
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__create_date
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_res_config_settings__requests_default_leave_type_id
+msgid "Default Leave Type for Leave Requests"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.res_config_settings_view_form_inherit_hr_leave_request
+msgid "Default leave type for leave requests"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__display_name
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields.selection,name:hr_holidays_webform.selection__cms_form_hr_leave_request__certificate_type__e-cert
+#: model:ir.model.fields.selection,name:hr_holidays_webform.selection__hr_leave_request__certificate_type__e-cert
+msgid "E-Certificate"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request_wizard__employee_id
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.report_hr_leave_request_template
+msgid "Employee"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__employee_name
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__employee_name
+msgid "Employee Name"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__end_date
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__end_date
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request_wizard__end_date
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.report_hr_leave_request_template
+msgid "End Date"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_action
+msgid "Form Action"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_ajax
+msgid "Form Ajax"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_ajax_onchange
+msgid "Form Ajax Onchange"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_buttons_template
+msgid "Form Buttons Template"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_confirm_submit
+msgid "Form Confirm Submit"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_content_selector
+msgid "Form Content Selector"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_data
+msgid "Form Data"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_description
+msgid "Form Description"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_display_mode
+msgid "Form Display Mode"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_extra_css_klass
+msgid "Form Extra Css Klass"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_extract_value_mode
+msgid "Form Extract Value Mode"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_fields_attributes
+msgid "Form Fields Attributes"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_fields_blacklist
+msgid "Form Fields Blacklist"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_fields_hidden
+msgid "Form Fields Hidden"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_fields_ignore
+msgid "Form Fields Ignore"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_fields_order
+msgid "Form Fields Order"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_fields_template
+msgid "Form Fields Template"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_fields_whitelist
+msgid "Form Fields Whitelist"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_fields_wrapper_template
+msgid "Form Fields Wrapper Template"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_fieldsets
+msgid "Form Fieldsets"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_fieldsets_display
+msgid "Form Fieldsets Display"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_fname_pattern
+msgid "Form Fname Pattern"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_method
+msgid "Form Method"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_mode
+msgid "Form Mode"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_model_fields
+msgid "Form Model Fields"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_model_name
+msgid "Form Model Name"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_redirect
+msgid "Form Redirect"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_render_values
+msgid "Form Render Values"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_required_fields
+msgid "Form Required Fields"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_sub_fields
+msgid "Form Sub Fields"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_success
+msgid "Form Success"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_template
+msgid "Form Template"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_title
+msgid "Form Title"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_validators
+msgid "Form Validators"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_wrapper_extra_css_klass
+msgid "Form Wrapper Extra Css Klass"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__form_wrapper_template
+msgid "Form Wrapper Template"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__id
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__id
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request____last_update
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__write_uid
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__write_date
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__leave_id
+msgid "Leave"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: code:addons/hr_holidays_webform/models/hr_leave_request.py:0
+#, python-format
+msgid "Leave Certificate"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave__leave_request_id
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request_wizard__request_id
+msgid "Leave Request"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.actions.server,name:hr_holidays_webform.ir_cron_hr_leave_request_monthly_report_ir_actions_server
+#: model:ir.cron,cron_name:hr_holidays_webform.ir_cron_hr_leave_request_monthly_report
+#: model:ir.cron,name:hr_holidays_webform.ir_cron_hr_leave_request_monthly_report
+#: model:mail.template,name:hr_holidays_webform.mail_template_hr_leave_request_monthly_report
+msgid "Leave Request Monthly Report"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:mail.template,name:hr_holidays_webform.mail_template_hr_leave_request
+msgid "Leave Request Notification"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.actions.report,name:hr_holidays_webform.report_hr_leave_request_pdf
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.report_hr_leave_request_template
+msgid "Leave Request Report"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.actions.act_window,name:hr_holidays_webform.action_hr_leave_request
+#: model:ir.ui.menu,name:hr_holidays_webform.menu_hr_leave_request
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.res_config_settings_view_form_inherit_hr_leave_request
+msgid "Leave Requests"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__leave_type_id
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request_wizard__leave_type_id
+msgid "Leave Type"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__main_object
+msgid "Main Object"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:mail.template,subject:hr_holidays_webform.mail_template_hr_leave_request_monthly_report
+msgid "Monthly Leave Request Report"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:mail.template,subject:hr_holidays_webform.mail_template_hr_leave_request
+msgid "New {{ object.name }}"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields.selection,name:hr_holidays_webform.selection__cms_form_hr_leave_request__certificate_type__none
+#: model:ir.model.fields.selection,name:hr_holidays_webform.selection__hr_leave_request__certificate_type__none
+msgid "No Certificate"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__o_request
+msgid "O Request"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__request
+msgid "Request"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__name
+msgid "Request Name"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_cms_form_hr_leave_request__start_date
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request__start_date
+#: model:ir.model.fields,field_description:hr_holidays_webform.field_hr_leave_request_wizard__start_date
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.report_hr_leave_request_template
+msgid "Start Date"
+msgstr ""
+
+#. module: hr_holidays_webform
+#. openerp-web
+#: code:addons/hr_holidays_webform/static/src/xml/hr_attendance.xml:0
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.login_inherit_with_webform_button
+#, python-format
+msgid "Submit Leave Request"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.page_leave_request_thankyou
+msgid "Thank you!"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model,name:hr_holidays_webform.model_hr_leave
+msgid "Time Off"
+msgstr "Freizeit"
+
+#. module: hr_holidays_webform
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.view_hr_leave_request_search
+msgid "Without Leave"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model,name:hr_holidays_webform.model_hr_leave_request_wizard
+msgid "Wizard to manually create leaves from leave requests"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model_terms:ir.ui.view,arch_db:hr_holidays_webform.page_leave_request_thankyou
+msgid "Your leave request has been submitted successfully."
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model,name:hr_holidays_webform.model_cms_form_hr_leave_request
+msgid "cms.form.hr.leave.request"
+msgstr ""
+
+#. module: hr_holidays_webform
+#: model:ir.model,name:hr_holidays_webform.model_hr_leave_request
+msgid "hr.leave.request"
+msgstr ""
