@@ -1,5 +1,6 @@
 import datetime
 import logging
+from unittest.mock import patch
 
 from odoo import fields
 from odoo.tests.common import TransactionCase
@@ -130,3 +131,16 @@ class TestLeaveRequest(TransactionCase):
         self.assertEqual(context.get("default_start_date"), request.start_date)
         self.assertEqual(context.get("default_end_date"), request.end_date)
         self.assertEqual(context.get("default_leave_type_id"), self.leave_type.id)
+
+    def test_mail_sent_on_create(self):
+        with patch("odoo.addons.mail.models.mail_mail.MailMail.create") as mock_create:
+            self.env["hr.leave.request"].create(
+                {
+                    "employee_name": "John Doe",
+                    "start_date": fields.Date.today(),
+                    "end_date": fields.Date.today(),
+                    "leave_type_id": self.leave_type.id,
+                }
+            )
+
+            self.assertTrue(mock_create.called, "Mail was not triggered")
