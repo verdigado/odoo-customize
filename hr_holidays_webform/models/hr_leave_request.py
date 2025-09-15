@@ -116,7 +116,12 @@ class HrLeaveRequest(models.Model):
                 }
             )
             leave.write({"supported_attachment_ids": [(4, attachment.id)]})
-        leave._compute_date_from_to()
+        # when creating a leave, a lot of logic (like setting the display dates
+        # and computing the duration length) is handled by the form.
+        # we trigger this logic manually here, but have to skip state checks
+        # because if a leave type requires no validation, the leave will already be approved
+        # and changes from _compute_date_from_to would trigger a validation error
+        leave.with_context(leave_skip_state_check=True)._compute_date_from_to()
         self.leave_id = leave
         return leave
 
