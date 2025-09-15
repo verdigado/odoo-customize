@@ -12,6 +12,7 @@
                 <li><strong>Employee:</strong> <t t-out="object.employee_name"</t></li>
                 <li><strong>From:</strong> <t t-out="object.start_date"</t></li>
                 <li><strong>To:</strong> <t t-out="object.end_date"</t></li>
+                <li><strong>Certificate:</strong> <t t-out="object.get_selection_label('certificate_type')"</t></li>
             </ul>
             <p>Regards,<br/>Odoo</p>
             ]]>

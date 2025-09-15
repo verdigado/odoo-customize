@@ -42,6 +42,11 @@ class HrLeaveRequest(models.Model):
         or False,
     )
 
+    def get_selection_label(self, field_name):
+        self.ensure_one()
+        selection = self._fields[field_name].selection
+        return dict(selection).get(self[field_name])
+
     @api.depends("employee_name", "start_date", "end_date")
     def _compute_name(self):
         for record in self:
