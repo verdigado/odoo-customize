@@ -1,9 +1,10 @@
 import datetime
 import logging
+import re
 from unittest.mock import patch
 
 from odoo import fields
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import HttpCase, TransactionCase, tagged
 
 _logger = logging.getLogger(__name__)
 
@@ -144,3 +145,45 @@ class TestLeaveRequest(TransactionCase):
             )
 
             self.assertTrue(mock_create.called, "Mail was not triggered")
+
+
+@tagged("post_install", "-at_install")  # run after modules are installed
+class TestPublicLeaveRequestForm(HttpCase):
+    def setUp(self):
+        super().setUp()
+        self.leave_type = self.env["hr.leave.type"].create(
+            {
+                "name": "Test Leave",
+                "requires_allocation": "no",
+            }
+        )
+        self.env["ir.config_parameter"].sudo().set_param(
+            "hr_leave_request.default_leave_type", self.leave_type.id
+        )
+
+    def test_public_user_can_submit_leave_request(self):
+        # simulate a public HTTP POST request to form controller
+        url = "/cms/create/hr.leave.request"
+        form_html = self.url_open(url)
+        token_match = re.search(
+            r'name="csrf_token" value="(.+?)"', form_html.content.decode()
+        )
+        self.assertTrue(token_match, "CSRF token not found in form HTML")
+        csrf_token = token_match.group(1)
+        data = {
+            "csrf_token": csrf_token,
+            "certificate_type": "none",
+            "employee_name": "Public User Employee",
+            "start_date": "2025-09-15",
+            "end_date": "2025-09-20",
+        }
+
+        response = self.url_open(url, data=data, timeout=30)
+
+        self.assertEqual(response.status_code, 200)
+
+        leave = self.env["hr.leave.request"].search(
+            [("employee_name", "=", "Public User Employee")], limit=1
+        )
+        self.assertTrue(leave, "Public user submission did not create a record")
+        self.assertEqual(leave.leave_type_id, self.leave_type)
