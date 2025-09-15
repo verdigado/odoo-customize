@@ -4,7 +4,7 @@ from datetime import datetime
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 
 logger = logging.getLogger(__name__)
 
@@ -99,6 +99,18 @@ class HrLeaveRequest(models.Model):
             ._default_get_request_parameters(vals)
         )  # always use the public user, because logged-in users time zone shifts the date
         leave = self.env["hr.leave"].create(vals)
+        if self.certificate_file:
+            attachment = self.env["ir.attachment"].create(
+                {
+                    "name": _("Leave Certificate"),
+                    "type": "binary",
+                    "datas": self.certificate_file,
+                    "res_model": "hr.leave",
+                    "res_id": leave.id,
+                    "mimetype": "application/pdf",
+                }
+            )
+            leave.write({"supported_attachment_ids": [(4, attachment.id)]})
         leave._compute_date_from_to()
         self.leave_id = leave
         return leave
