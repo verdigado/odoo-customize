@@ -27,4 +27,7 @@
         "views/leave_request_form_templates.xml",
     ],
     "demo": [],
+    "assets": {
+        "web.assets_qweb": ["hr_holidays_webform/static/src/xml/hr_attendance.xml"]
+    },
 }
