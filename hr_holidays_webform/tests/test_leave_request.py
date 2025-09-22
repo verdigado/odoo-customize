@@ -24,6 +24,21 @@ class TestLeaveRequest(TransactionCase):
             }
         )
 
+    def test_create_leave_without_leave_type(self):
+        leave_request = self.env["hr.leave.request"].create(
+            {
+                "name": "No Type Leave Request",
+                "employee_name": "John Doe",
+                "start_date": "2023-01-02",
+                "end_date": "2023-01-04",
+            }
+        )
+
+        leave = leave_request.create_leave_from_leave_request(self.employee.id)
+
+        self.assertEqual(leave._name, "hr.leave")
+        self.assertFalse(leave, "Leave sollte nicht erstellt werden ohne leave_type_id")
+
     def test_webform_creates_leave_successfully(self):
         request = self.env["hr.leave.request"].create(
             {
