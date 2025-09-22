@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="hr_leave_request_view_form" model="ir.ui.view">
+        <field name="name">hr.leave.request.form</field>
+        <field name="model">hr.leave.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="employee_name" />
+                        <field name="start_date" />
+                        <field name="end_date" />
+                        <field name="leave_id" />
+                        <field name="certificate_file" />
+                    </group>
+                    <footer>
+                        <button
+                            name="action_open_wizard"
+                            string="Create Leave"
+                            type="object"
+                            class="oe_highlight"
+                        />
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="hr_leave_request_view_tree" model="ir.ui.view">
+        <field name="name">hr.leave.request.tree</field>
+        <field name="model">hr.leave.request</field>
+        <field name="arch" type="xml">
+            <tree delete="0" edit="0">
+                <button
+                    name="action_open_wizard"
+                    string="Create Leave"
+                    type="object"
+                    class="oe_highlight"
+                />
+                <field name="employee_name" />
+                <field name="leave_id" />
+                <field name="start_date" />
+                <field name="end_date" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_hr_leave_request_search" model="ir.ui.view">
+        <field name="name">hr.leave.request.search</field>
+        <field name="model">hr.leave.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="leave_id" />
+                <group>
+                    <filter
+                        string="Without Leave"
+                        name="without_leave"
+                        domain="[('leave_id','=',False)]"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_hr_leave_request" model="ir.actions.act_window">
+        <field name="name">Leave Requests</field>
+        <field name="res_model">hr.leave.request</field>
+        <field name="view_mode">tree,form</field>
+        <field
+            name="search_view_id"
+            ref="hr_holidays_webform.view_hr_leave_request_search"
+        />
+        <field name="context">{'search_default_without_leave': 1}</field>
+    </record>
+    <menuitem
+        id="menu_hr_leave_request"
+        name="Leave Requests"
+        action="action_hr_leave_request"
+        parent="hr_holidays.menu_hr_holidays_root"
+        groups="base.group_user"
+    />
+</odoo>

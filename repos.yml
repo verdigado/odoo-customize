@@ -65,3 +65,11 @@ web:
         oca: https://github.com/OCA/web.git
     merges:
         - oca 15.0
+
+website-cms:
+    defaults:
+        depth: 1
+    remotes:
+        jonbulz: https://github.com/jonbulz/website-cms.git
+    merges:
+        - jonbulz 15.0-mig-cms_form

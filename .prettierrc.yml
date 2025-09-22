@@ -7,3 +7,11 @@ semi: true
 trailingComma: "es5"
 xmlWhitespaceSensitivity: "ignore"
 tabWidth: 4
+
+overrides:
+    - files: "hr_holidays_webform/views/report.xml"
+      options:
+          printWidth: 120
+    - files: "*.(yaml|yml)"
+      options:
+          tabWidth: 2

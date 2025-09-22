@@ -1,0 +1,45 @@
+<odoo>
+    <template id="report_hr_leave_request_template">
+        <t t-call="web.html_container">
+            <div class="page">
+                <h2>Leave Request Report</h2>
+                <table
+                    class="table table-sm o_main_table"
+                    style="width:100%; border:1px solid black; border-collapse: collapse;"
+                >
+                    <thead>
+                        <tr>
+                            <th style="border:1px solid black; padding:4px;">
+                                Employee
+                            </th>
+                            <th style="border:1px solid black; padding:4px;">
+                                Start Date
+                            </th>
+                            <th style="border:1px solid black; padding:4px;">
+                                End Date
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="o">
+                            <tr>
+                                <td
+                                    style="border:1px solid black; padding:4px;"
+                                    t-esc="o.employee_name"
+                                />
+                                <td
+                                    style="border:1px solid black; padding:4px;"
+                                    t-esc="o.start_date"
+                                />
+                                <td
+                                    style="border:1px solid black; padding:4px;"
+                                    t-esc="o.end_date"
+                                />
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>
