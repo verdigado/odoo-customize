@@ -9,3 +9,8 @@ class ResConfigSettings(models.TransientModel):
         string="Default Leave Type for Leave Requests",
         config_parameter="hr_leave_request.default_leave_type",
     )
+
+    manager_email = fields.Char(
+        string="Default Manager Email",
+        config_parameter="hr_leave_request.manager_email",
+    )
