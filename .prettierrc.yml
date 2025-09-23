@@ -9,9 +9,12 @@ xmlWhitespaceSensitivity: "ignore"
 tabWidth: 4
 
 overrides:
-    - files: "hr_holidays_webform/views/report.xml"
+    - files:
+          - "hr_holidays_webform/views/report.xml"
+          - "hr_holidays_webform/data/leave_report_mail_template.xml"
+          - "hr_holidays_webform/data/leave_requests_mail_template.xml"
       options:
-          printWidth: 120
+          printWidth: 240
     - files: "*.(yaml|yml)"
       options:
           tabWidth: 2
