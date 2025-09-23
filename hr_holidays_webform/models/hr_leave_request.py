@@ -157,8 +157,8 @@ class HrLeaveRequest(models.Model):
         last_of_last_month = first_of_this_month - relativedelta(days=1)
         records = self.search(
             [
-                ("create_date", ">=", first_of_last_month),
-                ("create_date", "<=", last_of_last_month),
+                ("start_date", ">=", first_of_last_month),
+                ("end_date", "<=", last_of_last_month),
             ]
         )
 
