@@ -1,4 +1,5 @@
-<odoo>
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
     <record
         id="res_config_settings_view_form_inherit_hr_leave_request"
         model="ir.ui.view"
@@ -40,4 +41,4 @@
             </xpath>
         </field>
     </record>
-</odoo>
+</data>
