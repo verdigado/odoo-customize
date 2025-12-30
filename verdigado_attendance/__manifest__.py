@@ -21,7 +21,6 @@
         "hr_attendance_break_autoclose",
         "hr_attendance_missing_days",
         "hr_attendance_overtime_manual",
-        "hr_attendance_overtime_negative_hours",
         "hr_employee_calendar_planning",
         "hr_holidays_attendance",
         "l10n_de_holidays",

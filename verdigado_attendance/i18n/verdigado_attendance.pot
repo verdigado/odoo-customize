@@ -4,21 +4,21 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0\n"
+"Project-Id-Version: Odoo Server 15.0-20240924\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-30 10:08+0000\n"
-"PO-Revision-Date: 2025-12-30 11:11+0100\n"
-"Last-Translator: Alexander Bigga, 2022\n"
+"PO-Revision-Date: 2025-12-30 10:08+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #. module: verdigado_attendance
 #. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
 msgid "(incl."
@@ -28,8 +28,8 @@ msgstr "(inkl."
 #: model_terms:ir.ui.view,arch_db:verdigado_attendance.res_config_settings_view_form
 msgid ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
-"\" groups=\"base.group_multi_company\"/>"
+"specific.\" role=\"img\" aria-label=\"Values set here are company-"
+"specific.\" groups=\"base.group_multi_company\"/>"
 msgstr ""
 
 #. module: verdigado_attendance
@@ -88,7 +88,7 @@ msgstr "Kalender Links (ics-Export)"
 #. module: verdigado_attendance
 #: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance__check_in
 msgid "Check In"
-msgstr ""
+msgstr "Anmeldung"
 
 #. module: verdigado_attendance
 #. openerp-web
@@ -100,7 +100,7 @@ msgstr ""
 #. module: verdigado_attendance
 #: model:ir.model.fields,field_description:verdigado_attendance.field_hr_attendance__check_out
 msgid "Check Out"
-msgstr ""
+msgstr "Abmeldung"
 
 #. module: verdigado_attendance
 #: model:ir.model,name:verdigado_attendance.model_res_company
@@ -315,7 +315,7 @@ msgstr "Im Urlaubs-Kalender anzeigen"
 #. module: verdigado_attendance
 #: model:ir.model.fields,field_description:verdigado_attendance.field_hr_leave_type__show_negative
 msgid "Show zero and negative balances in dashboard"
-msgstr "Zeige Null und negative Werte im Dashboard"
+msgstr ""
 
 #. module: verdigado_attendance
 #: model:ir.model.fields,field_description:verdigado_attendance.field_res_company__holiday_overtime_sunday
@@ -335,7 +335,7 @@ msgstr ""
 #. module: verdigado_attendance
 #: model:ir.model,name:verdigado_attendance.model_hr_leave
 msgid "Time Off"
-msgstr ""
+msgstr "Freizeit"
 
 #. module: verdigado_attendance
 #: model:ir.actions.act_window,name:verdigado_attendance.action_hr_leave_report
@@ -423,6 +423,8 @@ msgstr "Jahr"
 #. module: verdigado_attendance
 #. openerp-web
 #: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
 msgid "from"
 msgstr "aus"
@@ -430,12 +432,15 @@ msgstr "aus"
 #. module: verdigado_attendance
 #. openerp-web
 #: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
 msgid "overlaps"
 msgstr "Überlappungen"
 
 #. module: verdigado_attendance
 #. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
 msgid "timeoff[1]['usable_remaining_leaves_formatted']"
@@ -447,205 +452,3 @@ msgstr ""
 #, python-format
 msgid "timeoff[1]['virtual_leaves_taken_formatted']"
 msgstr ""
-
-#~ msgid ""
-#~ "<p>Dear <t t-out=\"object.name\"/>,</p>\n"
-#~ "            <p>on <t t-out=\"format_date(ctx."
-#~ "get('hr_attendance_break_date', object.last_attendance_id.check_in))\"/>, "
-#~ "you only took <t t-out=\"format_duration(ctx."
-#~ "get('hr_attendance_break_hours') or 0)\"/> hours of break, while you "
-#~ "should have been taking <t t-out=\"format_duration(ctx."
-#~ "get('hr_attendance_break_threshold', object.env['hr.attendance.break."
-#~ "threshold']).min_break)\"/> hours.</p>\n"
-#~ "            <p>Please review the attendances below:</p>\n"
-#~ "            <ul>\n"
-#~ "                <li t-foreach=\"ctx."
-#~ "get('hr_attendance_break_attendances', object.last_attendance_id)\" t-"
-#~ "as=\"attendance\">\n"
-#~ "                    <a t-attf-href=\"/mail/view?model={{ attendance."
-#~ "_name }}&amp;res_id={{ attendance.id }}\"><t t-out=\"attendance."
-#~ "display_name\"/></a>\n"
-#~ "                </li>\n"
-#~ "            </ul>\n"
-#~ "        "
-#~ msgstr ""
-#~ "<p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">Hallo <t t-"
-#~ "out=\"object.name\"></t>,</p>\n"
-#~ "            <p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">am <t "
-#~ "t-out=\"format_date(ctx.get('hr_attendance_break_date', object."
-#~ "last_attendance_id.check_in))\"></t>, hast du eine Pause von&nbsp;<t t-"
-#~ "out=\"format_duration(ctx.get('hr_attendance_break_hours') or 0)\"></"
-#~ "t>&nbsp;Stunden genommen.</p><p style=\"margin:0px 0 12px 0;box-sizing:"
-#~ "border-box;\">Die gesetzliche Regelung erfordert, nach einer Arbeitszeit "
-#~ "von 6 Stunden eine Pause von mindestens&nbsp;<t t-"
-#~ "out=\"format_duration(ctx.get('hr_attendance_break_threshold', object."
-#~ "env['hr.attendance.break.threshold']).min_break)\"></t>&nbsp;Stunden zu "
-#~ "nehmen.</p><p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">Die "
-#~ "gesetzliche Regelungen wurden vom System automatisch eingetragen.&nbsp; "
-#~ "Bitte überprüfe den Eintrag hier:&nbsp;</p><ul style=\"margin:0px 0 12px "
-#~ "0;box-sizing:border-box;\">\n"
-#~ "                <li t-foreach=\"ctx."
-#~ "get('hr_attendance_break_attendances', object.last_attendance_id)\" t-"
-#~ "as=\"attendance\">\n"
-#~ "                    <a t-attf-href=\"/mail/view?model={{ attendance."
-#~ "_name }}&amp;res_id={{ attendance.id }}\" style=\"text-decoration:none;"
-#~ "box-sizing:border-box;background-color:transparent;color:inherit;\"><t t-"
-#~ "out=\"attendance.display_name\"></t></a>\n"
-#~ "                </li>\n"
-#~ "            </ul>\n"
-#~ "        "
-
-#, fuzzy
-#~| msgid "Attendance"
-#~ msgid "Attendance Reason"
-#~ msgstr "Anwesenheiten"
-
-#, fuzzy
-#~| msgid "Flag mandatory breaks"
-#~ msgid "Attendance: Mandatory break"
-#~ msgstr "Kennzeichnung von Pflichtpausen"
-
-#~ msgid "Break"
-#~ msgstr "Pause"
-
-#~ msgid "Break Hours"
-#~ msgstr "Pausen"
-
-#~ msgid "Break Hours Today"
-#~ msgstr "Heutige Pausen"
-
-#, fuzzy
-#~| msgid "Break"
-#~ msgid "Break State"
-#~ msgstr "Pause"
-
-#~ msgid "Breaks"
-#~ msgstr "Pausen"
-
-#, python-format
-#~ msgid ""
-#~ "Breaks must be fully contained by the attendance they belong to and can't "
-#~ "overlap"
-#~ msgstr ""
-#~ "Pausen müssen sich vollständig in einem Anwesenheits-Zeitraum befinden "
-#~ "und dürfen sich nicht überlappen"
-
-#~ msgid ""
-#~ "Breaks shorter than this value will not be counted towards mandatory "
-#~ "breaks"
-#~ msgstr ""
-#~ "Pausen die kürzer als angegeben werden nicht zu den Mindestpausen hinzu "
-#~ "gerechnet"
-
-#, fuzzy
-#~| msgid "Min Break"
-#~ msgid "Bypass Minimum Break"
-#~ msgstr "Mindestpause"
-
-#, fuzzy
-#~| msgid "Companies"
-#~ msgid "Company"
-#~ msgstr "Unternehmen"
-
-#~ msgid "Edit action to run if mandatory breaks are not adhered"
-#~ msgstr ""
-#~ "Aktionen, die beim Unterschreiten der Mindestpausenlänge ausgelöst werden"
-
-#, fuzzy, python-format
-#~| msgid "Edit breaks for %s"
-#~ msgid "Edit break thresholds"
-#~ msgstr "Pausen für %s bearbeiten"
-
-#, python-format
-#~ msgid "Edit breaks for %s"
-#~ msgstr "Pausen für %s bearbeiten"
-
-#~ msgid "Edit thresholds for mandatory breaks"
-#~ msgstr "Grenzwerte für Pflichtpausen bearbeiten"
-
-#, python-format
-#~ msgid "End break"
-#~ msgstr "Pause beenden"
-
-#~ msgid "Flag mandatory breaks"
-#~ msgstr "Kennzeichnung von Pflichtpausen"
-
-#, fuzzy
-#~| msgid "Flag mandatory breaks"
-#~ msgid "Impose mandatory breaks"
-#~ msgstr "Kennzeichnung von Pflichtpausen"
-
-#~ msgid "Mail about mandatory breaks"
-#~ msgstr "Email zu Pflichtpausen"
-
-#~ msgid "Min Break"
-#~ msgstr "Mindestpause"
-
-#~ msgid "Min Hours"
-#~ msgstr "Mindestzeitraum"
-
-#~ msgid "Minimal break length"
-#~ msgstr "Mindestpausenlänge"
-
-#, fuzzy
-#~| msgid "Minimal break length"
-#~ msgid "Minimal break thresholds"
-#~ msgstr "Mindestpausenlänge"
-
-#~ msgid "Minimum break times"
-#~ msgstr "Mindestpausenzeit"
-
-#~ msgid "Not on break"
-#~ msgstr "Eine Pause nehmen"
-
-#, fuzzy
-#~| msgid "End break"
-#~ msgid "On break"
-#~ msgstr "Pause beenden"
-
-#~ msgid ""
-#~ "Please review your breaks from {{ format_date(ctx."
-#~ "get('hr_attendance_break_date', object.last_attendance_id.check_in)) }}"
-#~ msgstr ""
-#~ "Bitte Pausenzeiten überprüfen:  {{ format_date(ctx."
-#~ "get('hr_attendance_break_date', object.last_attendance_id.check_in)) }}"
-
-#, fuzzy
-#~| msgid "Employee"
-#~ msgid "Public Employee"
-#~ msgstr "Mitarbeiter*in"
-
-#~ msgid "Reason"
-#~ msgstr "Grund (optional)"
-
-#~ msgid "Show/Edit breaks"
-#~ msgstr "Pausen anzeigen / bearbeiten"
-
-#, python-format
-#~ msgid "Take break"
-#~ msgstr "Pause nehmen"
-
-#, fuzzy
-#~| msgid "Flag mandatory breaks"
-#~ msgid "Take mandatory breaks"
-#~ msgstr "Kennzeichnung von Pflichtpausen"
-
-#, python-format
-#~ msgid "break)"
-#~ msgstr "Pause)"
-
-#, python-format
-#~ msgid "return from break"
-#~ msgstr "Pause beenden"
-
-#, python-format
-#~ msgid "take a break"
-#~ msgstr "eine Pause nehmen"
-
-#, python-format
-#~ msgid "Apply holiday overtime factor"
-#~ msgstr "Höherwertung anwenden"
-
-#, python-format
-#~ msgid "check out or to"
-#~ msgstr "Abmelden oder"
