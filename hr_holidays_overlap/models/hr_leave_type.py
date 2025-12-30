@@ -48,7 +48,7 @@ class HrLeaveType(models.Model):
                         allocation_dict[False][
                             "virtual_remaining_leaves"
                         ] += number_of_days
-                        if not allocation_dict["error"]["virtual_remaining_leaves"]:
+                        if allocation_dict["error"]["virtual_remaining_leaves"] is None:
                             del allocation_dict["error"]
                             del allocation_dict[False]
         return result
