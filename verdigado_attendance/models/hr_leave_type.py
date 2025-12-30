@@ -7,6 +7,7 @@ from odoo import api, fields, models
 class HrLeaveType(models.Model):
     _inherit = "hr.leave.type"
 
+    show_negative = fields.Boolean("Show zero and negative balances in dashboard")
     dashboard_action_id = fields.Many2one("ir.actions.actions")
 
     def _get_days_request(self):
@@ -45,6 +46,7 @@ class HrLeaveType(models.Model):
             "time": round(overlap_time, 2),
             "ids": overlap_ids,
         }
+
         return result
 
     @api.model
@@ -52,3 +54,34 @@ class HrLeaveType(models.Model):
         return self.env.ref(
             "hr_holidays_attendance.holiday_status_extra_hours"
         )._get_days_request()
+
+    # overwrites method in hr_holidays
+    @api.model
+    def get_days_all_request(self):
+        # apply for extra hours time off type as well
+        extra_hours_time_off_type = self.env.ref(
+            "hr_holidays_attendance.holiday_status_extra_hours",
+            raise_if_not_found=False,
+        )
+
+        # apply for default paid leave type as well
+        holiday_status_cl = self.env.ref(
+            "hr_holidays.holiday_status_cl",
+            raise_if_not_found=False,
+        )
+
+        leave_types = self.search([]).filtered(
+            lambda x: x.virtual_remaining_leaves > 0
+            or x.max_leaves
+            or x.show_negative
+            or (x == holiday_status_cl)
+            or (x == extra_hours_time_off_type)
+        )
+
+        leave_types = sorted(
+            leave_types,
+            key=self._model_sorting_key,
+            reverse=True,
+        )
+
+        return [lt._get_days_request() for lt in leave_types]
