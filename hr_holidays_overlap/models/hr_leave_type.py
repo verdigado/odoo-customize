@@ -48,9 +48,11 @@ class HrLeaveType(models.Model):
                         allocation_dict[False][
                             "virtual_remaining_leaves"
                         ] += number_of_days
-                        if allocation_dict["error"]["virtual_remaining_leaves"] is None:
+                        if not allocation_dict["error"]["virtual_remaining_leaves"]:
                             del allocation_dict["error"]
-                            del allocation_dict[False]
+                            allocation_dict[False][
+                                "virtual_remaining_leaves"
+                            ] -= allocation_days["virtual_remaining_leaves"]
         return result
 
     def _get_overlap(self, employee_id, leave_type):
