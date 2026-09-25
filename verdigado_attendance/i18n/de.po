@@ -431,8 +431,43 @@ msgstr "aus"
 #. openerp-web
 #: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
+msgid "entitlement"
+msgstr "Anspruch"
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#, python-format
 msgid "overlaps"
 msgstr "Überlappungen"
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#, python-format
+msgid "per year"
+msgstr "pro Jahr"
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#, python-format
+msgid "taken"
+msgstr "genommen"
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#, python-format
+msgid "expired"
+msgstr "verfallen"
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#, python-format
+msgid "without allocation"
+msgstr "ohne Zuteilung"
 
 #. module: verdigado_attendance
 #. openerp-web

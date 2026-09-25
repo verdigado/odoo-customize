@@ -138,5 +138,110 @@
                 <!-- prettier-ignore-end -->
             </span>
         </xpath>
+        <!--
+            breakdown per allocation year, again once per branch of the
+            conditional above. Allocations stay valid until March 31st of the
+            following year, so between January and March the number above is
+            the sum of two allocations, which is what we explain here.
+        /-->
+        <xpath expr="(//div[hasclass('mt-1')]/t)[1]" position="inside">
+            <span
+                t-if="timeoff[1]['per_year'] &amp;&amp; timeoff[1]['per_year'].length"
+            >
+                <br />
+                <!-- prettier-ignore-start -->
+                <a href="#" class="per_year">per year</a>
+                <!-- prettier-ignore-end -->
+                <span class="per_year_content d-none">
+                    <span t-foreach="timeoff[1]['per_year']" t-as="per_year_entry">
+                        <t t-if="per_year_entry['year']">
+                            entitlement
+                            <t t-out="per_year_entry['year']" />
+                            :
+                            <t t-out="per_year_entry['max_leaves']" />
+                            ,
+                            taken
+                            <t t-out="per_year_entry['leaves_taken']" />
+                            <t t-if="per_year_entry['expired']">
+                                ,
+                                <t t-out="per_year_entry['expired']" />
+                                expired
+                            </t>
+                        </t>
+                        <t t-else="">
+                            <t t-out="per_year_entry['leaves_taken']" />
+                            without allocation
+                        </t>
+                        <br />
+                    </span>
+                </span>
+            </span>
+        </xpath>
+        <xpath expr="(//div[hasclass('mt-1')]/t)[2]" position="inside">
+            <span
+                t-if="timeoff[1]['per_year'] &amp;&amp; timeoff[1]['per_year'].length"
+            >
+                <br />
+                <!-- prettier-ignore-start -->
+                <a href="#" class="per_year">per year</a>
+                <!-- prettier-ignore-end -->
+                <span class="per_year_content d-none">
+                    <span t-foreach="timeoff[1]['per_year']" t-as="per_year_entry">
+                        <t t-if="per_year_entry['year']">
+                            entitlement
+                            <t t-out="per_year_entry['year']" />
+                            :
+                            <t t-out="per_year_entry['max_leaves']" />
+                            ,
+                            taken
+                            <t t-out="per_year_entry['leaves_taken']" />
+                            <t t-if="per_year_entry['expired']">
+                                ,
+                                <t t-out="per_year_entry['expired']" />
+                                expired
+                            </t>
+                        </t>
+                        <t t-else="">
+                            <t t-out="per_year_entry['leaves_taken']" />
+                            without allocation
+                        </t>
+                        <br />
+                    </span>
+                </span>
+            </span>
+        </xpath>
+        <xpath expr="(//div[hasclass('mt-1')]/t)[3]" position="inside">
+            <span
+                t-if="timeoff[1]['per_year'] &amp;&amp; timeoff[1]['per_year'].length"
+            >
+                <br />
+                <!-- prettier-ignore-start -->
+                <a href="#" class="per_year">per year</a>
+                <!-- prettier-ignore-end -->
+                <span class="per_year_content d-none">
+                    <span t-foreach="timeoff[1]['per_year']" t-as="per_year_entry">
+                        <t t-if="per_year_entry['year']">
+                            entitlement
+                            <t t-out="per_year_entry['year']" />
+                            :
+                            <t t-out="per_year_entry['max_leaves']" />
+                            ,
+                            taken
+                            <t t-out="per_year_entry['leaves_taken']" />
+                            <t t-if="per_year_entry['expired']">
+                                ,
+                                <t t-out="per_year_entry['expired']" />
+                                expired
+                            </t>
+                        </t>
+                        <t t-else="">
+                            <t t-out="per_year_entry['leaves_taken']" />
+                            without allocation
+                        </t>
+                        <br />
+                    </span>
+                </span>
+            </span>
+        </xpath>
     </t>
 </templates>

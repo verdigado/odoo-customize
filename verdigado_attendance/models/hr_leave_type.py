@@ -46,7 +46,83 @@ class HrLeaveType(models.Model):
             "time": round(overlap_time, 2),
             "ids": overlap_ids,
         }
+        result[1]["per_year"] = self._get_days_per_year()
 
+        return result
+
+    def _get_days_per_year(self):
+        """Break down entitlement and usage per allocation year
+
+        The dashboard only shows a single aggregated number, which is hard to
+        follow because allocations stay valid until March 31st of the following
+        year. Between January and March two allocations are therefore valid at
+        the same time and both feed into that number.
+
+        All years are reported, plus a separate entry for leaves that no valid
+        allocation covers. Those are booked on a bucket of their own by
+        hr_holidays and are what makes a balance go negative, so leaving them
+        out would mean the breakdown does not add up to the number shown.
+        """
+        self.ensure_one()
+        employee_id = self._get_contextual_employee_id()
+        # in the employee dashboard the context carries a list of ids, passing
+        # that on unchanged builds an "employee_id in (ARRAY[...])" query and
+        # makes postgres fail. _get_overlap above guards against the same thing.
+        if isinstance(employee_id, (list, tuple)):
+            employee_id = employee_id[0] if employee_id else False
+        if not employee_id:
+            return []
+        days_per_allocation = self._get_employees_days_per_allocation([employee_id])
+        allocation_days = days_per_allocation[employee_id][self]
+        today = fields.Date.context_today(self)
+        per_year = {}
+        for allocation, days in allocation_days.items():
+            # False and "error" are buckets for leaves without a valid
+            # allocation, they have no year to report
+            if not allocation or isinstance(allocation, str):
+                continue
+            entry = per_year.setdefault(
+                allocation.date_from.year,
+                {"max_leaves": 0.0, "leaves_taken": 0.0, "expired": 0.0},
+            )
+            # days["max_leaves"] is only filled in for allocations that are
+            # still valid today, so an expired allocation of the previous year
+            # would report an entitlement of 0. Read it off the allocation
+            # itself instead, the same way hr_holidays does.
+            entitlement = (
+                allocation.number_of_days
+                if allocation.type_request_unit in ("day", "half_day")
+                else allocation.number_of_hours_display
+            )
+            entry["max_leaves"] += entitlement
+            entry["leaves_taken"] += days["virtual_leaves_taken"]
+            # whatever was left when an allocation ran out of validity is gone.
+            # Without this the rows read like there was still a balance left.
+            if allocation.date_to and allocation.date_to < today:
+                entry["expired"] += max(entitlement - days["virtual_leaves_taken"], 0.0)
+        result = [
+            {
+                "year": year,
+                "max_leaves": round(per_year[year]["max_leaves"], 2),
+                "leaves_taken": round(per_year[year]["leaves_taken"], 2),
+                "expired": round(per_year[year]["expired"], 2),
+            }
+            for year in sorted(per_year)
+        ]
+        # hr_holidays books leaves it cannot charge to any valid allocation on
+        # a bucket keyed False, as a negative virtual_remaining_leaves. That is
+        # what drives a balance below zero, so it gets an entry of its own with
+        # no year attached.
+        uncovered = -allocation_days.get(False, {}).get("virtual_remaining_leaves", 0)
+        if uncovered > 0:
+            result.append(
+                {
+                    "year": False,
+                    "max_leaves": 0.0,
+                    "leaves_taken": round(uncovered, 2),
+                    "expired": 0.0,
+                }
+            )
         return result
 
     @api.model
