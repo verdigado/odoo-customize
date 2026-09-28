@@ -175,10 +175,6 @@
                                 expired
                             </t>
                         </t>
-                        <t t-else="">
-                            <t t-out="per_year_entry['leaves_taken']" />
-                            <t t-out="per_year_entry['label']" />
-                        </t>
                         <br />
                     </span>
                 </span>
@@ -215,10 +211,6 @@
                                 expired
                             </t>
                         </t>
-                        <t t-else="">
-                            <t t-out="per_year_entry['leaves_taken']" />
-                            <t t-out="per_year_entry['label']" />
-                        </t>
                         <br />
                     </span>
                 </span>
@@ -254,10 +246,6 @@
                                 <t t-out="per_year_entry['expired']" />
                                 expired
                             </t>
-                        </t>
-                        <t t-else="">
-                            <t t-out="per_year_entry['leaves_taken']" />
-                            <t t-out="per_year_entry['label']" />
                         </t>
                         <br />
                     </span>

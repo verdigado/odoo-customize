@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-28 09:00+0000\n"
-"PO-Revision-Date: 2026-09-28 11:01+0200\n"
+"POT-Creation-Date: 2026-09-28 12:45+0000\n"
+"PO-Revision-Date: 2026-09-28 14:46+0200\n"
 "Last-Translator: Alexander Bigga, 2022\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -471,21 +471,6 @@ msgstr "genommen in %s"
 #. module: verdigado_attendance
 #. openerp-web
 #: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
-#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
-#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
-#, python-format
-msgid "credited"
-msgstr "gutgeschrieben"
-
-#. module: verdigado_attendance
-#: code:addons/verdigado_attendance/models/hr_leave_type.py:0
-#, python-format
-msgid "from overlaps in %s"
-msgstr "aus Überlappung %s"
-
-#. module: verdigado_attendance
-#. openerp-web
-#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
 msgid "timeoff[1]['usable_remaining_leaves_formatted']"
 msgstr ""
@@ -497,12 +482,17 @@ msgstr ""
 msgid "timeoff[1]['virtual_leaves_taken_formatted']"
 msgstr ""
 
-#. module: verdigado_attendance
-#. openerp-web
-#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
-msgid "without allocation"
-msgstr "ohne Zuteilung"
+#~ msgid "credited"
+#~ msgstr "gutgeschrieben"
+
+#, python-format
+#~ msgid "from overlaps in %s"
+#~ msgstr "aus Überlappung %s"
+
+#, python-format
+#~ msgid "without allocation"
+#~ msgstr "ohne Zuteilung"
 
 #~ msgid ""
 #~ "<p>Dear <t t-out=\"object.name\"/>,</p>\n"

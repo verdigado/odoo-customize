@@ -59,10 +59,9 @@ class HrLeaveType(models.Model):
         year. Between January and March two allocations are therefore valid at
         the same time and both feed into that number.
 
-        All years are reported, plus a separate entry for leaves that no valid
-        allocation covers. Those are booked on a bucket of their own by
-        hr_holidays and are what makes a balance go negative, so leaving them
-        out would mean the breakdown does not add up to the number shown.
+        Every allocation year is reported, including expired ones. The overlap
+        credit and the leaves hr_holidays could not charge to any allocation
+        are deliberately left out, see the comment at the end of this method.
         """
         self.ensure_one()
         employee_id = self._get_contextual_employee_id()
