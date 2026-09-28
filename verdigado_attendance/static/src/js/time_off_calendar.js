@@ -51,7 +51,24 @@ odoo.define("verdigado_attendance.time_off_calendar", function (require) {
             events: _.extend({}, TargetController.prototype.events, {
                 "click .overlap": "_onOverlap",
                 "click .per_year": "_onPerYear",
+                "click .per_year_leaves": "_onPerYearLeaves",
             }),
+            // Opens the leaves falling into the validity of that year's
+            // allocations. The domain is built in python, see
+            // hr_leave_type._get_days_per_year.
+            _onPerYearLeaves: function (e) {
+                e.preventDefault();
+                return this.do_action({
+                    type: "ir.actions.act_window",
+                    res_model: "hr.leave",
+                    views: [
+                        [false, "list"],
+                        [false, "form"],
+                    ],
+                    target: "current",
+                    domain: jQuery(e.currentTarget).data("domain"),
+                });
+            },
             // The cards are inserted outside the renderer element, so setting
             // the popover up while rendering does not reach them. Delegate the
             // click instead and initialise on first use.
@@ -62,9 +79,19 @@ odoo.define("verdigado_attendance.time_off_calendar", function (require) {
                     $toggle.popover({
                         html: true,
                         placement: "bottom",
-                        trigger: "focus",
+                        // "focus" would close the popover as soon as anything
+                        // inside it is clicked, which swallows the click on the
+                        // link below. "click" keeps it open until the trigger
+                        // is clicked again.
+                        trigger: "click",
+                        // Bootstrap appends to document.body by default, which
+                        // puts the content outside this controller and breaks
+                        // the delegated "click .per_year_leaves" handler
+                        container: $toggle.parent(),
                         content: $toggle.siblings(".per_year_content").html(),
                     });
+                    // Bootstrap only binds its own handler on init, so the
+                    // click that got us here has to be applied by hand
                     $toggle.popover("show");
                 }
             },

@@ -160,7 +160,14 @@
                             :
                             <t t-out="per_year_entry['max_leaves']" />
                             ,
-                            taken
+                            <!-- prettier-ignore-start -->
+                            <a
+                                href="#"
+                                class="per_year_leaves"
+                                t-att-data-domain="JSON.stringify(per_year_entry['domain'])"
+                                t-att-title="per_year_entry['taken_label']"
+                            >taken</a>
+                            <!-- prettier-ignore-end -->
                             <t t-out="per_year_entry['leaves_taken']" />
                             <t t-if="per_year_entry['expired']">
                                 ,
@@ -170,7 +177,7 @@
                         </t>
                         <t t-else="">
                             <t t-out="per_year_entry['leaves_taken']" />
-                            without allocation
+                            <t t-out="per_year_entry['label']" />
                         </t>
                         <br />
                     </span>
@@ -193,7 +200,14 @@
                             :
                             <t t-out="per_year_entry['max_leaves']" />
                             ,
-                            taken
+                            <!-- prettier-ignore-start -->
+                            <a
+                                href="#"
+                                class="per_year_leaves"
+                                t-att-data-domain="JSON.stringify(per_year_entry['domain'])"
+                                t-att-title="per_year_entry['taken_label']"
+                            >taken</a>
+                            <!-- prettier-ignore-end -->
                             <t t-out="per_year_entry['leaves_taken']" />
                             <t t-if="per_year_entry['expired']">
                                 ,
@@ -203,7 +217,7 @@
                         </t>
                         <t t-else="">
                             <t t-out="per_year_entry['leaves_taken']" />
-                            without allocation
+                            <t t-out="per_year_entry['label']" />
                         </t>
                         <br />
                     </span>
@@ -226,7 +240,14 @@
                             :
                             <t t-out="per_year_entry['max_leaves']" />
                             ,
-                            taken
+                            <!-- prettier-ignore-start -->
+                            <a
+                                href="#"
+                                class="per_year_leaves"
+                                t-att-data-domain="JSON.stringify(per_year_entry['domain'])"
+                                t-att-title="per_year_entry['taken_label']"
+                            >taken</a>
+                            <!-- prettier-ignore-end -->
                             <t t-out="per_year_entry['leaves_taken']" />
                             <t t-if="per_year_entry['expired']">
                                 ,
@@ -236,7 +257,7 @@
                         </t>
                         <t t-else="">
                             <t t-out="per_year_entry['leaves_taken']" />
-                            without allocation
+                            <t t-out="per_year_entry['label']" />
                         </t>
                         <br />
                     </span>

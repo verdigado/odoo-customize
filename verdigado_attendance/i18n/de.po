@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-30 10:08+0000\n"
-"PO-Revision-Date: 2025-12-30 11:11+0100\n"
+"POT-Creation-Date: 2026-09-28 09:00+0000\n"
+"PO-Revision-Date: 2026-09-28 11:01+0200\n"
 "Last-Translator: Alexander Bigga, 2022\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -424,15 +424,22 @@ msgstr "Jahr"
 #. openerp-web
 #: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
-msgid "from"
-msgstr "aus"
+msgid "entitlement"
+msgstr "Anspruch"
 
 #. module: verdigado_attendance
 #. openerp-web
 #: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
-msgid "entitlement"
-msgstr "Anspruch"
+msgid "expired"
+msgstr "verfallen"
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#, python-format
+msgid "from"
+msgstr "aus"
 
 #. module: verdigado_attendance
 #. openerp-web
@@ -456,18 +463,25 @@ msgid "taken"
 msgstr "genommen"
 
 #. module: verdigado_attendance
-#. openerp-web
-#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#: code:addons/verdigado_attendance/models/hr_leave_type.py:0
 #, python-format
-msgid "expired"
-msgstr "verfallen"
+msgid "taken in %s"
+msgstr "genommen in %s"
 
 #. module: verdigado_attendance
 #. openerp-web
 #: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
 #, python-format
-msgid "without allocation"
-msgstr "ohne Zuteilung"
+msgid "credited"
+msgstr "gutgeschrieben"
+
+#. module: verdigado_attendance
+#: code:addons/verdigado_attendance/models/hr_leave_type.py:0
+#, python-format
+msgid "from overlaps in %s"
+msgstr "aus Überlappung %s"
 
 #. module: verdigado_attendance
 #. openerp-web
@@ -482,6 +496,13 @@ msgstr ""
 #, python-format
 msgid "timeoff[1]['virtual_leaves_taken_formatted']"
 msgstr ""
+
+#. module: verdigado_attendance
+#. openerp-web
+#: code:addons/verdigado_attendance/static/src/xml/hr_holidays.xml:0
+#, python-format
+msgid "without allocation"
+msgstr "ohne Zuteilung"
 
 #~ msgid ""
 #~ "<p>Dear <t t-out=\"object.name\"/>,</p>\n"
