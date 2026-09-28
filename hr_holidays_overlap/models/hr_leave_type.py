@@ -37,22 +37,34 @@ class HrLeaveType(models.Model):
                         # found allocation which is right now valid
                         allocation_days["virtual_remaining_leaves"] += number_of_days
                         allocation_days["virtual_leaves_taken"] -= number_of_days
+                        # booking the credit as negative consumption can push
+                        # virtual_leaves_taken below zero, which is impossible
+                        # to read. Keep the credit itself around so consumers
+                        # can report the gross figure and the credit apart.
+                        allocation_days["overlap_credit"] += number_of_days
                         if possible_overlap.state == "validate":
                             allocation_days["remaining_leaves"] += number_of_days
                             allocation_days["leaves_taken"] -= number_of_days
                         break
+                    # hr_holidays uses the "error" bucket as an override: as
+                    # long as it is set, get_employees_days reports it instead
+                    # of summing the allocations. Once the overlap credit
+                    # covers the shortfall that override is obsolete and has to
+                    # go, otherwise the dashboard keeps showing the deficit.
+                    #
+                    # The False bucket must not be touched here. The credit is
+                    # already booked onto the allocation above, so adding it a
+                    # second time counted it twice. Worse, the former
+                    # "-= allocation_days[...]" used the loop variable left
+                    # over from the loop above after its break, and therefore
+                    # subtracted the remaining balance of an unrelated
+                    # allocation.
                     if "error" in allocation_dict:
                         allocation_dict["error"][
                             "virtual_remaining_leaves"
                         ] += number_of_days
-                        allocation_dict[False][
-                            "virtual_remaining_leaves"
-                        ] += number_of_days
                         if not allocation_dict["error"]["virtual_remaining_leaves"]:
                             del allocation_dict["error"]
-                            allocation_dict[False][
-                                "virtual_remaining_leaves"
-                            ] -= allocation_days["virtual_remaining_leaves"]
         return result
 
     def _get_overlap(self, employee_id, leave_type):
