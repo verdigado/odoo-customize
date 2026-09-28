@@ -1,7 +1,7 @@
 # Copyright 2023 Hunki Enterprises BV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 
 
 class HrLeaveType(models.Model):
@@ -42,11 +42,119 @@ class HrLeaveType(models.Model):
         ):
             overlap_ids += overlap1.ids + overlap2.ids
             overlap_time += time
+
         result[1]["overlap"] = {
             "time": round(overlap_time, 2),
             "ids": overlap_ids,
         }
+        result[1]["per_year"] = self._get_days_per_year()
 
+        return result
+
+    def _get_days_per_year(self):
+        """Break down entitlement and usage per allocation year
+
+        The dashboard only shows a single aggregated number, which is hard to
+        follow because allocations stay valid until March 31st of the following
+        year. Between January and March two allocations are therefore valid at
+        the same time and both feed into that number.
+
+        Every allocation year is reported, including expired ones. The overlap
+        credit and the leaves hr_holidays could not charge to any allocation
+        are deliberately left out, see the comment at the end of this method.
+        """
+        self.ensure_one()
+        employee_id = self._get_contextual_employee_id()
+        # in the employee dashboard the context carries a list of ids, passing
+        # that on unchanged builds an "employee_id in (ARRAY[...])" query and
+        # makes postgres fail. _get_overlap above guards against the same thing.
+        if isinstance(employee_id, (list, tuple)):
+            employee_id = employee_id[0] if employee_id else False
+        if not employee_id:
+            return []
+        days_per_allocation = self._get_employees_days_per_allocation([employee_id])
+        allocation_days = days_per_allocation[employee_id][self]
+        today = fields.Date.context_today(self)
+        per_year = {}
+        for allocation, days in allocation_days.items():
+            # False and "error" are buckets for leaves without a valid
+            # allocation, they have no year to report
+            if not allocation or isinstance(allocation, str):
+                continue
+            entry = per_year.setdefault(
+                allocation.date_from.year,
+                {
+                    "max_leaves": 0.0,
+                    "leaves_taken": 0.0,
+                    "overlap_credit": 0.0,
+                    "expired": 0.0,
+                    "allocations": self.env["hr.leave.allocation"],
+                },
+            )
+            entry["allocations"] |= allocation
+            # days["max_leaves"] is only filled in for allocations that are
+            # still valid today, so an expired allocation of the previous year
+            # would report an entitlement of 0. Read it off the allocation
+            # itself instead, the same way hr_holidays does.
+            entitlement = (
+                allocation.number_of_days
+                if allocation.type_request_unit in ("day", "half_day")
+                else allocation.number_of_hours_display
+            )
+            entry["max_leaves"] += entitlement
+            entry["leaves_taken"] += days["virtual_leaves_taken"]
+            entry["overlap_credit"] += days["overlap_credit"]
+            # whatever was left when an allocation ran out of validity is gone.
+            # Without this the rows read like there was still a balance left.
+            if allocation.date_to and allocation.date_to < today:
+                entry["expired"] += max(entitlement - days["virtual_leaves_taken"], 0.0)
+        result = []
+        for year in sorted(per_year):
+            entry = per_year[year]
+            allocations = entry["allocations"]
+            # hr.leave.holiday_allocation_id is deprecated in 15.0 and always
+            # computed to False, so there is no stored link between a leave and
+            # the allocation it was charged to. Matching on the validity window
+            # is the next best thing, and it has to match on the *start* of the
+            # leave: one that began in the previous year was charged to the
+            # previous year's allocation even when it ran into this one.
+            # What stays ambiguous are leaves starting between January and
+            # March, where two allocations are valid at the same time.
+            domain = [
+                ("employee_id", "=", employee_id),
+                ("holiday_status_id", "=", self.id),
+                ("state", "in", ["confirm", "validate1", "validate"]),
+                (
+                    "date_from",
+                    ">=",
+                    "%s 00:00:00" % min(allocations.mapped("date_from")),
+                ),
+            ]
+            dates_to = allocations.mapped("date_to")
+            if all(dates_to):
+                domain.append(("date_from", "<=", "%s 23:59:59" % max(dates_to)))
+            result.append(
+                {
+                    "year": year,
+                    "max_leaves": round(entry["max_leaves"], 2),
+                    # leaves_taken is net of the overlap credit. Report the
+                    # gross figure plus the credit, otherwise a year without
+                    # any leave but with a credit reads as "taken -8".
+                    "leaves_taken": round(
+                        entry["leaves_taken"] + entry["overlap_credit"], 2
+                    ),
+                    "expired": round(entry["expired"], 2),
+                    "domain": domain,
+                    # tooltip on the link, spells out which year the listed
+                    # leaves belong to
+                    "taken_label": _("taken in %s") % year,
+                }
+            )
+        # The overlap credit and the leaves hr_holidays could not charge to any
+        # allocation are deliberately not listed here: the card above already
+        # says "incl. N days from overlaps", and both figures need so much
+        # context that they confused more than they explained. They are still
+        # in _get_employees_days_per_allocation if they are ever needed again.
         return result
 
     @api.model

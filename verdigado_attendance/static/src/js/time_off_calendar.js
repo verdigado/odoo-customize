@@ -41,23 +41,91 @@ odoo.define("verdigado_attendance.time_off_calendar", function (require) {
             });
         },
     });
-    var Controller = viewRegistry.get("time_off_calendar_all").prototype.config
-        .Controller;
-    Controller.include({
-        events: _.extend({}, Controller.prototype.events, {
-            "click .overlap": "_onOverlap",
-        }),
-        _onOverlap: function (e) {
-            return this.do_action({
-                type: "ir.actions.act_window",
-                res_model: "hr.leave",
-                views: [
-                    [false, "list"],
-                    [false, "form"],
-                ],
-                target: "current",
-                domain: [["id", "in", jQuery(e.currentTarget).data("ids")]],
-            });
-        },
-    });
+    // The dashboard cards show up in several view types that do not share a
+    // controller: time_off_calendar and time_off_calendar_all both use
+    // TimeOffCalendarController, while the employee view an administrator opens
+    // uses TimeOffCalendarEmployeeController. Registering on only one of them
+    // leaves the links dead in the other, which is what happened to .overlap.
+    function includeCardHandlers(TargetController) {
+        TargetController.include({
+            events: _.extend({}, TargetController.prototype.events, {
+                "click .overlap": "_onOverlap",
+                "click .per_year": "_onPerYear",
+                "click .per_year_leaves": "_onPerYearLeaves",
+            }),
+            // Opens the leaves falling into the validity of that year's
+            // allocations. The domain is built in python, see
+            // hr_leave_type._get_days_per_year.
+            _onPerYearLeaves: function (e) {
+                e.preventDefault();
+                return this.do_action({
+                    type: "ir.actions.act_window",
+                    res_model: "hr.leave",
+                    views: [
+                        [false, "list"],
+                        [false, "form"],
+                    ],
+                    target: "current",
+                    domain: jQuery(e.currentTarget).data("domain"),
+                });
+            },
+            // The cards are inserted outside the renderer element, so setting
+            // the popover up while rendering does not reach them. Delegate the
+            // click instead and initialise on first use.
+            _onPerYear: function (e) {
+                e.preventDefault();
+                var $toggle = jQuery(e.currentTarget);
+                if (!$toggle.data("bs.popover")) {
+                    $toggle.popover({
+                        html: true,
+                        placement: "bottom",
+                        // "focus" would close the popover as soon as anything
+                        // inside it is clicked, which swallows the click on the
+                        // link below. "click" keeps it open until the trigger
+                        // is clicked again.
+                        trigger: "click",
+                        // Bootstrap appends to document.body by default, which
+                        // puts the content outside this controller and breaks
+                        // the delegated "click .per_year_leaves" handler
+                        container: $toggle.parent(),
+                        content: $toggle.siblings(".per_year_content").html(),
+                    });
+                    // Bootstrap only binds its own handler on init, so the
+                    // click that got us here has to be applied by hand
+                    $toggle.popover("show");
+                }
+            },
+            _onOverlap: function (e) {
+                return this.do_action({
+                    type: "ir.actions.act_window",
+                    res_model: "hr.leave",
+                    views: [
+                        [false, "list"],
+                        [false, "form"],
+                    ],
+                    target: "current",
+                    domain: [["id", "in", jQuery(e.currentTarget).data("ids")]],
+                });
+            },
+        });
+    }
+
+    // Time_off_calendar and time_off_calendar_all share one controller class,
+    // so keep track of what was patched already instead of including twice
+    var patchedControllers = [];
+    _.each(
+        ["time_off_calendar", "time_off_calendar_all", "time_off_employee_calendar"],
+        function (viewName) {
+            var view = viewRegistry.get(viewName);
+            // Guard: a view type we do not have is not an error here
+            if (!view || !view.prototype.config.Controller) {
+                return;
+            }
+            var TargetController = view.prototype.config.Controller;
+            if (patchedControllers.indexOf(TargetController) === -1) {
+                patchedControllers.push(TargetController);
+                includeCardHandlers(TargetController);
+            }
+        }
+    );
 });
