@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
+    <!-- This template has to come first. It restores <t t-if="o.partner_bank_id">
+         inside //p[@name='payment_communication'], and
+         account.report_invoice_document_preview (primary="True") anchors on exactly
+         that element. Odoo writes the records of a file in document order and
+         revalidates the whole inheritance tree after each one. With the SDD
+         template first, that validation still saw the previous, anchor-less
+         version of this template in the database and aborted - which rolled back
+         the very update that would have fixed it. -->
+    <template id="verdigado_sepa_report_invoice_document" inherit_id="account.report_invoice_document" priority="100">
+        <xpath expr="//p[@name='payment_communication']" position="replace">
+            <!-- in case of SEPA, we skip the payment_communication -->
+            <t t-if="any(p.sdd_mandate_id for p in o.matched_payment_ids)" />
+            <t t-else="">
+                <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication">
+                    Bitte benutzen Sie den folgenden Verwendungszweck für Ihre Zahlung:
+                    <b>
+                        <span t-field="o.payment_reference" />
+                    </b>
+                    <!-- account.report_invoice_document_preview is primary="True" and
+                         anchors on //p[@name='payment_communication']//t[@t-if='o.partner_bank_id'].
+                         Dropping that element breaks the module load, so keep it. It is
+                         empty on purpose: core puts "on this account: ..." here, which we
+                         do not want on our invoices. -->
+                    <t t-if="o.partner_bank_id" />
+                </p>
+            </t>
+        </xpath>
+        <xpath expr="//span[@id='payment_terms_note_id']" position="replace">
+            <!-- in case of SEPA, we skip the payment_term -->
+            <t t-if="any(p.sdd_mandate_id for p in o.matched_payment_ids)" />
+            <t t-else="">
+                <div t-field="o.invoice_payment_term_id.note" name="payment_term"/>
+            </t>
+        </xpath>
+    </template>
+
     <template id="verdigado_sdd_report_invoice_document" inherit_id="account_sepa_direct_debit.sdd_report_invoice_document" priority="100">
-        <xpath expr="//div[@t-if='any(p.sdd_mandate_id for p in o.matched_payment_ids)']" position="replace">
+        <!-- 19.0: account_sepa_direct_debit switched the condition of this div
+             from o.matched_payment_ids to o.reconciled_payment_ids, which is a
+             superset of it (account/models/account_move.py). The anchor has to
+             match the parent literally, so it was adjusted here. -->
+        <xpath expr="//div[@t-if='any(p.sdd_mandate_id for p in o.reconciled_payment_ids)']" position="replace">
             <t t-set="payment" t-value="[p for p in o.matched_payment_ids if p.sdd_mandate_id][0]" t-if="[p for p in o.matched_payment_ids if p.sdd_mandate_id]"/>
             <div t-if="payment">
                 <div name="payment_term">
@@ -79,25 +119,4 @@
         </xpath>
     </template>
 
-    <template id="verdigado_sepa_report_invoice_document" inherit_id="account.report_invoice_document" priority="100">
-        <xpath expr="//p[@name='payment_communication']" position="replace">
-            <!-- in case of SEPA, we skip the payment_communication -->
-            <t t-if="any(p.sdd_mandate_id for p in o.matched_payment_ids)" />
-            <t t-else="">
-                <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication">
-                    Bitte benutzen Sie den folgenden Verwendungszweck für Ihre Zahlung:
-                    <b>
-                        <span t-field="o.payment_reference" />
-                    </b>
-                </p>
-            </t>
-        </xpath>
-        <xpath expr="//span[@id='payment_terms_note_id']" position="replace">
-            <!-- in case of SEPA, we skip the payment_term -->
-            <t t-if="any(p.sdd_mandate_id for p in o.matched_payment_ids)" />
-            <t t-else="">
-                <div t-field="o.invoice_payment_term_id.note" name="payment_term"/>
-            </t>
-        </xpath>
-    </template>
 </odoo>
