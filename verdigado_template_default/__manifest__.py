@@ -10,7 +10,7 @@ verdigado-Layout für odoo
     "author": "verdigado eG",
     "website": "https://github.com/verdigado/odoo-customize",
     "category": "Customizations",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "license": "AGPL-3",
     # any module necessary for this one to work correctly
     "depends": [
@@ -19,9 +19,7 @@ verdigado-Layout für odoo
         "l10n_de",
         "account_sepa_direct_debit",
         "website",
-        # "sale_order_line_sequence",
-        "module_auto_update",
-        "auth_oidc"
+        "module_auto_update"
     ],
     "data": [
         "views/debrand_web.xml",
