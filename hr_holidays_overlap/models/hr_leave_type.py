@@ -92,7 +92,17 @@ class HrLeaveType(models.Model):
                     ("holiday_status_id", "=", leave_type),
                 ]
             ):
-                number_of_days = overlap.employee_id._get_work_days_data_batch(
+                # Whether public holidays count is driven by the context only,
+                # not by compute_leaves. Take it from the overlapped leave type
+                # instead of inheriting it from the caller, otherwise the same
+                # overlap is worth 8 days in the dashboard and 7 on approval.
+                employee = overlap.employee_id.with_context(
+                    employee_id=employee_id,
+                    exclude_public_holidays=bool(
+                        overlap.holiday_status_id.exclude_public_holidays
+                    ),
+                )
+                number_of_days = employee._get_work_days_data_batch(
                     possible_overlap.date_from
                     if possible_overlap.date_from >= overlap.date_from
                     else overlap.date_from,
