@@ -4,7 +4,7 @@
 {
     "name": "Overlapping leaves",
     "summary": "Allows to configure holidays that overlap with others",
-    "version": "15.0.1.0.0",
+    "version": "15.0.1.1.0",
     "development_status": "Beta",
     "category": "Human Resources/Time Off",
     "website": "https://github.com/OCA/hr-holidays",
@@ -13,6 +13,9 @@
     "license": "AGPL-3",
     "depends": [
         "hr_holidays",
+        # for hr.leave.type#exclude_public_holidays, which decides whether a
+        # public holiday inside an overlap is worth crediting back
+        "hr_holidays_public",
     ],
     "data": [
         "data/hr_leave_type.xml",

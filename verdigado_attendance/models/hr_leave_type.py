@@ -59,8 +59,9 @@ class HrLeaveType(models.Model):
         year. Between January and March two allocations are therefore valid at
         the same time and both feed into that number.
 
-        Every allocation year is reported, including expired ones. The overlap
-        credit and the leaves hr_holidays could not charge to any allocation
+        Every allocation year is reported, including expired ones. Credit
+        allocations from overlaps show up as entitlement of the year the days
+        were lost in. The leaves hr_holidays could not charge to any allocation
         are deliberately left out, see the comment at the end of this method.
         """
         self.ensure_one()
@@ -86,7 +87,6 @@ class HrLeaveType(models.Model):
                 {
                     "max_leaves": 0.0,
                     "leaves_taken": 0.0,
-                    "overlap_credit": 0.0,
                     "expired": 0.0,
                     "allocations": self.env["hr.leave.allocation"],
                 },
@@ -103,7 +103,6 @@ class HrLeaveType(models.Model):
             )
             entry["max_leaves"] += entitlement
             entry["leaves_taken"] += days["virtual_leaves_taken"]
-            entry["overlap_credit"] += days["overlap_credit"]
             # whatever was left when an allocation ran out of validity is gone.
             # Without this the rows read like there was still a balance left.
             if allocation.date_to and allocation.date_to < today:
@@ -130,19 +129,18 @@ class HrLeaveType(models.Model):
                     "%s 00:00:00" % min(allocations.mapped("date_from")),
                 ),
             ]
-            dates_to = allocations.mapped("date_to")
-            if all(dates_to):
+            # credit allocations from overlaps have no end date by design, so
+            # they must not widen the window the leaves are looked up in
+            dates_to = allocations.filtered(
+                lambda x: not x.overlap_sick_leave_id
+            ).mapped("date_to")
+            if dates_to and all(dates_to):
                 domain.append(("date_from", "<=", "%s 23:59:59" % max(dates_to)))
             result.append(
                 {
                     "year": year,
                     "max_leaves": round(entry["max_leaves"], 2),
-                    # leaves_taken is net of the overlap credit. Report the
-                    # gross figure plus the credit, otherwise a year without
-                    # any leave but with a credit reads as "taken -8".
-                    "leaves_taken": round(
-                        entry["leaves_taken"] + entry["overlap_credit"], 2
-                    ),
+                    "leaves_taken": round(entry["leaves_taken"], 2),
                     "expired": round(entry["expired"], 2),
                     "domain": domain,
                     # tooltip on the link, spells out which year the listed
@@ -150,11 +148,10 @@ class HrLeaveType(models.Model):
                     "taken_label": _("taken in %s") % year,
                 }
             )
-        # The overlap credit and the leaves hr_holidays could not charge to any
-        # allocation are deliberately not listed here: the card above already
-        # says "incl. N days from overlaps", and both figures need so much
-        # context that they confused more than they explained. They are still
-        # in _get_employees_days_per_allocation if they are ever needed again.
+        # The leaves hr_holidays could not charge to any allocation are
+        # deliberately not listed here: the figure needs so much context that it
+        # confused more than it explained. It is still in the False bucket of
+        # _get_employees_days_per_allocation if it is ever needed again.
         return result
 
     @api.model

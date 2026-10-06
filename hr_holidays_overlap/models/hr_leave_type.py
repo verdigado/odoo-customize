@@ -9,63 +9,14 @@ class HrLeaveType(models.Model):
 
     can_overlap = fields.Boolean("Allow overlap with other leaves")
 
-    def _get_employees_days_per_allocation(self, employee_ids, date=None):
-        """Remove overlapping days"""
-        result = super()._get_employees_days_per_allocation(employee_ids, date=date)
-
-        if not date:
-            date = fields.Date.to_date(
-                self.env.context.get("default_date_from")
-            ) or fields.Date.context_today(self)
-
-        for employee_id in employee_ids:
-            for this in result[employee_id]:
-                allocation_dict = result[employee_id][this]
-                for possible_overlap, _overlap, number_of_days in self._get_overlap(
-                    employee_id, this.id
-                ):
-                    for allocation, allocation_days in allocation_dict.items():
-                        if (
-                            not allocation
-                            or isinstance(allocation, str)
-                            or allocation.date_to
-                            and (
-                                allocation.date_to < date or allocation.date_from > date
-                            )
-                        ):
-                            continue
-                        # found allocation which is right now valid
-                        allocation_days["virtual_remaining_leaves"] += number_of_days
-                        allocation_days["virtual_leaves_taken"] -= number_of_days
-                        # booking the credit as negative consumption can push
-                        # virtual_leaves_taken below zero, which is impossible
-                        # to read. Keep the credit itself around so consumers
-                        # can report the gross figure and the credit apart.
-                        allocation_days["overlap_credit"] += number_of_days
-                        if possible_overlap.state == "validate":
-                            allocation_days["remaining_leaves"] += number_of_days
-                            allocation_days["leaves_taken"] -= number_of_days
-                        break
-                    # hr_holidays uses the "error" bucket as an override: as
-                    # long as it is set, get_employees_days reports it instead
-                    # of summing the allocations. Once the overlap credit
-                    # covers the shortfall that override is obsolete and has to
-                    # go, otherwise the dashboard keeps showing the deficit.
-                    #
-                    # The False bucket must not be touched here. The credit is
-                    # already booked onto the allocation above, so adding it a
-                    # second time counted it twice. Worse, the former
-                    # "-= allocation_days[...]" used the loop variable left
-                    # over from the loop above after its break, and therefore
-                    # subtracted the remaining balance of an unrelated
-                    # allocation.
-                    if "error" in allocation_dict:
-                        allocation_dict["error"][
-                            "virtual_remaining_leaves"
-                        ] += number_of_days
-                        if not allocation_dict["error"]["virtual_remaining_leaves"]:
-                            del allocation_dict["error"]
-        return result
+    # The balance used to be patched here after hr_holidays had computed it:
+    # the overlap was credited onto whichever allocation happened to be valid
+    # today, and the "error" bucket was cancelled out by the same amount. That
+    # only ever worked when the credit matched the shortfall to the day, which
+    # is a coincidence, and it could not cover leaves predating today's
+    # allocation. The overlap is now mirrored by a real hr.leave.allocation
+    # (see hr_leave.py), so the core charges the days at the time they were
+    # lost and no correction is needed afterwards.
 
     def _get_overlap(self, employee_id, leave_type):
         """Return overlapping leaves and the working time of the overlap"""

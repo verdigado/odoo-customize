@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from . import hr_case
+from . import test_days_per_year
 from . import test_holidays
 from . import test_holiday_wizard
 from . import test_hr_access
