@@ -11,3 +11,4 @@ from . import hr_leave_type
 from . import res_config_settings
 from . import res_company
 from . import res_users
+from . import resource_calendar_attendance
