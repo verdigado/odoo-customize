@@ -469,7 +469,7 @@ msgstr ""
 #. module: verdigado_attendance
 #: code:addons/verdigado_attendance/models/hr_leave_type.py:0
 #, python-format
-msgid "taken in %s"
+msgid "taken from the %s entitlement"
 msgstr ""
 
 #. module: verdigado_attendance

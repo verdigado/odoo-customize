@@ -143,9 +143,11 @@ class HrLeaveType(models.Model):
                     "leaves_taken": round(entry["leaves_taken"], 2),
                     "expired": round(entry["expired"], 2),
                     "domain": domain,
-                    # tooltip on the link, spells out which year the listed
-                    # leaves belong to
-                    "taken_label": _("taken in %s") % year,
+                    # tooltip on the link. Says "taken from", not "taken in":
+                    # an allocation stays valid into the following year, so a
+                    # leave in January to April is charged to the previous
+                    # year's entitlement and would otherwise look misfiled.
+                    "taken_label": _("taken from the %s entitlement") % year,
                 }
             )
         # The leaves hr_holidays could not charge to any allocation are
