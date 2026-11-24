@@ -19,7 +19,9 @@ verdigado-Layout für odoo
         "l10n_de",
         "account_sepa_direct_debit",
         "website",
-        "module_auto_update"
+        "module_auto_update",
+        # for the related_so_sequence override in models/account_move_line.py
+        "sale_order_line_sequence"
     ],
     "data": [
         "views/debrand_web.xml",
